@@ -49,7 +49,12 @@ public class Prescription {
 	}
 
 	public int getNumberOfContainers() {
-		return numberOfContainers;
+		int count = 0;
+		for(PrescriptionItem prescriptionItem : prescriptionItems) {
+			System.out.println(prescriptionItem.getNumberOfContainers());
+			count += prescriptionItem.getNumberOfContainers();
+		}
+		return count;
 	}
 
 	public void setNumberOfContainers(int numberOfContainers) {

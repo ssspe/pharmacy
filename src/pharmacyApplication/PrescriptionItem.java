@@ -70,7 +70,7 @@ public class PrescriptionItem {
 
 	public int getNumberOfContainers() {
 		// TODO: Figure this out
-		numberOfContainers = containerSize + prescribedDailyDose + duration;
+		numberOfContainers = (int) Math.ceil((float)(prescribedDailyDose * duration) / (float)containerSize);
 		return numberOfContainers;
 	}
 

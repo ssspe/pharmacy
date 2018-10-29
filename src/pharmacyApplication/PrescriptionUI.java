@@ -255,6 +255,8 @@ public class PrescriptionUI {
 									prescriptionItem.getPrescribedDailyDose(), prescriptionItem.getNumberOfContainers(),
 									prescriptionItem.isAvailableOverTheCounter(), description.getText() });
 				}
+				updatePrescriptionCounter(prescriptionItems.size());
+				updateNumberContainers();
 			}
 		});
 		panel.add(addButton, gbc_addButton);
@@ -308,6 +310,8 @@ public class PrescriptionUI {
 									prescriptionItem.getPrescribedDailyDose(), prescriptionItem.getNumberOfContainers(),
 									prescriptionItem.isAvailableOverTheCounter(), description.getText() });
 				}
+				updatePrescriptionCounter(prescriptionItems.size());
+				updateNumberContainers();
 			}
 		});
 		panel.add(removeButton, gbc_removeButton);
@@ -344,6 +348,8 @@ public class PrescriptionUI {
 				prescription.clearPrescription();
 				DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
 				tableModel.setRowCount(0);
+				updatePrescriptionCounter(0);
+				updateNumberContainers();
 			}
 		});
 		panel.add(clearButton, gbc_clearButton);
@@ -356,6 +362,7 @@ public class PrescriptionUI {
 		panel.add(lblNewLabel_5, gbc_lblNewLabel_5);
 
 		numberPrescriptions = new JTextField();
+		numberPrescriptions.setText("0");
 		numberPrescriptions.setEditable(false);
 		GridBagConstraints gbc_numberPrescriptions = new GridBagConstraints();
 		gbc_numberPrescriptions.insets = new Insets(0, 0, 5, 5);
@@ -374,6 +381,7 @@ public class PrescriptionUI {
 		panel.add(lblNewLabel_6, gbc_lblNewLabel_6);
 
 		numberContainers = new JTextField();
+		numberContainers.setText("0");
 		numberContainers.setEditable(false);
 		GridBagConstraints gbc_numberContainers = new GridBagConstraints();
 		gbc_numberContainers.insets = new Insets(0, 0, 5, 5);
@@ -448,6 +456,15 @@ public class PrescriptionUI {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+			
+	}
+	
+	private void updatePrescriptionCounter(int counter) {
+		numberPrescriptions.setText(String.valueOf(counter));
+	}
+	
+	private void updateNumberContainers() {
+		numberContainers.setText(String.valueOf(prescription.getNumberOfContainers()));
 	}
 
 }
