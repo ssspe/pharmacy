@@ -71,7 +71,7 @@ public class PrescriptionUI {
 	private Prescription prescription;
 	private JCheckBox addComment;
 	private String comment;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -203,21 +203,21 @@ public class PrescriptionUI {
 		gbc_preDailyDose.gridx = 3;
 		gbc_preDailyDose.gridy = 3;
 		preDailyDose.addChangeListener(new ChangeListener() {
-			
+
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				if(Integer.parseInt(preDailyDose.getValue().toString()) > Integer.parseInt(recDailyDoseText.getText())) {
-					if(!exceedDailyDose.isSelected()) {
+				if (Integer.parseInt(preDailyDose.getValue().toString()) > Integer
+						.parseInt(recDailyDoseText.getText())) {
+					if (!exceedDailyDose.isSelected()) {
 						addButton.setEnabled(false);
 					}
 					addComment.setSelected(true);
 					addComment.setEnabled(false);
-				}
-				else {
+				} else {
 					addButton.setEnabled(true);
 					addComment.setSelected(false);
 					addComment.setEnabled(true);
-				}				
+				}
 			}
 		});
 		panel.add(preDailyDose, gbc_preDailyDose);
@@ -265,25 +265,33 @@ public class PrescriptionUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String descriptionComment = description.getText();
+				Boolean hasCancelled = false;
 				if (addComment.isSelected()) {
 					comment = JOptionPane.showInputDialog("Write a Comment");
-					descriptionComment += "; " + comment;
+					if (comment != null) {
+						descriptionComment += "; " + comment;
+					} else {
+						hasCancelled = true;
+					}
 				}
-				
-				prescription.addPrescriptionItem(pharmaceuticalCombo.getSelectedItem().toString(),
-						Integer.parseInt(preDailyDose.getValue().toString()),
-						Integer.parseInt(duration.getValue().toString()), size, availableOverTheCounter, descriptionComment);
-				ArrayList<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
-				DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
-				tableModel.setRowCount(0);
-				for (PrescriptionItem prescriptionItem : prescriptionItems) {
-					tableModel.addRow(
-							new Object[] { prescriptionItem.getPharmaceuticalName(), prescriptionItem.getDuration(),
-									prescriptionItem.getPrescribedDailyDose(), prescriptionItem.getNumberOfContainers(),
-									prescriptionItem.isAvailableOverTheCounter(), prescriptionItem.getComments() });
+
+				if (!hasCancelled) {
+					prescription.addPrescriptionItem(pharmaceuticalCombo.getSelectedItem().toString(),
+							Integer.parseInt(preDailyDose.getValue().toString()),
+							Integer.parseInt(duration.getValue().toString()), size, availableOverTheCounter,
+							descriptionComment);
+					ArrayList<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
+					DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
+					tableModel.setRowCount(0);
+					for (PrescriptionItem prescriptionItem : prescriptionItems) {
+						tableModel.addRow(new Object[] { prescriptionItem.getPharmaceuticalName(),
+								prescriptionItem.getDuration(), prescriptionItem.getPrescribedDailyDose(),
+								prescriptionItem.getNumberOfContainers(), prescriptionItem.isAvailableOverTheCounter(),
+								prescriptionItem.getComments() });
+					}
+					updatePrescriptionCounter(prescriptionItems.size());
+					updateNumberContainers();
 				}
-				updatePrescriptionCounter(prescriptionItems.size());
-				updateNumberContainers();
 			}
 		});
 		panel.add(addButton, gbc_addButton);
@@ -299,13 +307,15 @@ public class PrescriptionUI {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					addButton.setEnabled(true);
 				} else {
-					if(Integer.parseInt(preDailyDose.getValue().toString()) > Integer.parseInt(recDailyDoseText.getText())) {
-						if(!exceedDailyDose.isSelected()) {
+					if (Integer.parseInt(preDailyDose.getValue().toString()) > Integer
+							.parseInt(recDailyDoseText.getText())) {
+						if (!exceedDailyDose.isSelected()) {
 							addButton.setEnabled(false);
 						}
 					}
-				};
-				
+				}
+				;
+
 			}
 		});
 		panel.add(exceedDailyDose, gbc_exceedDailyDose);
@@ -365,7 +375,7 @@ public class PrescriptionUI {
 		gbc_clearButton.gridx = 7;
 		gbc_clearButton.gridy = 5;
 		clearButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				prescription.clearPrescription();
@@ -468,7 +478,7 @@ public class PrescriptionUI {
 				recDailyDoseText.setText(String.valueOf(maxValue));
 				description.setText(finalText);
 			}
-			
+
 			preDailyDose.setModel(new SpinnerNumberModel(0, 0, maxValue * 2, 1));
 //			if (exceedDailyDose.isSelected()) {
 //				preDailyDose.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
@@ -480,13 +490,13 @@ public class PrescriptionUI {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			
+
 	}
-	
+
 	private void updatePrescriptionCounter(int counter) {
 		numberPrescriptions.setText(String.valueOf(counter));
 	}
-	
+
 	private void updateNumberContainers() {
 		numberContainers.setText(String.valueOf(prescription.getNumberOfContainers()));
 	}
