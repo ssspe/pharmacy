@@ -245,7 +245,7 @@ public class PrescriptionUI {
 			public void actionPerformed(ActionEvent e) {
 				prescription.addPrescriptionItem(pharmaceuticalCombo.getSelectedItem().toString(),
 						Integer.parseInt(preDailyDose.getValue().toString()),
-						Integer.parseInt(duration.getValue().toString()), size, availableOverTheCounter, "nbfgn");
+						Integer.parseInt(duration.getValue().toString()), size, availableOverTheCounter, description.getText());
 				ArrayList<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
 				DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
 				tableModel.setRowCount(0);
@@ -253,7 +253,7 @@ public class PrescriptionUI {
 					tableModel.addRow(
 							new Object[] { prescriptionItem.getPharmaceuticalName(), prescriptionItem.getDuration(),
 									prescriptionItem.getPrescribedDailyDose(), prescriptionItem.getNumberOfContainers(),
-									prescriptionItem.isAvailableOverTheCounter(), description.getText() });
+									prescriptionItem.isAvailableOverTheCounter(), prescriptionItem.getComments() });
 				}
 				updatePrescriptionCounter(prescriptionItems.size());
 				updateNumberContainers();

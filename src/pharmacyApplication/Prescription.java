@@ -12,16 +12,27 @@ public class Prescription {
 
 	}
 
-	public void addPrescriptionItem(String pharmaceuticalName, int prescribedDailyDose, int duration,
-			int containerSize, boolean availableOverTheCounter, String comments) {
-		PrescriptionItem prescriptionItem = new PrescriptionItem(pharmaceuticalName, prescribedDailyDose, duration, containerSize, availableOverTheCounter, comments);
-		prescriptionItems.add(prescriptionItem);
+	public void addPrescriptionItem(String pharmaceuticalName, int prescribedDailyDose, int duration, int containerSize,
+			boolean availableOverTheCounter, String comments) {
+		Boolean alreadyExists = false;
+		for (PrescriptionItem prescriptionItem : prescriptionItems) {
+			if (prescriptionItem.getPharmaceuticalName() == pharmaceuticalName) {
+				alreadyExists = true;
+				prescriptionItem.setDuration(prescriptionItem.getDuration() + duration);
+				prescriptionItem.setPrescribedDailyDose(prescriptionItem.getPrescribedDailyDose() + prescribedDailyDose);
+			}
+		}
+		if (!alreadyExists) {
+			PrescriptionItem prescriptionItem = new PrescriptionItem(pharmaceuticalName, prescribedDailyDose, duration,
+					containerSize, availableOverTheCounter, comments);
+			prescriptionItems.add(prescriptionItem);
+		}
 	}
 
 	public void removePrescriptionItem(String pharmaceuticalName) {
 		Iterator<PrescriptionItem> it = prescriptionItems.iterator();
 		while (it.hasNext()) {
-			if(pharmaceuticalName == it.next().getPharmaceuticalName()) {
+			if (pharmaceuticalName == it.next().getPharmaceuticalName()) {
 				it.remove();
 				break;
 			}
@@ -50,7 +61,7 @@ public class Prescription {
 
 	public int getNumberOfContainers() {
 		int count = 0;
-		for(PrescriptionItem prescriptionItem : prescriptionItems) {
+		for (PrescriptionItem prescriptionItem : prescriptionItems) {
 			System.out.println(prescriptionItem.getNumberOfContainers());
 			count += prescriptionItem.getNumberOfContainers();
 		}
