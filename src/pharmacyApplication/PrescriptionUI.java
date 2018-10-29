@@ -27,6 +27,8 @@ import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
@@ -199,6 +201,22 @@ public class PrescriptionUI {
 		gbc_preDailyDose.insets = new Insets(0, 0, 5, 5);
 		gbc_preDailyDose.gridx = 3;
 		gbc_preDailyDose.gridy = 3;
+		preDailyDose.addChangeListener(new ChangeListener() {
+			
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				if(Integer.parseInt(preDailyDose.getValue().toString()) > Integer.parseInt(recDailyDoseText.getText())) {
+					if(!exceedDailyDose.isSelected()) {
+						addButton.setEnabled(false);
+					}
+				}
+				else {
+					addButton.setEnabled(true);
+				}
+				System.out.println(preDailyDose.getValue());
+				
+			}
+		});
 		panel.add(preDailyDose, gbc_preDailyDose);
 
 		scrollPane = new JScrollPane();
@@ -270,19 +288,15 @@ public class PrescriptionUI {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
-					preDailyDose.setModel(new SpinnerNumberModel(Integer.parseInt(preDailyDose.getValue().toString()),
-							new Integer(0), null, new Integer(1)));
+					addButton.setEnabled(true);
 				} else {
-					if (Integer.parseInt(preDailyDose.getValue().toString()) > Integer
-							.parseInt(recDailyDoseText.getText())) {
-						preDailyDose.setModel(
-								new SpinnerNumberModel(Integer.parseInt(recDailyDoseText.getText()), 0, maxValue, 1));
-					} else {
-						preDailyDose.setModel(new SpinnerNumberModel(
-								Integer.parseInt(preDailyDose.getValue().toString()), 0, maxValue, 1));
+					if(Integer.parseInt(preDailyDose.getValue().toString()) > Integer.parseInt(recDailyDoseText.getText())) {
+						if(!exceedDailyDose.isSelected()) {
+							addButton.setEnabled(false);
+						}
 					}
-				}
-				;
+				};
+				
 			}
 		});
 		panel.add(exceedDailyDose, gbc_exceedDailyDose);
@@ -445,12 +459,13 @@ public class PrescriptionUI {
 				recDailyDoseText.setText(String.valueOf(maxValue));
 				description.setText(finalText);
 			}
-
-			if (exceedDailyDose.isSelected()) {
-				preDailyDose.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			} else {
-				preDailyDose.setModel(new SpinnerNumberModel(0, 0, maxValue, 1));
-			}
+			
+			preDailyDose.setModel(new SpinnerNumberModel(0, 0, maxValue * 2, 1));
+//			if (exceedDailyDose.isSelected()) {
+//				preDailyDose.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+//			} else {
+//				preDailyDose.setModel(new SpinnerNumberModel(0, 0, maxValue, 1));
+//			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
