@@ -1,5 +1,6 @@
 package pharmacyApplication;
 
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -18,6 +19,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,9 +27,15 @@ import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
+
+import com.sun.corba.se.spi.orb.StringPair;
 
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class PrescriptionUI {
 
@@ -52,10 +60,13 @@ public class PrescriptionUI {
 	private JSpinner duration;
 	private JScrollPane scrollPane;
 	private JTextArea description;
-	private JTable table;
 	private List<String> list;
 	private DAL d;
 	private int maxValue;
+	private int size;
+	private boolean availableOverTheCounter;
+	private JTable prescriptionTable;
+	private JScrollPane scrollPane_1;
 
 	/**
 	 * Launch the application.
@@ -66,7 +77,7 @@ public class PrescriptionUI {
 				try {
 					PrescriptionUI window = new PrescriptionUI();
 					window.frame.setVisible(true);
-					window.frame.setResizable(false);
+					window.frame.setResizable(true);
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -99,9 +110,9 @@ public class PrescriptionUI {
 		frame.getContentPane().add(panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[] { 20, 93, 28, 86, 86, 86, 86, 0, 97 };
-		gbl_panel.rowHeights = new int[] { 0, 0, 0, 23, 20, 0, 0, 0, 0, 0 };
+		gbl_panel.rowHeights = new int[] { 0, 0, 0, 23, 20, 0, 0, 0, 0, 0, 0 };
 		gbl_panel.columnWeights = new double[] { 20.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 10.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
 
 		lblNewLabel = new JLabel("Pharmaceutical Name");
@@ -230,8 +241,24 @@ public class PrescriptionUI {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("f");
-				
+				Prescription prescription = new Prescription();
+				prescription.addPrescriptionItem( pharmaceuticalCombo.getSelectedItem().toString(), 
+						Integer.parseInt(preDailyDose.getValue().toString()), 
+						Integer.parseInt(duration.getValue().toString()),
+						size, 
+						availableOverTheCounter, 
+						"nbfgn");
+				ArrayList<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
+				DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
+				for(PrescriptionItem prescriptionItem: prescriptionItems) {
+					tableModel.addRow(new Object[]{
+							prescriptionItem.getPharmaceuticalName(), 
+							prescriptionItem.getDuration(), 
+							prescriptionItem.getPrescribedDailyDose(), 
+							prescriptionItem.getNumberOfContainers(), 
+							prescriptionItem.isAvailableOverTheCounter(), 
+							description.getText()});
+				}	
 			}
 		});
 		panel.add(addButton, gbc_addButton);
@@ -265,17 +292,35 @@ public class PrescriptionUI {
 		gbc_removeButton.insets = new Insets(0, 0, 5, 0);
 		gbc_removeButton.gridx = 7;
 		gbc_removeButton.gridy = 4;
+		removeButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(prescriptionTable.getSelectedRow());
+				
+			}
+		});
 		panel.add(removeButton, gbc_removeButton);
-
-		table = new JTable();
-		GridBagConstraints gbc_table = new GridBagConstraints();
-		gbc_table.gridwidth = 6;
-		gbc_table.gridheight = 2;
-		gbc_table.insets = new Insets(0, 0, 5, 5);
-		gbc_table.fill = GridBagConstraints.BOTH;
-		gbc_table.gridx = 1;
-		gbc_table.gridy = 5;
-		panel.add(table, gbc_table);
+		
+		
+		
+		scrollPane_1 = new JScrollPane();
+		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
+		gbc_scrollPane_1.gridheight = 3;
+		gbc_scrollPane_1.gridwidth = 6;
+		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane_1.gridx = 1;
+		gbc_scrollPane_1.gridy = 5;
+		panel.add(scrollPane_1, gbc_scrollPane_1);
+		prescriptionTable = new JTable();
+		prescriptionTable.setShowVerticalLines(false);
+		prescriptionTable.setShowHorizontalLines(false);
+		prescriptionTable.setFillsViewportHeight(true);
+		String[] name = {"Product Name", "Duration", "Prescribed Daily Dose", "Number of Containers", "OTC", "Comments"};
+		DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
+		tableModel.setColumnIdentifiers(name);
+		scrollPane_1.setViewportView(prescriptionTable);
 
 		clearButton = new JButton("Clear");
 		GridBagConstraints gbc_clearButton = new GridBagConstraints();
@@ -284,56 +329,56 @@ public class PrescriptionUI {
 		gbc_clearButton.gridx = 7;
 		gbc_clearButton.gridy = 5;
 		panel.add(clearButton, gbc_clearButton);
+		
+				lblNewLabel_5 = new JLabel("Total Number of Prescription Items");
+				GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
+				gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
+				gbc_lblNewLabel_5.gridx = 1;
+				gbc_lblNewLabel_5.gridy = 8;
+				panel.add(lblNewLabel_5, gbc_lblNewLabel_5);
+				
+						numberPrescriptions = new JTextField();
+						numberPrescriptions.setEditable(false);
+						GridBagConstraints gbc_numberPrescriptions = new GridBagConstraints();
+						gbc_numberPrescriptions.insets = new Insets(0, 0, 5, 5);
+						gbc_numberPrescriptions.fill = GridBagConstraints.HORIZONTAL;
+						gbc_numberPrescriptions.gridx = 2;
+						gbc_numberPrescriptions.gridy = 8;
+						panel.add(numberPrescriptions, gbc_numberPrescriptions);
+						numberPrescriptions.setColumns(10);
+						
+								lblNewLabel_6 = new JLabel("Total Number of Containers");
+								GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
+								gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
+								gbc_lblNewLabel_6.anchor = GridBagConstraints.EAST;
+								gbc_lblNewLabel_6.gridx = 5;
+								gbc_lblNewLabel_6.gridy = 8;
+								panel.add(lblNewLabel_6, gbc_lblNewLabel_6);
+								
+										numberContainers = new JTextField();
+										numberContainers.setEditable(false);
+										GridBagConstraints gbc_numberContainers = new GridBagConstraints();
+										gbc_numberContainers.insets = new Insets(0, 0, 5, 5);
+										gbc_numberContainers.fill = GridBagConstraints.HORIZONTAL;
+										gbc_numberContainers.gridx = 6;
+										gbc_numberContainers.gridy = 8;
+										panel.add(numberContainers, gbc_numberContainers);
+										numberContainers.setColumns(10);
+										
+												exitButton = new JButton("Exit");
+												GridBagConstraints gbc_exitButton = new GridBagConstraints();
+												gbc_exitButton.fill = GridBagConstraints.HORIZONTAL;
+												gbc_exitButton.insets = new Insets(0, 0, 5, 0);
+												gbc_exitButton.gridx = 7;
+												gbc_exitButton.gridy = 8;
+												exitButton.addActionListener(new ActionListener() {
 
-		lblNewLabel_5 = new JLabel("Total Number of Prescription Items");
-		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
-		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_5.gridx = 1;
-		gbc_lblNewLabel_5.gridy = 7;
-		panel.add(lblNewLabel_5, gbc_lblNewLabel_5);
-
-		numberPrescriptions = new JTextField();
-		numberPrescriptions.setEditable(false);
-		GridBagConstraints gbc_numberPrescriptions = new GridBagConstraints();
-		gbc_numberPrescriptions.insets = new Insets(0, 0, 5, 5);
-		gbc_numberPrescriptions.fill = GridBagConstraints.HORIZONTAL;
-		gbc_numberPrescriptions.gridx = 2;
-		gbc_numberPrescriptions.gridy = 7;
-		panel.add(numberPrescriptions, gbc_numberPrescriptions);
-		numberPrescriptions.setColumns(10);
-
-		lblNewLabel_6 = new JLabel("Total Number of Containers");
-		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
-		gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_6.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_6.gridx = 5;
-		gbc_lblNewLabel_6.gridy = 7;
-		panel.add(lblNewLabel_6, gbc_lblNewLabel_6);
-
-		exitButton = new JButton("Exit");
-		GridBagConstraints gbc_exitButton = new GridBagConstraints();
-		gbc_exitButton.fill = GridBagConstraints.HORIZONTAL;
-		gbc_exitButton.insets = new Insets(0, 0, 5, 0);
-		gbc_exitButton.gridx = 7;
-		gbc_exitButton.gridy = 7;
-		exitButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-			}
-		});
-
-		numberContainers = new JTextField();
-		numberContainers.setEditable(false);
-		GridBagConstraints gbc_numberContainers = new GridBagConstraints();
-		gbc_numberContainers.insets = new Insets(0, 0, 5, 5);
-		gbc_numberContainers.fill = GridBagConstraints.HORIZONTAL;
-		gbc_numberContainers.gridx = 6;
-		gbc_numberContainers.gridy = 7;
-		panel.add(numberContainers, gbc_numberContainers);
-		numberContainers.setColumns(10);
-		panel.add(exitButton, gbc_exitButton);
+													@Override
+													public void actionPerformed(ActionEvent e) {
+														frame.dispose();
+													}
+												});
+												panel.add(exitButton, gbc_exitButton);
 
 		JPanel panel_1 = new JPanel();
 		frame.getContentPane().add(panel_1);
@@ -347,13 +392,17 @@ public class PrescriptionUI {
 		ResultSet resultSet = d.getPharmaInfo();
 		try {
 			while (resultSet.next()) {
-				int size = resultSet.getInt("ContainerSize");
+				size = resultSet.getInt("ContainerSize");
 				maxValue = resultSet.getInt("RecommendedDailyDose");
 				String containerType = resultSet.getString("ContainerType");
 				String finalText = resultSet.getString("Description");
 				
 				if (resultSet.getInt("AvailableOverTheCounter") == 1) {
 					finalText += "; Available over the counter and maybe cheaper";
+					availableOverTheCounter = true;
+				}
+				else {
+					availableOverTheCounter = false;
 				}
 				
 				if (resultSet.getInt("StoreInFridge") == 1) {
