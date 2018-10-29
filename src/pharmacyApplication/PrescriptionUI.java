@@ -70,7 +70,7 @@ public class PrescriptionUI {
 	private JTable prescriptionTable;
 	private JScrollPane scrollPane_1;
 	private Prescription prescription;
-
+	private JCheckBox addComment;
 	/**
 	 * Launch the application.
 	 */
@@ -209,12 +209,14 @@ public class PrescriptionUI {
 					if(!exceedDailyDose.isSelected()) {
 						addButton.setEnabled(false);
 					}
+					addComment.setSelected(true);
+					addComment.setEnabled(false);
 				}
 				else {
 					addButton.setEnabled(true);
-				}
-				System.out.println(preDailyDose.getValue());
-				
+					addComment.setSelected(false);
+					addComment.setEnabled(true);
+				}				
 			}
 		});
 		panel.add(preDailyDose, gbc_preDailyDose);
@@ -243,7 +245,7 @@ public class PrescriptionUI {
 		gbc_duration.gridy = 3;
 		panel.add(duration, gbc_duration);
 
-		JCheckBox addComment = new JCheckBox("Add Comment");
+		addComment = new JCheckBox("Add Comment");
 		GridBagConstraints gbc_addComment = new GridBagConstraints();
 		gbc_addComment.insets = new Insets(0, 0, 5, 5);
 		gbc_addComment.anchor = GridBagConstraints.NORTHWEST;
