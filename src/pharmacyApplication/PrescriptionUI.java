@@ -25,6 +25,7 @@ import java.util.Map;
 
 import javax.swing.JTable;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
@@ -32,8 +33,6 @@ import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
-
-import com.sun.corba.se.spi.orb.StringPair;
 
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
@@ -71,6 +70,8 @@ public class PrescriptionUI {
 	private JScrollPane scrollPane_1;
 	private Prescription prescription;
 	private JCheckBox addComment;
+	private String comment;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -263,9 +264,15 @@ public class PrescriptionUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				String descriptionComment = description.getText();
+				if (addComment.isSelected()) {
+					comment = JOptionPane.showInputDialog("Write a Comment");
+					descriptionComment += "; " + comment;
+				}
+				
 				prescription.addPrescriptionItem(pharmaceuticalCombo.getSelectedItem().toString(),
 						Integer.parseInt(preDailyDose.getValue().toString()),
-						Integer.parseInt(duration.getValue().toString()), size, availableOverTheCounter, description.getText());
+						Integer.parseInt(duration.getValue().toString()), size, availableOverTheCounter, descriptionComment);
 				ArrayList<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
 				DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
 				tableModel.setRowCount(0);
