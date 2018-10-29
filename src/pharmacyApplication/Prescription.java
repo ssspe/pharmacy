@@ -31,8 +31,8 @@ public class Prescription {
 	public void clearPrescription() {
 		Iterator<PrescriptionItem> it = prescriptionItems.iterator();
 		while (it.hasNext()) {
+			it.next();
 			it.remove();
-			break;
 		}
 	}
 

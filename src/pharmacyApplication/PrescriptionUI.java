@@ -67,6 +67,7 @@ public class PrescriptionUI {
 	private boolean availableOverTheCounter;
 	private JTable prescriptionTable;
 	private JScrollPane scrollPane_1;
+	private Prescription prescription;
 
 	/**
 	 * Launch the application.
@@ -77,7 +78,7 @@ public class PrescriptionUI {
 				try {
 					PrescriptionUI window = new PrescriptionUI();
 					window.frame.setVisible(true);
-					window.frame.setResizable(true);
+					window.frame.setResizable(false);
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -94,6 +95,7 @@ public class PrescriptionUI {
 	public PrescriptionUI() throws SQLException {
 		d = new DAL();
 		list = d.getPharmaName();
+		prescription = new Prescription();
 		initialize();
 	}
 
@@ -238,27 +240,21 @@ public class PrescriptionUI {
 		gbc_addButton.gridx = 7;
 		gbc_addButton.gridy = 3;
 		addButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Prescription prescription = new Prescription();
-				prescription.addPrescriptionItem( pharmaceuticalCombo.getSelectedItem().toString(), 
-						Integer.parseInt(preDailyDose.getValue().toString()), 
-						Integer.parseInt(duration.getValue().toString()),
-						size, 
-						availableOverTheCounter, 
-						"nbfgn");
+				prescription.addPrescriptionItem(pharmaceuticalCombo.getSelectedItem().toString(),
+						Integer.parseInt(preDailyDose.getValue().toString()),
+						Integer.parseInt(duration.getValue().toString()), size, availableOverTheCounter, "nbfgn");
 				ArrayList<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
 				DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
-				for(PrescriptionItem prescriptionItem: prescriptionItems) {
-					tableModel.addRow(new Object[]{
-							prescriptionItem.getPharmaceuticalName(), 
-							prescriptionItem.getDuration(), 
-							prescriptionItem.getPrescribedDailyDose(), 
-							prescriptionItem.getNumberOfContainers(), 
-							prescriptionItem.isAvailableOverTheCounter(), 
-							description.getText()});
-				}	
+				tableModel.setRowCount(0);
+				for (PrescriptionItem prescriptionItem : prescriptionItems) {
+					tableModel.addRow(
+							new Object[] { prescriptionItem.getPharmaceuticalName(), prescriptionItem.getDuration(),
+									prescriptionItem.getPrescribedDailyDose(), prescriptionItem.getNumberOfContainers(),
+									prescriptionItem.isAvailableOverTheCounter(), description.getText() });
+				}
 			}
 		});
 		panel.add(addButton, gbc_addButton);
@@ -269,22 +265,26 @@ public class PrescriptionUI {
 		gbc_exceedDailyDose.gridx = 3;
 		gbc_exceedDailyDose.gridy = 4;
 		exceedDailyDose.addItemListener(new ItemListener() {
-		    @Override
-		    public void itemStateChanged(ItemEvent e) {
-		        if(e.getStateChange() == ItemEvent.SELECTED) {
-		        	preDailyDose.setModel(new SpinnerNumberModel(Integer.parseInt(preDailyDose.getValue().toString()), new Integer(0), null, new Integer(1)));
-		        } else {
-		        	if(Integer.parseInt(preDailyDose.getValue().toString()) > Integer.parseInt(recDailyDoseText.getText())) {
-		        		preDailyDose.setModel(new SpinnerNumberModel(Integer.parseInt(recDailyDoseText.getText()), 0, maxValue, 1));
-		        	}
-		        	else {
-		        		preDailyDose.setModel(new SpinnerNumberModel(Integer.parseInt(preDailyDose.getValue().toString()), 0, maxValue, 1));
-		        	}	
-		        };
-		    }
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					preDailyDose.setModel(new SpinnerNumberModel(Integer.parseInt(preDailyDose.getValue().toString()),
+							new Integer(0), null, new Integer(1)));
+				} else {
+					if (Integer.parseInt(preDailyDose.getValue().toString()) > Integer
+							.parseInt(recDailyDoseText.getText())) {
+						preDailyDose.setModel(
+								new SpinnerNumberModel(Integer.parseInt(recDailyDoseText.getText()), 0, maxValue, 1));
+					} else {
+						preDailyDose.setModel(new SpinnerNumberModel(
+								Integer.parseInt(preDailyDose.getValue().toString()), 0, maxValue, 1));
+					}
+				}
+				;
+			}
 		});
 		panel.add(exceedDailyDose, gbc_exceedDailyDose);
-		
+
 		removeButton = new JButton("Remove");
 		GridBagConstraints gbc_removeButton = new GridBagConstraints();
 		gbc_removeButton.fill = GridBagConstraints.HORIZONTAL;
@@ -293,17 +293,25 @@ public class PrescriptionUI {
 		gbc_removeButton.gridx = 7;
 		gbc_removeButton.gridy = 4;
 		removeButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(prescriptionTable.getSelectedRow());
-				
+				int row = prescriptionTable.getSelectedRow();
+				String pharmaceuticalName = prescriptionTable.getModel().getValueAt(row, 0).toString();
+				prescription.removePrescriptionItem(pharmaceuticalName);
+				ArrayList<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
+				DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
+				tableModel.setRowCount(0);
+				for (PrescriptionItem prescriptionItem : prescriptionItems) {
+					tableModel.addRow(
+							new Object[] { prescriptionItem.getPharmaceuticalName(), prescriptionItem.getDuration(),
+									prescriptionItem.getPrescribedDailyDose(), prescriptionItem.getNumberOfContainers(),
+									prescriptionItem.isAvailableOverTheCounter(), description.getText() });
+				}
 			}
 		});
 		panel.add(removeButton, gbc_removeButton);
-		
-		
-		
+
 		scrollPane_1 = new JScrollPane();
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
 		gbc_scrollPane_1.gridheight = 3;
@@ -317,7 +325,8 @@ public class PrescriptionUI {
 		prescriptionTable.setShowVerticalLines(false);
 		prescriptionTable.setShowHorizontalLines(false);
 		prescriptionTable.setFillsViewportHeight(true);
-		String[] name = {"Product Name", "Duration", "Prescribed Daily Dose", "Number of Containers", "OTC", "Comments"};
+		String[] name = { "Product Name", "Duration", "Prescribed Daily Dose", "Number of Containers", "OTC",
+				"Comments" };
 		DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
 		tableModel.setColumnIdentifiers(name);
 		scrollPane_1.setViewportView(prescriptionTable);
@@ -328,62 +337,71 @@ public class PrescriptionUI {
 		gbc_clearButton.insets = new Insets(0, 0, 5, 0);
 		gbc_clearButton.gridx = 7;
 		gbc_clearButton.gridy = 5;
+		clearButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				prescription.clearPrescription();
+				DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
+				tableModel.setRowCount(0);
+			}
+		});
 		panel.add(clearButton, gbc_clearButton);
-		
-				lblNewLabel_5 = new JLabel("Total Number of Prescription Items");
-				GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
-				gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
-				gbc_lblNewLabel_5.gridx = 1;
-				gbc_lblNewLabel_5.gridy = 8;
-				panel.add(lblNewLabel_5, gbc_lblNewLabel_5);
-				
-						numberPrescriptions = new JTextField();
-						numberPrescriptions.setEditable(false);
-						GridBagConstraints gbc_numberPrescriptions = new GridBagConstraints();
-						gbc_numberPrescriptions.insets = new Insets(0, 0, 5, 5);
-						gbc_numberPrescriptions.fill = GridBagConstraints.HORIZONTAL;
-						gbc_numberPrescriptions.gridx = 2;
-						gbc_numberPrescriptions.gridy = 8;
-						panel.add(numberPrescriptions, gbc_numberPrescriptions);
-						numberPrescriptions.setColumns(10);
-						
-								lblNewLabel_6 = new JLabel("Total Number of Containers");
-								GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
-								gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
-								gbc_lblNewLabel_6.anchor = GridBagConstraints.EAST;
-								gbc_lblNewLabel_6.gridx = 5;
-								gbc_lblNewLabel_6.gridy = 8;
-								panel.add(lblNewLabel_6, gbc_lblNewLabel_6);
-								
-										numberContainers = new JTextField();
-										numberContainers.setEditable(false);
-										GridBagConstraints gbc_numberContainers = new GridBagConstraints();
-										gbc_numberContainers.insets = new Insets(0, 0, 5, 5);
-										gbc_numberContainers.fill = GridBagConstraints.HORIZONTAL;
-										gbc_numberContainers.gridx = 6;
-										gbc_numberContainers.gridy = 8;
-										panel.add(numberContainers, gbc_numberContainers);
-										numberContainers.setColumns(10);
-										
-												exitButton = new JButton("Exit");
-												GridBagConstraints gbc_exitButton = new GridBagConstraints();
-												gbc_exitButton.fill = GridBagConstraints.HORIZONTAL;
-												gbc_exitButton.insets = new Insets(0, 0, 5, 0);
-												gbc_exitButton.gridx = 7;
-												gbc_exitButton.gridy = 8;
-												exitButton.addActionListener(new ActionListener() {
 
-													@Override
-													public void actionPerformed(ActionEvent e) {
-														frame.dispose();
-													}
-												});
-												panel.add(exitButton, gbc_exitButton);
+		lblNewLabel_5 = new JLabel("Total Number of Prescription Items");
+		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
+		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_5.gridx = 1;
+		gbc_lblNewLabel_5.gridy = 8;
+		panel.add(lblNewLabel_5, gbc_lblNewLabel_5);
+
+		numberPrescriptions = new JTextField();
+		numberPrescriptions.setEditable(false);
+		GridBagConstraints gbc_numberPrescriptions = new GridBagConstraints();
+		gbc_numberPrescriptions.insets = new Insets(0, 0, 5, 5);
+		gbc_numberPrescriptions.fill = GridBagConstraints.HORIZONTAL;
+		gbc_numberPrescriptions.gridx = 2;
+		gbc_numberPrescriptions.gridy = 8;
+		panel.add(numberPrescriptions, gbc_numberPrescriptions);
+		numberPrescriptions.setColumns(10);
+
+		lblNewLabel_6 = new JLabel("Total Number of Containers");
+		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
+		gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_6.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_6.gridx = 5;
+		gbc_lblNewLabel_6.gridy = 8;
+		panel.add(lblNewLabel_6, gbc_lblNewLabel_6);
+
+		numberContainers = new JTextField();
+		numberContainers.setEditable(false);
+		GridBagConstraints gbc_numberContainers = new GridBagConstraints();
+		gbc_numberContainers.insets = new Insets(0, 0, 5, 5);
+		gbc_numberContainers.fill = GridBagConstraints.HORIZONTAL;
+		gbc_numberContainers.gridx = 6;
+		gbc_numberContainers.gridy = 8;
+		panel.add(numberContainers, gbc_numberContainers);
+		numberContainers.setColumns(10);
+
+		exitButton = new JButton("Exit");
+		GridBagConstraints gbc_exitButton = new GridBagConstraints();
+		gbc_exitButton.fill = GridBagConstraints.HORIZONTAL;
+		gbc_exitButton.insets = new Insets(0, 0, 5, 0);
+		gbc_exitButton.gridx = 7;
+		gbc_exitButton.gridy = 8;
+		exitButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		panel.add(exitButton, gbc_exitButton);
 
 		JPanel panel_1 = new JPanel();
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
-		
+
 		d.setCurrentPharmaName(list.get(0));
 		updateValues(list.get(0));
 	}
@@ -396,37 +414,35 @@ public class PrescriptionUI {
 				maxValue = resultSet.getInt("RecommendedDailyDose");
 				String containerType = resultSet.getString("ContainerType");
 				String finalText = resultSet.getString("Description");
-				
+
 				if (resultSet.getInt("AvailableOverTheCounter") == 1) {
 					finalText += "; Available over the counter and maybe cheaper";
 					availableOverTheCounter = true;
-				}
-				else {
+				} else {
 					availableOverTheCounter = false;
 				}
-				
+
 				if (resultSet.getInt("StoreInFridge") == 1) {
 					finalText += "; MUST BE STORED IN FRIDGE";
 				}
-				
+
 				switch (containerType) {
-					case "Box":
-						finalText += "; Comes in a box of " + size + " tablets";
-						break;
-					default:
-						finalText += "; Comes in a " + size + "ml " + containerType;
-						break;
+				case "Box":
+					finalText += "; Comes in a box of " + size + " tablets";
+					break;
+				default:
+					finalText += "; Comes in a " + size + "ml " + containerType;
+					break;
 				}
 				recDailyDoseText.setText(String.valueOf(maxValue));
 				description.setText(finalText);
 			}
-			
-		if (exceedDailyDose.isSelected()) {
-			preDailyDose.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-		}
-		else {
-			preDailyDose.setModel(new SpinnerNumberModel(0, 0, maxValue, 1));
-		}
+
+			if (exceedDailyDose.isSelected()) {
+				preDailyDose.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+			} else {
+				preDailyDose.setModel(new SpinnerNumberModel(0, 0, maxValue, 1));
+			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
