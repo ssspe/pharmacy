@@ -27,6 +27,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JTable;
 import javax.swing.JLabel;
@@ -105,6 +107,7 @@ public class PrescriptionUI {
 	 * @throws SQLException
 	 */
 	public PrescriptionUI() throws SQLException {
+		formatComment("This order was placed for QT3000! OK?;");
 		d = new DAL();
 		list = d.getPharmaName();
 		prescription = new Prescription();
@@ -278,6 +281,7 @@ public class PrescriptionUI {
 				if (addComment.isSelected()) {
 					comment = JOptionPane.showInputDialog("Write a Comment");
 					if (comment != null) {
+						comment = formatComment(comment);
 						descriptionComment += "; " + comment;
 					} else {
 						hasCancelled = true;
@@ -465,7 +469,8 @@ public class PrescriptionUI {
 				pnl.add(textArea, BorderLayout.CENTER);
 				int okCxl = JOptionPane.showConfirmDialog(null, pnl, "Enter Data", JOptionPane.OK_CANCEL_OPTION);
 				if (okCxl == JOptionPane.OK_OPTION) {
-					prescriptionTable.setValueAt(textArea.getText(), row, column);
+					String comment = formatComment(textArea.getText());
+					prescriptionTable.setValueAt(comment, row, column);
 				}
 
 			}
@@ -478,8 +483,9 @@ public class PrescriptionUI {
 			public void actionPerformed(ActionEvent e) {
 				int column = 2;
 				int row = prescriptionTable.getSelectedRow();
-				if(Integer.parseInt(prescriptionTable.getValueAt(row, column).toString()) != 0) {
-					prescriptionTable.setValueAt(Integer.parseInt(prescriptionTable.getValueAt(row, column).toString()) - 1, row, column);
+				if (Integer.parseInt(prescriptionTable.getValueAt(row, column).toString()) != 0) {
+					prescriptionTable.setValueAt(
+							Integer.parseInt(prescriptionTable.getValueAt(row, column).toString()) - 1, row, column);
 				}
 			}
 		});
@@ -492,7 +498,7 @@ public class PrescriptionUI {
 			@Override
 			public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
 				SwingUtilities.invokeLater(new Runnable() {
-					
+
 					@Override
 					public void run() {
 						int rowAtPoint = prescriptionTable
@@ -502,10 +508,9 @@ public class PrescriptionUI {
 						}
 						int column = 2;
 						int row = prescriptionTable.getSelectedRow();
-						if(Integer.parseInt(prescriptionTable.getValueAt(row, column).toString()) == 0) {
+						if (Integer.parseInt(prescriptionTable.getValueAt(row, column).toString()) == 0) {
 							decrementDosage.setVisible(false);
-						}
-						else {
+						} else {
 							decrementDosage.setVisible(true);
 						}
 					}
@@ -585,6 +590,16 @@ public class PrescriptionUI {
 
 	private void updateNumberContainers() {
 		numberContainers.setText(String.valueOf(prescription.getNumberOfContainers()));
+	}
+
+	private String formatComment(String comment) {
+		String regex = "(.*)(;$)";
+		Pattern r = Pattern.compile(regex);
+		Matcher m = r.matcher(comment);
+		if (!m.find()) {
+			comment += ";";
+		}
+		return comment += "\n";
 	}
 
 }
