@@ -39,6 +39,8 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 import javax.swing.table.DefaultTableModel;
@@ -189,7 +191,7 @@ public class PrescriptionUI {
 		recDailyDoseText.setColumns(10);
 
 		preDailyDose = new JSpinner();
-		preDailyDose.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+		preDailyDose.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		GridBagConstraints gbc_preDailyDose = new GridBagConstraints();
 		gbc_preDailyDose.anchor = GridBagConstraints.NORTH;
 		gbc_preDailyDose.fill = GridBagConstraints.HORIZONTAL;
@@ -316,6 +318,7 @@ public class PrescriptionUI {
 		panel.add(exceedDailyDose, gbc_exceedDailyDose);
 
 		removeButton = new JButton("Remove");
+		removeButton.setEnabled(false);
 		GridBagConstraints gbc_removeButton = new GridBagConstraints();
 		gbc_removeButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_removeButton.anchor = GridBagConstraints.EAST;
@@ -361,9 +364,23 @@ public class PrescriptionUI {
 				"Comments" };
 		DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
 		tableModel.setColumnIdentifiers(name);
+		prescriptionTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				if(prescriptionTable.getSelectedRow() != -1) {
+					removeButton.setEnabled(true);
+				}
+				else {
+					removeButton.setEnabled(false);
+				}
+				
+			}
+		});
 		scrollPane_1.setViewportView(prescriptionTable);
 
 		clearButton = new JButton("Clear");
+		clearButton.setEnabled(false);
 		GridBagConstraints gbc_clearButton = new GridBagConstraints();
 		gbc_clearButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_clearButton.insets = new Insets(0, 0, 5, 0);
@@ -552,7 +569,7 @@ public class PrescriptionUI {
 				description.setText(finalText);
 			}
 
-			preDailyDose.setModel(new SpinnerNumberModel(0, 0, maxValue * 2, 1));
+			preDailyDose.setModel(new SpinnerNumberModel(1, 1, maxValue * 2, 1));
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -563,6 +580,12 @@ public class PrescriptionUI {
 
 	private void updatePrescriptionCounter() {
 		numberPrescriptions.setText(String.valueOf(prescription.getNumberOfPharmaceuticals()));
+		if (prescription.getNumberOfPharmaceuticals() == 0) {
+			clearButton.setEnabled(false);
+		}
+		else {
+			clearButton.setEnabled(true);
+		}
 	}
 
 	private void updateNumberContainers() {
