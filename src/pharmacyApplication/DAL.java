@@ -18,7 +18,7 @@ public class DAL {
 	public DAL() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3307/doc-u-med", "spencer", "password");
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/doc-u-med", "spencer", "password");
 
 			statement = connect.createStatement();
 			resultSet1 = statement.executeQuery("select * from pharmaceuticals");
@@ -56,34 +56,5 @@ public class DAL {
 			}
 		}
 		return null;
-	}
-
-	public void populateUI() throws SQLException {
-		// ResultSet is initially before the first data set
-		while (resultSet1.next()) {
-			// It is possible to get the columns via name
-			// also possible to get the columns via the column number
-			// which starts at 1
-			// e.g. resultSet.getSTring(2);
-			String PharmaceuticalID = resultSet1.getString("PharmaceuticalID");
-			System.out.println("PharmaceuticalID: " + PharmaceuticalID);
-
-			String SpecialRequirementID = resultSet1.getString("SpecialRequirementID");
-			System.out.println("SpecialRequirementID: " + SpecialRequirementID);
-
-			String PharmaceuticalName = resultSet1.getString("PharmaceuticalName");
-			System.out.println("PharmaceuticalName: " + PharmaceuticalName);
-
-			String Description = resultSet1.getString("Description");
-			System.out.println("Description: " + Description);
-
-			String MedicationType = resultSet1.getString("MedicationType");
-			System.out.println("MedicationType: " + MedicationType);
-
-			String RecommendedDailyDose = resultSet1.getString("RecommendedDailyDose");
-			System.out.println("RecommendedDailyDose: " + RecommendedDailyDose);
-
-			System.out.println("");
-		}
 	}
 }
