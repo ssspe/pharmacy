@@ -23,10 +23,6 @@ public class PrescriptionItem {
 		return pharmaceuticalName;
 	}
 
-	public void setPharmaceuticalName(String pharmaceuticalName) {
-		this.pharmaceuticalName = pharmaceuticalName;
-	}
-
 	public int getPrescribedDailyDose() {
 		return prescribedDailyDose;
 	}
@@ -40,41 +36,20 @@ public class PrescriptionItem {
 	}
 
 	public void setDuration(int duration) {
-		
+
 		this.duration = duration;
-	}
-
-	public int getContainerSize() {
-		return containerSize;
-	}
-
-	public void setContainerSize(int containerSize) {
-		this.containerSize = containerSize;
 	}
 
 	public boolean isAvailableOverTheCounter() {
 		return availableOverTheCounter;
 	}
 
-	public void setAvailableOverTheCounter(boolean availableOverTheCounter) {
-		this.availableOverTheCounter = availableOverTheCounter;
-	}
-
 	public String getComments() {
 		return comments;
 	}
 
-	public void setComments(String comments) {
-		this.comments = comments;
-	}
-
 	public int getNumberOfContainers() {
-		// TODO: Figure this out
-		numberOfContainers = (int) Math.ceil((float)(prescribedDailyDose * duration) / (float)containerSize);
+		numberOfContainers = (int) Math.ceil((float) (prescribedDailyDose * duration) / (float) containerSize);
 		return numberOfContainers;
-	}
-
-	public void adjustDuration(int additionalDays) {
-		duration = duration + additionalDays;
 	}
 }

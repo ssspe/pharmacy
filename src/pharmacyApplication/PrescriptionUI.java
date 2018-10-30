@@ -51,7 +51,7 @@ import javax.swing.ScrollPaneConstants;
 
 public class PrescriptionUI {
 
-	private JFrame frame;
+	JFrame frame;
 	private JTextField recDailyDoseText;
 	private JTextField numberPrescriptions;
 	private JTextField numberContainers;
@@ -73,7 +73,7 @@ public class PrescriptionUI {
 	private JScrollPane scrollPane;
 	private JTextArea description;
 	private List<String> list;
-	private DAL d;
+	private InterfaceDAL dal;
 	private int maxValue;
 	private int size;
 	private boolean availableOverTheCounter;
@@ -84,32 +84,14 @@ public class PrescriptionUI {
 	private String comment;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PrescriptionUI window = new PrescriptionUI();
-					window.frame.setVisible(true);
-					window.frame.setResizable(false);
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 * 
 	 * @throws SQLException
 	 */
-	public PrescriptionUI() throws SQLException {
-		formatComment("This order was placed for QT3000! OK?;");
-		d = new DAL();
-		list = d.getPharmaName();
+	public PrescriptionUI(String connectionURL, String username, String password) throws SQLException {
+		dal = FactoryDAL.create();
+		dal.connect(connectionURL, username, password);
+		list = dal.getPharmaName();
 		prescription = new Prescription();
 		initialize();
 	}
@@ -188,7 +170,7 @@ public class PrescriptionUI {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					String pharmaName = pharmaceuticalCombo.getSelectedItem().toString();
-					d.setCurrentPharmaName(pharmaName);
+					dal.setCurrentPharmaName(pharmaName);
 					updateValues(pharmaName);
 				}
 			}
@@ -302,7 +284,7 @@ public class PrescriptionUI {
 								prescriptionItem.getNumberOfContainers(), prescriptionItem.isAvailableOverTheCounter(),
 								prescriptionItem.getComments() });
 					}
-					updatePrescriptionCounter(prescriptionItems.size());
+					updatePrescriptionCounter();
 					updateNumberContainers();
 				}
 			}
@@ -356,7 +338,7 @@ public class PrescriptionUI {
 									prescriptionItem.getPrescribedDailyDose(), prescriptionItem.getNumberOfContainers(),
 									prescriptionItem.isAvailableOverTheCounter(), description.getText() });
 				}
-				updatePrescriptionCounter(prescriptionItems.size());
+				updatePrescriptionCounter();
 				updateNumberContainers();
 			}
 		});
@@ -394,7 +376,7 @@ public class PrescriptionUI {
 				prescription.clearPrescription();
 				DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
 				tableModel.setRowCount(0);
-				updatePrescriptionCounter(0);
+				updatePrescriptionCounter();
 				updateNumberContainers();
 			}
 		});
@@ -520,13 +502,13 @@ public class PrescriptionUI {
 			@Override
 			public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
 				// TODO Auto-generated method stub
-
+				
 			}
 
 			@Override
 			public void popupMenuCanceled(PopupMenuEvent e) {
 				// TODO Auto-generated method stub
-
+				
 			}
 		});
 
@@ -534,12 +516,12 @@ public class PrescriptionUI {
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
 
-		d.setCurrentPharmaName(list.get(0));
+		dal.setCurrentPharmaName(list.get(0));
 		updateValues(list.get(0));
 	}
 
 	private void updateValues(String pharmaName) {
-		ResultSet resultSet = d.getPharmaInfo();
+		ResultSet resultSet = dal.getPharmaInfo();
 		try {
 			while (resultSet.next()) {
 				size = resultSet.getInt("ContainerSize");
@@ -571,11 +553,6 @@ public class PrescriptionUI {
 			}
 
 			preDailyDose.setModel(new SpinnerNumberModel(0, 0, maxValue * 2, 1));
-//			if (exceedDailyDose.isSelected()) {
-//				preDailyDose.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-//			} else {
-//				preDailyDose.setModel(new SpinnerNumberModel(0, 0, maxValue, 1));
-//			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -584,8 +561,8 @@ public class PrescriptionUI {
 
 	}
 
-	private void updatePrescriptionCounter(int counter) {
-		numberPrescriptions.setText(String.valueOf(counter));
+	private void updatePrescriptionCounter() {
+		numberPrescriptions.setText(String.valueOf(prescription.getNumberOfPharmaceuticals()));
 	}
 
 	private void updateNumberContainers() {

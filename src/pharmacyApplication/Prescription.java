@@ -5,8 +5,6 @@ import java.util.Iterator;
 
 public class Prescription {
 	private ArrayList<PrescriptionItem> prescriptionItems = new ArrayList<PrescriptionItem>();
-	private int numberOfPharmaceuticals;
-	private int numberOfContainers;
 
 	public Prescription() {
 
@@ -52,11 +50,7 @@ public class Prescription {
 	}
 
 	public int getNumberOfPharmaceuticals() {
-		return numberOfPharmaceuticals;
-	}
-
-	public void setNumberOfPharmaceuticals(int numberOfPharmaceuticals) {
-		this.numberOfPharmaceuticals = numberOfPharmaceuticals;
+		return prescriptionItems.size();
 	}
 
 	public int getNumberOfContainers() {
@@ -65,9 +59,5 @@ public class Prescription {
 			count += prescriptionItem.getNumberOfContainers();
 		}
 		return count;
-	}
-
-	public void setNumberOfContainers(int numberOfContainers) {
-		this.numberOfContainers = numberOfContainers;
 	}
 }
