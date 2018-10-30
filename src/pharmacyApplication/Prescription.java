@@ -17,7 +17,7 @@ public class Prescription {
 			if (prescriptionItem.getPharmaceuticalName() == pharmaceuticalName) {
 				alreadyExists = true;
 				prescriptionItem.setDuration(prescriptionItem.getDuration() + duration);
-				prescriptionItem.setPrescribedDailyDose(prescriptionItem.getPrescribedDailyDose() + prescribedDailyDose);
+				prescriptionItem.setPrescribedDailyDose(prescriptionItem.getPrescribedDailyDose() > prescribedDailyDose ? prescriptionItem.getPrescribedDailyDose() : prescribedDailyDose);
 			}
 		}
 		if (!alreadyExists) {

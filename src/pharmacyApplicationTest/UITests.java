@@ -51,8 +51,6 @@ public class UITests {
 		
 		mockDependency.setCurrentPharmaName("How");
 		expectLastCall();
-		ResultSet resultSet = new ResultSet();
-		expect(mockDependency.getPharmaInfo()).andReturn(arg0);
 		
 		replay(mockDependency);
 		
