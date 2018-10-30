@@ -53,7 +53,7 @@ import javax.swing.ScrollPaneConstants;
 
 public class PrescriptionUI {
 
-	JFrame frame;
+	public JFrame frame;
 	private JTextField recDailyDoseText;
 	private JTextField numberPrescriptions;
 	private JTextField numberContainers;
@@ -570,6 +570,7 @@ public class PrescriptionUI {
 			}
 
 			preDailyDose.setModel(new SpinnerNumberModel(1, 1, maxValue * 2, 1));
+			duration.setModel(new SpinnerNumberModel(1, 1, null, 1));
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
