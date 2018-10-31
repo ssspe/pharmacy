@@ -2,6 +2,7 @@ package pharmacyApplication;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class Prescription implements InterfacePrescription {
 	private static class FactoryHelper {
@@ -12,7 +13,7 @@ public class Prescription implements InterfacePrescription {
 		}
 	}
 
-	private ArrayList<PrescriptionItem> prescriptionItems = new ArrayList<PrescriptionItem>();
+	private List<PrescriptionItem> prescriptionItems = new ArrayList<PrescriptionItem>();
 	private FactoryHelper helper;
 
 	public Prescription() {
@@ -61,7 +62,7 @@ public class Prescription implements InterfacePrescription {
 		}
 	}
 
-	public ArrayList<PrescriptionItem> getPrescriptionItems() {
+	public List<PrescriptionItem> getPrescriptionItems() {
 		return prescriptionItems;
 	}
 

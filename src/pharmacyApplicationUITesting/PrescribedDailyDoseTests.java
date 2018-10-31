@@ -45,7 +45,7 @@ public class PrescribedDailyDoseTests {
 		mockDependency.connect("", "", "");
 		expectLastCall();
 		
-		expect(mockDependency.getPharmaName()).andReturn(Arrays.asList("Medicine1", "Medicine2", "Medicine3"));
+		expect(mockDependency.getPharmaName()).andReturn(Arrays.asList("Medicine1"));
 		
 		mockDependency.setCurrentPharmaName("Medicine1");
 		expectLastCall();

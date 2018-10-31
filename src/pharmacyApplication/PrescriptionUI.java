@@ -84,7 +84,7 @@ public class PrescriptionUI {
 	private boolean availableOverTheCounter;
 	private JTable prescriptionTable;
 	private JScrollPane scrollPane_1;
-	private Prescription prescription;
+	private InterfacePrescription prescription;
 	private JCheckBox addComment;
 	private String comment;
 
@@ -97,7 +97,7 @@ public class PrescriptionUI {
 		dal = FactoryDAL.create();
 		dal.connect(connectionURL, username, password);
 		list = dal.getPharmaName();
-		prescription = (Prescription) FactoryPrescription.create();
+		prescription = FactoryPrescription.create();
 		initialize();
 	}
 
@@ -231,6 +231,7 @@ public class PrescriptionUI {
 		panel.add(scrollPane, gbc_scrollPane);
 
 		description = new JTextArea();
+		description.setEditable(false);
 		description.setWrapStyleWord(true);
 		description.setLineWrap(true);
 		scrollPane.setViewportView(description);
@@ -280,10 +281,12 @@ public class PrescriptionUI {
 							Integer.parseInt(preDailyDose.getValue().toString()),
 							Integer.parseInt(duration.getValue().toString()), size, availableOverTheCounter,
 							descriptionComment);
-					ArrayList<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
+					List<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
 					DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
 					tableModel.setRowCount(0);
+					
 					for (PrescriptionItem prescriptionItem : prescriptionItems) {
+						System.out.println(prescriptionItem.getNumberOfContainers());
 						tableModel.addRow(new Object[] { prescriptionItem.getPharmaceuticalName(),
 								prescriptionItem.getDuration(), prescriptionItem.getPrescribedDailyDose(),
 								prescriptionItem.getNumberOfContainers(), prescriptionItem.isAvailableOverTheCounter(),
@@ -335,7 +338,7 @@ public class PrescriptionUI {
 				int row = prescriptionTable.getSelectedRow();
 				String pharmaceuticalName = prescriptionTable.getModel().getValueAt(row, 0).toString();
 				prescription.removePrescriptionItem(pharmaceuticalName);
-				ArrayList<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
+				List<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
 				DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
 				tableModel.setRowCount(0);
 				for (PrescriptionItem prescriptionItem : prescriptionItems) {
