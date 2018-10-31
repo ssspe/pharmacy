@@ -3,11 +3,24 @@ package pharmacyApplication;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Prescription {
+public class Prescription implements InterfacePrescription {
+	private static class FactoryHelper {
+		PrescriptionItem create(String pharmaceuticalName, int prescribedDailyDose, int duration,
+				int containerSize, boolean availableOverTheCounter, String comments) {
+			return new PrescriptionItem(pharmaceuticalName, prescribedDailyDose, duration, containerSize,
+					availableOverTheCounter, comments);
+		}
+	}
+
 	private ArrayList<PrescriptionItem> prescriptionItems = new ArrayList<PrescriptionItem>();
+	private FactoryHelper helper;
 
 	public Prescription() {
+		this(new FactoryHelper());
+	}
 
+	public Prescription(FactoryHelper helper) {
+		this.helper = helper;
 	}
 
 	public void addPrescriptionItem(String pharmaceuticalName, int prescribedDailyDose, int duration, int containerSize,
@@ -17,11 +30,14 @@ public class Prescription {
 			if (prescriptionItem.getPharmaceuticalName() == pharmaceuticalName) {
 				alreadyExists = true;
 				prescriptionItem.setDuration(prescriptionItem.getDuration() + duration);
-				prescriptionItem.setPrescribedDailyDose(prescriptionItem.getPrescribedDailyDose() > prescribedDailyDose ? prescriptionItem.getPrescribedDailyDose() : prescribedDailyDose);
+				prescriptionItem.setPrescribedDailyDose(prescriptionItem.getPrescribedDailyDose() > prescribedDailyDose
+						? prescriptionItem.getPrescribedDailyDose()
+						: prescribedDailyDose);
 			}
 		}
 		if (!alreadyExists) {
-			PrescriptionItem prescriptionItem = new PrescriptionItem(pharmaceuticalName, prescribedDailyDose, duration,
+
+			PrescriptionItem prescriptionItem = helper.create(pharmaceuticalName, prescribedDailyDose, duration,
 					containerSize, availableOverTheCounter, comments);
 			prescriptionItems.add(prescriptionItem);
 		}

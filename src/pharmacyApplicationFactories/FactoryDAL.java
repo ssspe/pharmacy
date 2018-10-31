@@ -1,4 +1,7 @@
-package pharmacyApplication;
+package pharmacyApplicationFactories;
+
+import pharmacyApplication.DAL;
+import pharmacyApplication.InterfaceDAL;
 
 public class FactoryDAL {
 	private static InterfaceDAL dependency = new DAL();

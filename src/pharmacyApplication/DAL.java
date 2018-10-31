@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.sikuli.script.Match;
+
 public class DAL implements InterfaceDAL{
 	private Connection connect = null;
 	private Statement statement = null;
@@ -46,7 +48,7 @@ public class DAL implements InterfaceDAL{
 	}
 	
 	@Override
-	public ResultSet getPharmaInfo() {
+	public List<Medicine> getPharmaInfo() {
 		if (currentPharmaName != null && !currentPharmaName.isEmpty()) {
 			Statement statement;
 			ResultSet resultSet = null;
@@ -56,7 +58,18 @@ public class DAL implements InterfaceDAL{
 						.executeQuery("select * from pharmaceuticals, specialrequirements where PharmaceuticalName='"
 								+ currentPharmaName
 								+ "' and pharmaceuticals.SpecialRequirementID=specialrequirements.SpecialRequirementID");
-				return resultSet;
+				List<Medicine> list = new ArrayList<>();
+				while (resultSet.next()) {
+					int size = resultSet.getInt("ContainerSize");
+					int recDailyDose = resultSet.getInt("RecommendedDailyDose");
+					String containerType = resultSet.getString("ContainerType");
+					String description = resultSet.getString("Description");
+					int availableOverTheCounter = resultSet.getInt("AvailableOverTheCounter");
+					int storeInFridge = resultSet.getInt("StoreInFridge");
+					Medicine medicine = new Medicine(size, recDailyDose, containerType, description, availableOverTheCounter, storeInFridge);
+					list.add(medicine);
+				}
+				return list;
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

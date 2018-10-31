@@ -47,6 +47,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
+import pharmacyApplicationFactories.FactoryDAL;
+import pharmacyApplicationFactories.FactoryPrescription;
+
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -94,7 +97,7 @@ public class PrescriptionUI {
 		dal = FactoryDAL.create();
 		dal.connect(connectionURL, username, password);
 		list = dal.getPharmaName();
-		prescription = new Prescription();
+		prescription = (Prescription) FactoryPrescription.create();
 		initialize();
 	}
 
@@ -173,7 +176,7 @@ public class PrescriptionUI {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					String pharmaName = pharmaceuticalCombo.getSelectedItem().toString();
 					dal.setCurrentPharmaName(pharmaName);
-					updateValues(pharmaName);
+					updateValues();
 				}
 			}
 		});
@@ -534,49 +537,42 @@ public class PrescriptionUI {
 		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
 
 		dal.setCurrentPharmaName(list.get(0));
-		updateValues(list.get(0));
+		updateValues();
 	}
 
-	private void updateValues(String pharmaName) {
-		ResultSet resultSet = dal.getPharmaInfo();
-		try {
-			while (resultSet.next()) {
-				size = resultSet.getInt("ContainerSize");
-				maxValue = resultSet.getInt("RecommendedDailyDose");
-				String containerType = resultSet.getString("ContainerType");
-				String finalText = resultSet.getString("Description");
-
-				if (resultSet.getInt("AvailableOverTheCounter") == 1) {
-					finalText += "; Available over the counter and maybe cheaper";
-					availableOverTheCounter = true;
-				} else {
-					availableOverTheCounter = false;
-				}
-
-				if (resultSet.getInt("StoreInFridge") == 1) {
-					finalText += "; MUST BE STORED IN FRIDGE";
-				}
-
-				switch (containerType) {
-				case "Box":
-					finalText += "; Comes in a box of " + size + " tablets";
-					break;
-				default:
-					finalText += "; Comes in a " + size + "ml " + containerType;
-					break;
-				}
-				recDailyDoseText.setText(String.valueOf(maxValue));
-				description.setText(finalText);
+	private void updateValues() {
+		List<Medicine> listOfMedicines = dal.getPharmaInfo();
+		for(Medicine medicine : listOfMedicines) {
+			size = medicine.getSize();
+			maxValue = medicine.getRecDailyDose();
+			String containerType = medicine.getContainerType();
+			String finalText = medicine.getDescription();
+			int availableOverTheCounter = medicine.getAvailableOverTheCounter();
+			int storeInFridge = medicine.getStoreInFridge();
+			if (availableOverTheCounter == 1) {
+				finalText += "; Available over the counter and maybe cheaper";
+				this.availableOverTheCounter = true;
+			} else {
+				this.availableOverTheCounter = false;
 			}
 
-			preDailyDose.setModel(new SpinnerNumberModel(1, 1, maxValue * 2, 1));
-			duration.setModel(new SpinnerNumberModel(1, 1, null, 1));
+			if (storeInFridge == 1) {
+				finalText += "; MUST BE STORED IN FRIDGE";
+			}
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			switch (containerType) {
+			case "Box":
+				finalText += "; Comes in a box of " + size + " tablets";
+				break;
+			default:
+				finalText += "; Comes in a " + size + "ml " + containerType;
+				break;
+			}
+			recDailyDoseText.setText(String.valueOf(maxValue));
+			description.setText(finalText);
 		}
-
+		preDailyDose.setModel(new SpinnerNumberModel(1, 1, maxValue * 2, 1));
+		duration.setModel(new SpinnerNumberModel(1, 1, null, 1));
 	}
 
 	private void updatePrescriptionCounter() {

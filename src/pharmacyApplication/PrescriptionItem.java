@@ -1,6 +1,6 @@
 package pharmacyApplication;
 
-public class PrescriptionItem {
+public class PrescriptionItem implements InterfacePrescriptionItem {
 	private String pharmaceuticalName;
 	private int prescribedDailyDose;
 	private int duration;
@@ -8,7 +8,7 @@ public class PrescriptionItem {
 	private boolean availableOverTheCounter;
 	private String comments;
 	private int numberOfContainers;
-
+	
 	public PrescriptionItem(String pharmaceuticalName, int prescribedDailyDose, int duration, int containerSize,
 			boolean availableOverTheCounter, String comments) {
 		this.pharmaceuticalName = pharmaceuticalName;
