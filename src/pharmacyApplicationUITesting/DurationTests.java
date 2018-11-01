@@ -4,11 +4,13 @@ import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.sikuli.script.FindFailed;
@@ -44,8 +46,15 @@ public class DurationTests {
 		assertTrue(screen.exists("imgs/duration-default.png") != null);
 	}
 	
+	@After
+	public void tearDown() {
+		verify(mockDependency);
+		closeUI();
+	}
+	
 	@Test
 	public void Duration_Cant_Go_Below_Zero() throws FindFailed {
+		screen.mouseMove(100, 100);
 		List<Match> arrow_list = sortList(screen.findAll("imgs/down-arrow.png"));
 		screen.click(arrow_list.get(1));
 		Pattern pattern = new Pattern("imgs/duration-zero.png").similar(1f);

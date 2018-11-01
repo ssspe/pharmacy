@@ -11,6 +11,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.imageio.plugins.tiff.ExifGPSTagSet;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -55,6 +57,12 @@ public class PrescribedDailyDoseTests {
 		setUpUI();
 		screen = new Screen();
 		assertTrue(screen.exists("imgs/prescribed-daily-dose-default.png") != null);
+	}
+	
+	@After
+	public void tearDown() {
+		verify(mockDependency);
+		closeUI();
 	}
 	
 	@Test
