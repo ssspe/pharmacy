@@ -9,8 +9,6 @@ import java.util.List;
 
 import org.sikuli.script.Match;
 
-import com.sun.java.swing.plaf.windows.resources.windows;
-
 import pharmacyApplication.PrescriptionUI;
 
 public class HelperFunctions {

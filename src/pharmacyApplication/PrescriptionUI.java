@@ -15,6 +15,7 @@ import javax.swing.JCheckBox;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -93,6 +94,8 @@ public class PrescriptionUI {
 	private JPopupMenu popupMenu;
 	private JMenuItem editComment;
 	private JMenuItem decrementDosage;
+	private JTextArea textArea;
+	private JPanel pnl;
 
 	/**
 	 * Create the application.
@@ -130,6 +133,57 @@ public class PrescriptionUI {
 		}
 	}
 
+	private void canExceedDailyDose(ItemEvent e) {
+		if (e.getStateChange() == ItemEvent.SELECTED) {
+			addButton.setEnabled(true);
+		} else {
+			if (Integer.parseInt(preDailyDose.getValue().toString()) > Integer.parseInt(recDailyDoseText.getText())) {
+				if (!exceedDailyDose.isSelected()) {
+					addButton.setEnabled(false);
+				}
+			}
+		}
+	}
+
+	private void addItem() {
+		String descriptionComment = description.getText();
+		if (addComment.isSelected()) {
+			comment = JOptionPane.showInputDialog("Write a Comment");
+			if (comment != null) {
+				comment = formatComment(comment);
+				descriptionComment += "; " + comment;
+			} else {
+				return;
+			}
+		}
+
+		prescription.addPrescriptionItem(pharmaceuticalCombo.getSelectedItem().toString(),
+				(Integer) preDailyDose.getValue(), (Integer) duration.getValue(), containerSize,
+				availableOverTheCounter, descriptionComment);
+		List<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
+		prescriptionTable.setModel(new FinalTableModel(prescriptionItems));
+		updatePrescriptionCounter();
+		updateNumberContainers();
+	}
+
+	private void removeItem() {
+		int row = prescriptionTable.getSelectedRow();
+		String pharmaceuticalName = prescriptionTable.getModel().getValueAt(row, 0).toString();
+		prescription.removePrescriptionItem(pharmaceuticalName);
+		List<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
+		prescriptionTable.setModel(new FinalTableModel(prescriptionItems));
+		updatePrescriptionCounter();
+		updateNumberContainers();
+	}
+
+	private void setRemoveButton() {
+		if (prescriptionTable.getSelectedRow() != -1) {
+			removeButton.setEnabled(true);
+		} else {
+			removeButton.setEnabled(false);
+		}
+	}
+
 	private void initializeFunc() {
 		pharmaceuticalCombo.addItemListener(new ItemListener() {
 
@@ -151,43 +205,15 @@ public class PrescriptionUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String descriptionComment = description.getText();
-				Boolean hasCancelled = false;
-				if (addComment.isSelected()) {
-					comment = JOptionPane.showInputDialog("Write a Comment");
-					if (comment != null) {
-						comment = formatComment(comment);
-						descriptionComment += "; " + comment;
-					} else {
-						return;
-					}
-				}
-
-				prescription.addPrescriptionItem(pharmaceuticalCombo.getSelectedItem().toString(),
-						(Integer) preDailyDose.getValue(), (Integer) duration.getValue(), containerSize,
-						availableOverTheCounter, descriptionComment);
-				List<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
-				prescriptionTable.setModel(new FinalTableModel(prescriptionItems));
-				updatePrescriptionCounter();
-				updateNumberContainers();
-
+				addItem();
 			}
 		});
 
 		exceedDailyDose.addItemListener(new ItemListener() {
-			
+
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				if (e.getStateChange() == ItemEvent.SELECTED) {
-					addButton.setEnabled(true);
-				} else {
-					if (Integer.parseInt(preDailyDose.getValue().toString()) > Integer
-							.parseInt(recDailyDoseText.getText())) {
-						if (!exceedDailyDose.isSelected()) {
-							addButton.setEnabled(false);
-						}
-					}
-				}
+				canExceedDailyDose(e);
 			}
 		});
 
@@ -195,13 +221,7 @@ public class PrescriptionUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int row = prescriptionTable.getSelectedRow();
-				String pharmaceuticalName = prescriptionTable.getModel().getValueAt(row, 0).toString();
-				prescription.removePrescriptionItem(pharmaceuticalName);
-				List<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
-				prescriptionTable.setModel(new FinalTableModel(prescriptionItems));
-				updatePrescriptionCounter();
-				updateNumberContainers();
+				removeItem();
 			}
 		});
 
@@ -209,12 +229,7 @@ public class PrescriptionUI {
 
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				if (prescriptionTable.getSelectedRow() != -1) {
-					removeButton.setEnabled(true);
-				} else {
-					removeButton.setEnabled(false);
-				}
-
+				setRemoveButton();
 			}
 		});
 
@@ -223,10 +238,7 @@ public class PrescriptionUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				prescription.clearPrescription();
-//				DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
-//				tableModel.setRowCount(0);
-				List myList = new ArrayList();
-				prescriptionTable.setModel(new FinalTableModel(myList));
+				prescriptionTable.setModel(new FinalTableModel(new ArrayList()));
 				updatePrescriptionCounter();
 				updateNumberContainers();
 			}
@@ -244,21 +256,14 @@ public class PrescriptionUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int column = 5;
+				FinalTableModel model = (FinalTableModel) prescriptionTable.getModel();
 				int row = prescriptionTable.getSelectedRow();
-				JTextArea textArea = new JTextArea(5, 20);
-				textArea.setWrapStyleWord(true);
-				textArea.setLineWrap(true);
-				textArea.setText(prescriptionTable.getModel().getValueAt(row, column).toString());
-				JPanel pnl = new JPanel(new BorderLayout());
-				pnl.add(new JLabel("Please enter some data:"), BorderLayout.NORTH);
-				pnl.add(textArea, BorderLayout.CENTER);
+				textArea.setText(prescriptionTable.getModel().getValueAt(row, 5).toString());
 				int okCxl = JOptionPane.showConfirmDialog(null, pnl, "Enter Data", JOptionPane.OK_CANCEL_OPTION);
 				if (okCxl == JOptionPane.OK_OPTION) {
 					String comment = formatComment(textArea.getText());
-					prescriptionTable.setValueAt(comment, row, column);
+					model.setCommentAt(comment, row);
 				}
-
 			}
 		});
 
@@ -266,11 +271,11 @@ public class PrescriptionUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int column = 2;
+				FinalTableModel model = (FinalTableModel) prescriptionTable.getModel();
 				int row = prescriptionTable.getSelectedRow();
-				if (Integer.parseInt(prescriptionTable.getValueAt(row, column).toString()) != 0) {
-					prescriptionTable.setValueAt(
-							Integer.parseInt(prescriptionTable.getValueAt(row, column).toString()) - 1, row, column);
+				int currentValue = (Integer) prescriptionTable.getValueAt(row, 2);
+				if (currentValue != 1) {
+					model.setDailyDoseAt(currentValue - 1, row);
 				}
 			}
 		});
@@ -288,9 +293,9 @@ public class PrescriptionUI {
 						if (rowAtPoint > -1) {
 							prescriptionTable.setRowSelectionInterval(rowAtPoint, rowAtPoint);
 						}
-						int column = 2;
+
 						int row = prescriptionTable.getSelectedRow();
-						if (Integer.parseInt(prescriptionTable.getValueAt(row, column).toString()) == 0) {
+						if ((Integer) prescriptionTable.getValueAt(row, 2) == 1) {
 							decrementDosage.setVisible(false);
 						} else {
 							decrementDosage.setVisible(true);
@@ -538,6 +543,14 @@ public class PrescriptionUI {
 		gbc_exitButton.gridy = 8;
 		panel.add(exitButton, gbc_exitButton);
 
+		textArea = new JTextArea(5, 20);
+		textArea.setWrapStyleWord(true);
+		textArea.setLineWrap(true);
+
+		pnl = new JPanel(new BorderLayout());
+		pnl.add(new JLabel("Please edit the comment:"), BorderLayout.NORTH);
+		pnl.add(textArea, BorderLayout.CENTER);
+
 		popupMenu = new JPopupMenu();
 		editComment = new JMenuItem("Edit Comment");
 		decrementDosage = new JMenuItem("Decrement Dosage");
@@ -630,6 +643,22 @@ public class PrescriptionUI {
 		@Override
 		public int getColumnCount() {
 			return columnNames.length;
+		}
+
+		public void setDailyDoseAt(int value, int row) {
+			PrescriptionItem temp = li.get(row);
+			temp.setPrescribedDailyDose(value);
+
+			li.set(row, temp);
+			fireTableRowsUpdated(row, row);
+		}
+		
+		public void setCommentAt(String value, int row) {
+			PrescriptionItem temp = li.get(row);
+			temp.setComment(value);
+
+			li.set(row, temp);
+			fireTableRowsUpdated(row, row);
 		}
 
 		@Override

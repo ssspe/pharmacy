@@ -18,7 +18,11 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 		this.availableOverTheCounter = availableOverTheCounter;
 		this.comments = comments;
 	}
-
+	
+	public void setComment(String comments) {
+		this.comments = comments;
+	}
+	
 	public String getPharmaceuticalName() {
 		return pharmaceuticalName;
 	}

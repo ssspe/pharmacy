@@ -22,14 +22,11 @@ import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
-import com.sun.java.swing.plaf.windows.resources.windows;
-import com.sun.org.apache.xerces.internal.xs.ShortList;
-
 import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.expectLastCall;
-import static org.easymock.EasyMock.verify;import jdk.jfr.internal.PrivateAccess;
+import static org.easymock.EasyMock.verify;
 import pharmacyApplication.InterfaceDAL;
 import pharmacyApplication.Medicine;
 import pharmacyApplication.PrescriptionUI;

@@ -60,8 +60,7 @@ public class AddButtonTests {
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 
 		setUpUI();
-		screen = new Screen();
-		assertTrue(screen.exists("imgs/duration-default.png") != null);
+		screen = new Screen();		
 	}
 	
 	@After
@@ -87,7 +86,7 @@ public class AddButtonTests {
 	}
 
 	@Test
-	public void Add_Button_Adds_Multiple_Medicine_To_Table() throws FindFailed {
+	public void Add_Button_Adds_Multiple_Medicine_To_Table() throws FindFailed, InterruptedException {
 		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
 		expectLastCall();
 		mockDependencyPre.addPrescriptionItem("Medicine2", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
@@ -105,14 +104,13 @@ public class AddButtonTests {
 
 		Pattern pattern = new Pattern("imgs/combo-box-three-items.png").similar(1f);
 		screen.click(pattern);
-
 		screen.click("imgs/add-button-active.png");
 		pattern = new Pattern("imgs/table-two-items.png").similar(1f);
 		assertTrue(screen.exists(pattern) != null);
 	}
 	
 	@Test
-	public void Add_Button_Can_Add_If_Over_Dosage_Checkbox_Is_Checked() throws FindFailed {
+	public void Add_Button_Can_Add_If_Over_Dosage_Checkbox_Is_Checked() throws FindFailed, InterruptedException {
 		mockDependencyPre.addPrescriptionItem("Medicine1", 6, 1, 1, false, "Comment; Comes in a 1ml Bottle; My Comment;\n");
 		expectLastCall();
 		
@@ -139,7 +137,9 @@ public class AddButtonTests {
 		
 		screen.click("imgs/ok-button.png");
 		pattern = new Pattern("imgs/table-one-item.png").similar(1f);
+		
 		assertTrue(screen.exists(pattern) != null);
+		
 	}
 
 }

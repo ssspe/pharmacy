@@ -20,8 +20,6 @@ import org.sikuli.script.FindFailed;
 import org.sikuli.script.Match;
 import org.sikuli.script.Screen;
 
-import com.sun.java.swing.action.NewAction;
-
 import pharmacyApplication.InterfaceDAL;
 import pharmacyApplication.InterfacePrescription;
 import pharmacyApplication.Medicine;
