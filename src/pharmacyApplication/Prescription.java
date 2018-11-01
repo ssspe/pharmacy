@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Prescription implements InterfacePrescription {
 	private static class FactoryHelper {
-		PrescriptionItem create(String pharmaceuticalName, int prescribedDailyDose, int duration,
-				int containerSize, boolean availableOverTheCounter, String comments) {
+		PrescriptionItem create(String pharmaceuticalName, int prescribedDailyDose, int duration, int containerSize,
+				boolean availableOverTheCounter, String comments) {
 			return new PrescriptionItem(pharmaceuticalName, prescribedDailyDose, duration, containerSize,
 					availableOverTheCounter, comments);
 		}
@@ -26,22 +26,19 @@ public class Prescription implements InterfacePrescription {
 
 	public void addPrescriptionItem(String pharmaceuticalName, int prescribedDailyDose, int duration, int containerSize,
 			boolean availableOverTheCounter, String comments) {
-		Boolean alreadyExists = false;
 		for (PrescriptionItem prescriptionItem : prescriptionItems) {
 			if (prescriptionItem.getPharmaceuticalName() == pharmaceuticalName) {
-				alreadyExists = true;
 				prescriptionItem.setDuration(prescriptionItem.getDuration() + duration);
 				prescriptionItem.setPrescribedDailyDose(prescriptionItem.getPrescribedDailyDose() > prescribedDailyDose
 						? prescriptionItem.getPrescribedDailyDose()
 						: prescribedDailyDose);
+				return;
 			}
 		}
-		if (!alreadyExists) {
 
-			PrescriptionItem prescriptionItem = helper.create(pharmaceuticalName, prescribedDailyDose, duration,
-					containerSize, availableOverTheCounter, comments);
-			prescriptionItems.add(prescriptionItem);
-		}
+		PrescriptionItem prescriptionItem = helper.create(pharmaceuticalName, prescribedDailyDose, duration,
+				containerSize, availableOverTheCounter, comments);
+		prescriptionItems.add(prescriptionItem);
 	}
 
 	public void removePrescriptionItem(String pharmaceuticalName) {
@@ -55,11 +52,7 @@ public class Prescription implements InterfacePrescription {
 	}
 
 	public void clearPrescription() {
-		Iterator<PrescriptionItem> it = prescriptionItems.iterator();
-		while (it.hasNext()) {
-			it.next();
-			it.remove();
-		}
+		prescriptionItems.clear();
 	}
 
 	public List<PrescriptionItem> getPrescriptionItems() {
