@@ -1,6 +1,8 @@
 package pharmacyApplication;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.BoxLayout;
@@ -20,9 +22,12 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
+
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
@@ -37,6 +42,10 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+
 import pharmacyApplicationFactories.FactoryDAL;
 import pharmacyApplicationFactories.FactoryPrescription;
 import javax.swing.JTextArea;
@@ -364,13 +373,20 @@ public class PrescriptionUI {
 		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane_1.gridx = 1;
 		gbc_scrollPane_1.gridy = 5;
-		panel.add(scrollPane_1, gbc_scrollPane_1);
+		
 		prescriptionTable = new JTable();
+		prescriptionTable.setPreferredScrollableViewportSize(new Dimension(scrollPane_1.WIDTH, scrollPane_1.HEIGHT));
 		prescriptionTable.setShowVerticalLines(false);
 		prescriptionTable.setShowHorizontalLines(false);
 		prescriptionTable.setFillsViewportHeight(true);
+		
+		prescriptionTable.setPreferredScrollableViewportSize(new Dimension(450,1000));
+		prescriptionTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		
+		panel.add(scrollPane_1, gbc_scrollPane_1);
+		scrollPane_1.setMinimumSize( scrollPane_1.getPreferredSize() );
 		scrollPane_1.setViewportView(prescriptionTable);
-
+		
 		clearButton = new JButton("Clear");
 		clearButton.setEnabled(false);
 		GridBagConstraints gbc_clearButton = new GridBagConstraints();
@@ -500,6 +516,7 @@ public class PrescriptionUI {
 				availableOverTheCounter, descriptionComment);
 		List<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
 		prescriptionTable.setModel(new PrescriptionTableModel(prescriptionItems));
+		resizeColumnWidth(prescriptionTable);
 		updatePrescriptionCounter(prescription.getNumberOfPharmaceuticals());
 		updateNumberContainers(prescription.getNumberOfContainers());
 	}
@@ -510,6 +527,7 @@ public class PrescriptionUI {
 		prescription.removePrescriptionItem(pharmaceuticalName);
 		List<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
 		prescriptionTable.setModel(new PrescriptionTableModel(prescriptionItems));
+		resizeColumnWidth(prescriptionTable);
 		updatePrescriptionCounter(prescription.getNumberOfPharmaceuticals());
 		updateNumberContainers(prescription.getNumberOfContainers());
 	}
@@ -525,6 +543,7 @@ public class PrescriptionUI {
 	private void clearPrescription() {
 		prescription.clearPrescription();
 		prescriptionTable.setModel(new PrescriptionTableModel(new ArrayList<PrescriptionItem>()));
+		resizeColumnWidth(prescriptionTable);
 		updatePrescriptionCounter(0);
 		updateNumberContainers(0);
 	}
@@ -557,7 +576,7 @@ public class PrescriptionUI {
 		}
 
 		int row = prescriptionTable.getSelectedRow();
-		decrementDosage.setVisible((Integer) prescriptionTable.getValueAt(row, 2) != 1);
+		decrementDosage.setEnabled((Integer) prescriptionTable.getValueAt(row, 2) != 1);
 	}
 
 	private void updateValues() {
@@ -585,6 +604,35 @@ public class PrescriptionUI {
 		}
 		preDailyDose.setModel(new SpinnerNumberModel(1, 1, maxValue * 2, 1));
 		duration.setModel(new SpinnerNumberModel(1, 1, null, 1));
+	}
+	
+	private void resizeColumnWidth(JTable table) {
+	    final TableColumnModel columnModel = table.getColumnModel();
+	    int[] widths = new int[6];
+	    for (int column = 0; column < table.getColumnCount(); column++) {
+	        int width = 100; // Min width
+	        for (int row = 0; row < table.getRowCount(); row++) {
+	            TableCellRenderer renderer = table.getCellRenderer(row, column);
+	            Component comp = table.prepareRenderer(renderer, row, column);
+
+	            width = Math.max(comp.getPreferredSize().width +1 , width);
+	        }
+	        TableColumn tableColumn = columnModel.getColumn(column);
+            TableCellRenderer headerRenderer = tableColumn.getHeaderRenderer();
+            if (headerRenderer == null) {
+                headerRenderer = table.getTableHeader().getDefaultRenderer();
+            }
+            Object headerValue = tableColumn.getHeaderValue();
+            Component headerComp = headerRenderer.getTableCellRendererComponent(table, headerValue, false, false, 0, column);
+            width = Math.max(width, headerComp.getPreferredSize().width) + 10;
+	        columnModel.getColumn(column).setPreferredWidth(width);
+	        widths[column] = width;
+	    }	    
+	    if(IntStream.of(widths).sum() < scrollPane_1.getWidth()) {
+	    	int sum = IntStream.of(Arrays.copyOfRange(widths, 0, 5)).sum();
+	    	columnModel.getColumn(5).setPreferredWidth(scrollPane_1.getWidth() - sum);
+	    }
+
 	}
 
 	private void updatePrescriptionCounter(int prescriptionCounter) {
