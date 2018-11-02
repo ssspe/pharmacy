@@ -71,7 +71,7 @@ public class AddButtonTests {
 	}
 
 	@Test
-	public void Add_Button_Adds_One_Medicine_To_Table() throws FindFailed {
+	public void Add_Button_Adds_One_Medicine_To_Table() throws FindFailed, InterruptedException {
 		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
 		expectLastCall();
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
@@ -86,7 +86,7 @@ public class AddButtonTests {
 	}
 
 	@Test
-	public void Add_Button_Adds_Multiple_Medicine_To_Table() throws FindFailed, InterruptedException {
+	public void Add_Button_Adds_Multiple_Medicine_To_Table() throws FindFailed {
 		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
 		expectLastCall();
 		mockDependencyPre.addPrescriptionItem("Medicine2", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
@@ -106,6 +106,7 @@ public class AddButtonTests {
 		screen.click(pattern);
 		screen.click("imgs/add-button-active.png");
 		pattern = new Pattern("imgs/table-two-items.png").similar(1f);
+		
 		assertTrue(screen.exists(pattern) != null);
 	}
 
