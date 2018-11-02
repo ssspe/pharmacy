@@ -1,6 +1,1 @@
-**/bin
-**/bin/pharmacyApplication
-**/bin/pharmacyApplicationFactories
-**/bin/pharmacyApplicationTest
-**/bin/pharmacyApplicationUITesting
-*.class
+bin/
