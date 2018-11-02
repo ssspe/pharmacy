@@ -60,9 +60,9 @@ public class AddButtonTests {
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 
 		setUpUI();
-		screen = new Screen();		
+		screen = new Screen();
 	}
-	
+
 	@After
 	public void tearDown() {
 		verify(mockDependencyDAL);
@@ -71,13 +71,13 @@ public class AddButtonTests {
 	}
 
 	@Test
-	public void Add_Button_Adds_One_Medicine_To_Table() throws FindFailed {	
+	public void Add_Button_Adds_One_Medicine_To_Table() throws FindFailed {
 		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
 		expectLastCall();
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
 				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
 		replay(mockDependencyPre);
-		
+
 		screen.mouseMove(100, 100);
 		Pattern pattern = new Pattern("imgs/add-button-active.png").similar(1f);
 		screen.click(pattern);
@@ -96,9 +96,9 @@ public class AddButtonTests {
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
 				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle"),
 						new PrescriptionItem("Medicine2", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
-		
+
 		replay(mockDependencyPre);
-		
+
 		screen.click("imgs/add-button-active.png");
 		screen.click("imgs/combo-box.png");
 
@@ -108,38 +108,39 @@ public class AddButtonTests {
 		pattern = new Pattern("imgs/table-two-items.png").similar(1f);
 		assertTrue(screen.exists(pattern) != null);
 	}
-	
+
 	@Test
 	public void Add_Button_Can_Add_If_Over_Dosage_Checkbox_Is_Checked() throws FindFailed, InterruptedException {
-		mockDependencyPre.addPrescriptionItem("Medicine1", 6, 1, 1, false, "Comment; Comes in a 1ml Bottle; My Comment;\n");
+		mockDependencyPre.addPrescriptionItem("Medicine1", 6, 1, 1, false,
+				"Comment; Comes in a 1ml Bottle; My Comment;\n");
 		expectLastCall();
-		
-		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle; My Comment")));
+
+		expect(mockDependencyPre.getPrescriptionItems()).andReturn(Arrays.asList(
+				new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle; My Comment")));
 		replay(mockDependencyPre);
 		List<Match> arrow_list = sortList(screen.findAll("imgs/up-arrow.png"));
-		for(int x = 0; x < 5; x++) {
+		for (int x = 0; x < 5; x++) {
 			screen.click(arrow_list.get(0));
 		}
-		
+
 		Pattern pattern = new Pattern("imgs/add-button-inactive.png").similar(1f);
 		assertTrue(pattern != null);
-		
+
 		List<Match> checkbox_list = sortList(screen.findAll("imgs/check-box.png"));
 		screen.click(checkbox_list.get(0));
-		
+
 		pattern = new Pattern("imgs/add-button-active.png").similar(1f);
 		assertTrue(pattern != null);
-		
+
 		screen.click(pattern);
-		
+
 		screen.type("My Comment");
-		
+
 		screen.click("imgs/ok-button.png");
 		pattern = new Pattern("imgs/table-one-item.png").similar(1f);
-		
+
 		assertTrue(screen.exists(pattern) != null);
-		
+
 	}
 
 }

@@ -2,16 +2,17 @@ package pharmacyApplication;
 
 import java.awt.EventQueue;
 
-public class main {
+public class Main {
 
 	/**
-	 * Launch the application.
+	 * Main entry point to launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PrescriptionUI window = new PrescriptionUI("jdbc:mysql://localhost:3307/doc-u-med", "spencer", "password");
+					PrescriptionUI window = new PrescriptionUI("jdbc:mysql://localhost:3306/doc-u-med", "spencer",
+							"password");
 					window.frame.setVisible(true);
 					window.frame.setResizable(false);
 

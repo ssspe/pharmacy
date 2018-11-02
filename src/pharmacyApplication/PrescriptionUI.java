@@ -1,8 +1,6 @@
 package pharmacyApplication;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.BoxLayout;
@@ -15,23 +13,16 @@ import javax.swing.JCheckBox;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.security.KeyStore.PrivateKeyEntry;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
@@ -46,16 +37,10 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumnModel;
-
 import pharmacyApplicationFactories.FactoryDAL;
 import pharmacyApplicationFactories.FactoryPrescription;
-
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 
 public class PrescriptionUI {
 
@@ -90,7 +75,7 @@ public class PrescriptionUI {
 	private InterfacePrescription prescription;
 	private JCheckBox addComment;
 	private String comment;
-	private JComboBox pharmaceuticalCombo;
+	private JComboBox<String> pharmaceuticalCombo;
 	private JPopupMenu popupMenu;
 	private JMenuItem editComment;
 	private JMenuItem decrementDosage;
@@ -107,84 +92,11 @@ public class PrescriptionUI {
 		dal.connect(connectionURL, username, password);
 		pharmaList = dal.getPharmaName();
 		prescription = FactoryPrescription.create();
-		initializeUI();
-		initializeFunc();
+		initializeUIElements();
+		initializeUIFunctionality();
 	}
 
-	private void pharmaceuticalComboSelected(ItemEvent e) {
-		if (e.getStateChange() == ItemEvent.SELECTED) {
-			String pharmaName = pharmaceuticalCombo.getSelectedItem().toString();
-			dal.setCurrentPharmaName(pharmaName);
-			updateValues();
-		}
-	}
-
-	private void checkDailyDose() {
-		if ((Integer) preDailyDose.getValue() > Integer.parseInt(recDailyDoseText.getText())) {
-			if (!exceedDailyDose.isSelected()) {
-				addButton.setEnabled(false);
-			}
-			addComment.setEnabled(false);
-			addComment.setSelected(true);
-		} else {
-			addButton.setEnabled(true);
-			addComment.setEnabled(true);
-			addComment.setSelected(false);
-		}
-	}
-
-	private void canExceedDailyDose(ItemEvent e) {
-		if (e.getStateChange() == ItemEvent.SELECTED) {
-			addButton.setEnabled(true);
-		} else {
-			if (Integer.parseInt(preDailyDose.getValue().toString()) > Integer.parseInt(recDailyDoseText.getText())) {
-				if (!exceedDailyDose.isSelected()) {
-					addButton.setEnabled(false);
-				}
-			}
-		}
-	}
-
-	private void addItem() {
-		String descriptionComment = description.getText();
-		if (addComment.isSelected()) {
-			comment = JOptionPane.showInputDialog("Write a Comment");
-			if (comment != null) {
-				comment = formatComment(comment);
-				descriptionComment += "; " + comment;
-			} else {
-				return;
-			}
-		}
-
-		prescription.addPrescriptionItem(pharmaceuticalCombo.getSelectedItem().toString(),
-				(Integer) preDailyDose.getValue(), (Integer) duration.getValue(), containerSize,
-				availableOverTheCounter, descriptionComment);
-		List<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
-		prescriptionTable.setModel(new FinalTableModel(prescriptionItems));
-		updatePrescriptionCounter();
-		updateNumberContainers();
-	}
-
-	private void removeItem() {
-		int row = prescriptionTable.getSelectedRow();
-		String pharmaceuticalName = prescriptionTable.getModel().getValueAt(row, 0).toString();
-		prescription.removePrescriptionItem(pharmaceuticalName);
-		List<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
-		prescriptionTable.setModel(new FinalTableModel(prescriptionItems));
-		updatePrescriptionCounter();
-		updateNumberContainers();
-	}
-
-	private void setRemoveButton() {
-		if (prescriptionTable.getSelectedRow() != -1) {
-			removeButton.setEnabled(true);
-		} else {
-			removeButton.setEnabled(false);
-		}
-	}
-
-	private void initializeFunc() {
+	private void initializeUIFunctionality() {
 		pharmaceuticalCombo.addItemListener(new ItemListener() {
 
 			@Override
@@ -237,10 +149,7 @@ public class PrescriptionUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				prescription.clearPrescription();
-				prescriptionTable.setModel(new FinalTableModel(new ArrayList()));
-				updatePrescriptionCounter();
-				updateNumberContainers();
+				clearPrescription();
 			}
 		});
 
@@ -256,14 +165,7 @@ public class PrescriptionUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FinalTableModel model = (FinalTableModel) prescriptionTable.getModel();
-				int row = prescriptionTable.getSelectedRow();
-				textArea.setText(prescriptionTable.getModel().getValueAt(row, 5).toString());
-				int okCxl = JOptionPane.showConfirmDialog(null, pnl, "Enter Data", JOptionPane.OK_CANCEL_OPTION);
-				if (okCxl == JOptionPane.OK_OPTION) {
-					String comment = formatComment(textArea.getText());
-					model.setCommentAt(comment, row);
-				}
+				editComment();
 			}
 		});
 
@@ -271,12 +173,7 @@ public class PrescriptionUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FinalTableModel model = (FinalTableModel) prescriptionTable.getModel();
-				int row = prescriptionTable.getSelectedRow();
-				int currentValue = (Integer) prescriptionTable.getValueAt(row, 2);
-				if (currentValue != 1) {
-					model.setDailyDoseAt(currentValue - 1, row);
-				}
+				decrementDosage();
 			}
 		});
 
@@ -288,18 +185,7 @@ public class PrescriptionUI {
 
 					@Override
 					public void run() {
-						int rowAtPoint = prescriptionTable
-								.rowAtPoint(SwingUtilities.convertPoint(popupMenu, new Point(0, 0), prescriptionTable));
-						if (rowAtPoint > -1) {
-							prescriptionTable.setRowSelectionInterval(rowAtPoint, rowAtPoint);
-						}
-
-						int row = prescriptionTable.getSelectedRow();
-						if ((Integer) prescriptionTable.getValueAt(row, 2) == 1) {
-							decrementDosage.setVisible(false);
-						} else {
-							decrementDosage.setVisible(true);
-						}
+						highlightSelectedRow();
 					}
 				});
 			}
@@ -322,7 +208,7 @@ public class PrescriptionUI {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initializeUI() {
+	private void initializeUIElements() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1045, 295);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -379,7 +265,7 @@ public class PrescriptionUI {
 		gbc_label.gridy = 2;
 		panel.add(label, gbc_label);
 
-		pharmaceuticalCombo = new JComboBox();
+		pharmaceuticalCombo = new JComboBox<String>();
 		GridBagConstraints gbc_pharmaceuticalCombo = new GridBagConstraints();
 		gbc_pharmaceuticalCombo.fill = GridBagConstraints.HORIZONTAL;
 		gbc_pharmaceuticalCombo.anchor = GridBagConstraints.NORTH;
@@ -403,7 +289,7 @@ public class PrescriptionUI {
 		recDailyDoseText.setColumns(10);
 
 		preDailyDose = new JSpinner();
-		preDailyDose.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
+		preDailyDose.setModel(new SpinnerNumberModel(1, 1, null, 1));
 		GridBagConstraints gbc_preDailyDose = new GridBagConstraints();
 		gbc_preDailyDose.anchor = GridBagConstraints.NORTH;
 		gbc_preDailyDose.fill = GridBagConstraints.HORIZONTAL;
@@ -428,7 +314,7 @@ public class PrescriptionUI {
 		scrollPane.setViewportView(description);
 
 		duration = new JSpinner();
-		duration.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
+		duration.setModel(new SpinnerNumberModel(1, 1, null, 1));
 		GridBagConstraints gbc_duration = new GridBagConstraints();
 		gbc_duration.anchor = GridBagConstraints.NORTH;
 		gbc_duration.fill = GridBagConstraints.HORIZONTAL;
@@ -483,10 +369,6 @@ public class PrescriptionUI {
 		prescriptionTable.setShowVerticalLines(false);
 		prescriptionTable.setShowHorizontalLines(false);
 		prescriptionTable.setFillsViewportHeight(true);
-		String[] name = { "Product Name", "Duration", "Prescribed Daily Dose", "Number of Containers", "OTC",
-				"Comments" };
-		DefaultTableModel tableModel = (DefaultTableModel) prescriptionTable.getModel();
-		tableModel.setColumnIdentifiers(name);
 		scrollPane_1.setViewportView(prescriptionTable);
 
 		clearButton = new JButton("Clear");
@@ -567,6 +449,117 @@ public class PrescriptionUI {
 		updateValues();
 	}
 
+	private void pharmaceuticalComboSelected(ItemEvent e) {
+		if (e.getStateChange() == ItemEvent.SELECTED) {
+			String pharmaName = pharmaceuticalCombo.getSelectedItem().toString();
+			dal.setCurrentPharmaName(pharmaName);
+			updateValues();
+		}
+	}
+
+	private void checkDailyDose() {
+		if ((Integer) preDailyDose.getValue() > Integer.parseInt(recDailyDoseText.getText())) {
+			if (!exceedDailyDose.isSelected()) {
+				addButton.setEnabled(false);
+			}
+			addComment.setEnabled(false);
+			addComment.setSelected(true);
+		} else {
+			addButton.setEnabled(true);
+			addComment.setEnabled(true);
+			addComment.setSelected(false);
+		}
+	}
+
+	private void canExceedDailyDose(ItemEvent e) {
+		if (e.getStateChange() == ItemEvent.SELECTED) {
+			addButton.setEnabled(true);
+		} else {
+			if (Integer.parseInt(preDailyDose.getValue().toString()) > Integer.parseInt(recDailyDoseText.getText())) {
+				if (!exceedDailyDose.isSelected()) {
+					addButton.setEnabled(false);
+				}
+			}
+		}
+	}
+
+	private void addItem() {
+		String descriptionComment = description.getText();
+		if (addComment.isSelected()) {
+			comment = JOptionPane.showInputDialog("Write a Comment");
+			if (comment != null) {
+				comment = formatComment(comment);
+				descriptionComment += "; " + comment;
+			} else {
+				return;
+			}
+		}
+
+		prescription.addPrescriptionItem(pharmaceuticalCombo.getSelectedItem().toString(),
+				(Integer) preDailyDose.getValue(), (Integer) duration.getValue(), containerSize,
+				availableOverTheCounter, descriptionComment);
+		List<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
+		prescriptionTable.setModel(new PrescriptionTableModel(prescriptionItems));
+		updatePrescriptionCounter(prescription.getNumberOfPharmaceuticals());
+		updateNumberContainers(prescription.getNumberOfContainers());
+	}
+
+	private void removeItem() {
+		int row = prescriptionTable.getSelectedRow();
+		String pharmaceuticalName = prescriptionTable.getModel().getValueAt(row, 0).toString();
+		prescription.removePrescriptionItem(pharmaceuticalName);
+		List<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
+		prescriptionTable.setModel(new PrescriptionTableModel(prescriptionItems));
+		updatePrescriptionCounter(prescription.getNumberOfPharmaceuticals());
+		updateNumberContainers(prescription.getNumberOfContainers());
+	}
+
+	private void setRemoveButton() {
+		if (prescriptionTable.getSelectedRow() != -1) {
+			removeButton.setEnabled(true);
+		} else {
+			removeButton.setEnabled(false);
+		}
+	}
+
+	private void clearPrescription() {
+		prescription.clearPrescription();
+		prescriptionTable.setModel(new PrescriptionTableModel(new ArrayList<PrescriptionItem>()));
+		updatePrescriptionCounter(0);
+		updateNumberContainers(0);
+	}
+
+	private void editComment() {
+		PrescriptionTableModel model = (PrescriptionTableModel) prescriptionTable.getModel();
+		int row = prescriptionTable.getSelectedRow();
+		textArea.setText(prescriptionTable.getModel().getValueAt(row, 5).toString());
+		int okCxl = JOptionPane.showConfirmDialog(null, pnl, "Enter Data", JOptionPane.OK_CANCEL_OPTION);
+		if (okCxl == JOptionPane.OK_OPTION) {
+			String comment = formatComment(textArea.getText());
+			model.setCommentAt(comment, row);
+		}
+	}
+
+	private void decrementDosage() {
+		PrescriptionTableModel model = (PrescriptionTableModel) prescriptionTable.getModel();
+		int row = prescriptionTable.getSelectedRow();
+		int currentValue = (Integer) prescriptionTable.getValueAt(row, 2);
+		if (currentValue != 1) {
+			model.setDailyDoseAt(currentValue - 1, row);
+		}
+	}
+
+	private void highlightSelectedRow() {
+		int rowAtPoint = prescriptionTable
+				.rowAtPoint(SwingUtilities.convertPoint(popupMenu, new Point(0, 0), prescriptionTable));
+		if (rowAtPoint > -1) {
+			prescriptionTable.setRowSelectionInterval(rowAtPoint, rowAtPoint);
+		}
+
+		int row = prescriptionTable.getSelectedRow();
+		decrementDosage.setVisible((Integer) prescriptionTable.getValueAt(row, 2) != 1);
+	}
+
 	private void updateValues() {
 		List<Medicine> listOfMedicines = dal.getPharmaInfo();
 		for (Medicine medicine : listOfMedicines) {
@@ -583,18 +576,10 @@ public class PrescriptionUI {
 				this.availableOverTheCounter = false;
 			}
 
-			if (storeInFridge == 1) {
-				finalText += "; MUST BE STORED IN FRIDGE";
-			}
+			finalText += storeInFridge == 1 ? "; MUST BE STORED IN FRIDGE" : "";
+			finalText += "; Comes in a " + (containerType == "Box" ? ("box of " + containerSize + " tablets")
+					: (containerSize + "ml " + containerType));
 
-			switch (containerType) {
-			case "Box":
-				finalText += "; Comes in a box of " + containerSize + " tablets";
-				break;
-			default:
-				finalText += "; Comes in a " + containerSize + "ml " + containerType;
-				break;
-			}
 			recDailyDoseText.setText(String.valueOf(maxValue));
 			description.setText(finalText);
 		}
@@ -602,13 +587,13 @@ public class PrescriptionUI {
 		duration.setModel(new SpinnerNumberModel(1, 1, null, 1));
 	}
 
-	private void updatePrescriptionCounter() {
-		numberPrescriptions.setText(String.valueOf(prescription.getNumberOfPharmaceuticals()));
+	private void updatePrescriptionCounter(int prescriptionCounter) {
+		numberPrescriptions.setText(String.valueOf(prescriptionCounter));
 		clearButton.setEnabled(prescription.getNumberOfPharmaceuticals() != 0);
 	}
 
-	private void updateNumberContainers() {
-		numberContainers.setText(String.valueOf(prescription.getNumberOfContainers()));
+	private void updateNumberContainers(int numberOfContainers) {
+		numberContainers.setText(String.valueOf(numberOfContainers));
 	}
 
 	private String formatComment(String comment) {
@@ -620,86 +605,4 @@ public class PrescriptionUI {
 		}
 		return comment += "\n";
 	}
-
-	public class FinalTableModel extends AbstractTableModel {
-		private List<PrescriptionItem> li = new ArrayList();
-		String[] columnNames = { "Product Name", "Duration", "Prescribed Daily Dose", "Number of Containers", "OTC",
-				"Comments" };
-
-		public FinalTableModel(List<PrescriptionItem> li) {
-			this.li = li;
-		}
-
-		@Override
-		public String getColumnName(int columnIndex) {
-			return columnNames[columnIndex];
-		}
-
-		@Override
-		public int getRowCount() {
-			return li.size();
-		}
-
-		@Override
-		public int getColumnCount() {
-			return columnNames.length;
-		}
-
-		public void setDailyDoseAt(int value, int row) {
-			PrescriptionItem temp = li.get(row);
-			temp.setPrescribedDailyDose(value);
-
-			li.set(row, temp);
-			fireTableRowsUpdated(row, row);
-		}
-		
-		public void setCommentAt(String value, int row) {
-			PrescriptionItem temp = li.get(row);
-			temp.setComment(value);
-
-			li.set(row, temp);
-			fireTableRowsUpdated(row, row);
-		}
-
-		@Override
-		public Object getValueAt(int rowIndex, int columnIndex) {
-			PrescriptionItem prescriptionItem = li.get(rowIndex);
-			switch (columnIndex) {
-			case 0:
-				return prescriptionItem.getPharmaceuticalName();
-			case 1:
-				return prescriptionItem.getDuration();
-			case 2:
-				return prescriptionItem.getPrescribedDailyDose();
-			case 3:
-				return prescriptionItem.getNumberOfContainers();
-			case 4:
-				return prescriptionItem.isAvailableOverTheCounter();
-			case 5:
-				return prescriptionItem.getComments();
-			}
-			return null;
-		}
-
-		@Override
-		public Class<?> getColumnClass(int columnIndex) {
-			switch (columnIndex) {
-			case 0:
-				return String.class;
-			case 1:
-				return Integer.class;
-			case 2:
-				return Integer.class;
-			case 3:
-				return Integer.class;
-			case 4:
-				return Boolean.class;
-			case 5:
-				return String.class;
-			}
-			return null;
-		}
-
-	}
-
 }
