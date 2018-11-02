@@ -115,12 +115,12 @@ public class RemoveButtonTests {
 
 		pattern = new Pattern("imgs/remove-button-active.png").similar(1f);
 		screen.click(pattern);
-		pattern = new Pattern("imgs/table-zero-items.png").similar(1f);
+		pattern = new Pattern("imgs/table-zero-items.png").similar(0.99f);
 		assertTrue(screen.exists(pattern) != null);
 	}
 
 	@Test
-	public void Remove_Button_Removes_Selected_Row() throws FindFailed {
+	public void Remove_Button_Removes_Selected_Row() throws FindFailed, InterruptedException {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
@@ -153,6 +153,7 @@ public class RemoveButtonTests {
 		pattern = new Pattern("imgs/remove-button-active.png").similar(1f);
 		screen.click(pattern);
 		pattern = new Pattern("imgs/table-one-item-medicine-two.png").similar(1f);
+
 		assertTrue(screen.exists(pattern) != null);
 	}
 
