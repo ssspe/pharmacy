@@ -20,11 +20,7 @@ public class DAL implements InterfaceDAL {
 	}
 
 	/**
-	 * Connects to the specified database using the JDBC MySQL connector.
-	 * 
-	 * @param connectionURL The URL and the database to connect to
-	 * @param username      Username of the user that has access to the database
-	 * @param password      Password of the user that has access to the database
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void connect(String connectionURL, String username, String password) throws SQLException {
@@ -37,6 +33,7 @@ public class DAL implements InterfaceDAL {
 	}
 
 	/**
+	 * {@inheritDoc}
 	 * Runs the SQL command to get all items from the pharmaceuticals table and
 	 * created a list from their names
 	 * 
@@ -46,6 +43,7 @@ public class DAL implements InterfaceDAL {
 	public List<String> getPharmaName() throws SQLException {
 		List<String> list = new ArrayList<String>();
 		Statement statement = connect.createStatement();
+		// This SQL command will get all rows from the pharmaceuticals table
 		ResultSet pharmaceuticals = statement.executeQuery("select * from pharmaceuticals");
 		while (pharmaceuticals.next()) {
 			list.add(pharmaceuticals.getString("PharmaceuticalName"));
@@ -54,9 +52,10 @@ public class DAL implements InterfaceDAL {
 	}
 
 	/**
+	 * {@inheritDoc}
 	 * Runs the SQL command to get all items from the pharmaceuticals table and
 	 * links them to the Foreign Key link in the special requirements table. Then
-	 * creates a list of Medicine objects from this info.
+	 * creates a Medicine object from this info.
 	 * 
 	 * @return (List<Medicine>) List of medicines in the database.
 	 */
@@ -67,6 +66,9 @@ public class DAL implements InterfaceDAL {
 			ResultSet pharmaInfo = null;
 			try {
 				statement = connect.createStatement();
+				// This SQL command will return a row containing each row form the
+				// pharmaceuticals table and additional info from specialrequirements if the
+				// SpecialRequirementID matches
 				pharmaInfo = statement
 						.executeQuery("select * from pharmaceuticals, specialrequirements where PharmaceuticalName='"
 								+ currentPharmaName
@@ -78,8 +80,8 @@ public class DAL implements InterfaceDAL {
 					String description = pharmaInfo.getString("Description");
 					int availableOverTheCounter = pharmaInfo.getInt("AvailableOverTheCounter");
 					int storeInFridge = pharmaInfo.getInt("StoreInFridge");
-					return new Medicine(size, recDailyDose, containerType, description,
-							availableOverTheCounter, storeInFridge);
+					return new Medicine(size, recDailyDose, containerType, description, availableOverTheCounter,
+							storeInFridge);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

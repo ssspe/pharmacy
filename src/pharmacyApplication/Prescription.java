@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import pharmacyApplicationFactories.FactoryPrescriptionItem;
+
 /**
  * Class to hold the current prescription and calculate the number of items and
  * containers in the prescription.
@@ -11,42 +13,14 @@ import java.util.List;
  * @author spencer.robertson
  */
 public class Prescription implements InterfacePrescription {
-	/**
-	 * Factory to create prescription item. Allows for easier Unit Testing.
-	 * 
-	 * @author spencer.robertson
-	 */
-	private static class FactoryHelper {
-
-		/**
-		 * Static function to create a prescription item.
-		 * 
-		 * @param pharmaceuticalName      The name of the prescription item.
-		 * @param prescribedDailyDose     How much should be taken per day.
-		 * @param duration                Number of days the prescription should be
-		 *                                taken for.
-		 * @param containerSize           Size of the container (Can be Bottle, Box,
-		 *                                Tube or Phial).
-		 * @param availableOverTheCounter Is the prescription item available over the
-		 *                                counter
-		 * @param comments                Special requirements and user comments.
-		 * @return A new prescription item.
-		 */
-		PrescriptionItem create(String pharmaceuticalName, int prescribedDailyDose, int duration, int containerSize,
-				boolean availableOverTheCounter, String comments) {
-			return new PrescriptionItem(pharmaceuticalName, prescribedDailyDose, duration, containerSize,
-					availableOverTheCounter, comments);
-		}
-	}
-
 	private List<PrescriptionItem> prescriptionItems = new ArrayList<PrescriptionItem>();
-	private FactoryHelper helper;
+	private FactoryPrescriptionItem helper;
 
 	/**
 	 * Default constructor that uses the real prescription item class.
 	 */
 	public Prescription() {
-		this(new FactoryHelper());
+		this(new FactoryPrescriptionItem());
 	}
 
 	/**
@@ -54,7 +28,7 @@ public class Prescription implements InterfacePrescription {
 	 * 
 	 * @param helper Injected factory helper.
 	 */
-	public Prescription(FactoryHelper helper) {
+	public Prescription(FactoryPrescriptionItem helper) {
 		this.helper = helper;
 	}
 
