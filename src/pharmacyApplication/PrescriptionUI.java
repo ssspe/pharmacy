@@ -41,7 +41,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -59,13 +58,13 @@ public class PrescriptionUI {
 	private JTextField numberContainers;
 	private JCheckBox exceedDailyDose;
 	private JLabel label;
-	private JLabel lblNewLabel;
-	private JLabel lblNewLabel_1;
-	private JLabel lblNewLabel_2;
-	private JLabel lblNewLabel_3;
-	private JLabel lblNewLabel_4;
-	private JLabel lblNewLabel_5;
-	private JLabel lblNewLabel_6;
+	private JLabel pharmaNameLabel;
+	private JLabel recDailyDoseLabel;
+	private JLabel preDailyDoseLabel;
+	private JLabel descriptionLabel;
+	private JLabel durationLabel;
+	private JLabel numberOfPrescriptionsLabel;
+	private JLabel numberOfContainersLabel;
 	private JButton addButton;
 	private JButton removeButton;
 	private JButton clearButton;
@@ -102,116 +101,6 @@ public class PrescriptionUI {
 		pharmaList = dal.getPharmaName();
 		prescription = FactoryPrescription.create();
 		initializeUIElements();
-		initializeUIFunctionality();
-	}
-
-	private void initializeUIFunctionality() {
-		pharmaceuticalCombo.addItemListener(new ItemListener() {
-
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				pharmaceuticalComboSelected(e);
-			}
-		});
-
-		preDailyDose.addChangeListener(new ChangeListener() {
-
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				checkDailyDose();
-			}
-		});
-
-		addButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				addItem();
-			}
-		});
-
-		exceedDailyDose.addItemListener(new ItemListener() {
-
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				canExceedDailyDose(e);
-			}
-		});
-
-		removeButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				removeItem();
-			}
-		});
-
-		prescriptionTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				setRemoveButton();
-			}
-		});
-
-		clearButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				clearPrescription();
-			}
-		});
-
-		exitButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-			}
-		});
-
-		editComment.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				editComment();
-			}
-		});
-
-		decrementDosage.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				decrementDosage();
-			}
-		});
-
-		popupMenu.addPopupMenuListener(new PopupMenuListener() {
-
-			@Override
-			public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
-				SwingUtilities.invokeLater(new Runnable() {
-
-					@Override
-					public void run() {
-						highlightSelectedRow();
-					}
-				});
-			}
-
-			@Override
-			public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void popupMenuCanceled(PopupMenuEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
 	}
 
 	/**
@@ -232,40 +121,40 @@ public class PrescriptionUI {
 		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 10.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
 
-		lblNewLabel = new JLabel("Pharmaceutical Name");
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 1;
-		gbc_lblNewLabel.gridy = 1;
-		panel.add(lblNewLabel, gbc_lblNewLabel);
+		pharmaNameLabel = new JLabel("Pharmaceutical Name");
+		GridBagConstraints gbc_pharmaNameLabel = new GridBagConstraints();
+		gbc_pharmaNameLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_pharmaNameLabel.gridx = 1;
+		gbc_pharmaNameLabel.gridy = 1;
+		panel.add(pharmaNameLabel, gbc_pharmaNameLabel);
 
-		lblNewLabel_1 = new JLabel("Rec. Daily Dose");
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_1.gridx = 2;
-		gbc_lblNewLabel_1.gridy = 1;
-		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
+		recDailyDoseLabel = new JLabel("Rec. Daily Dose");
+		GridBagConstraints gbc_recDailyDoseLabel = new GridBagConstraints();
+		gbc_recDailyDoseLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_recDailyDoseLabel.gridx = 2;
+		gbc_recDailyDoseLabel.gridy = 1;
+		panel.add(recDailyDoseLabel, gbc_recDailyDoseLabel);
 
-		lblNewLabel_2 = new JLabel("Prescribed Daily Dose");
-		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
-		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_2.gridx = 3;
-		gbc_lblNewLabel_2.gridy = 1;
-		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
+		preDailyDoseLabel = new JLabel("Prescribed Daily Dose");
+		GridBagConstraints gbc_preDailyDoseLabel = new GridBagConstraints();
+		gbc_preDailyDoseLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_preDailyDoseLabel.gridx = 3;
+		gbc_preDailyDoseLabel.gridy = 1;
+		panel.add(preDailyDoseLabel, gbc_preDailyDoseLabel);
 
-		lblNewLabel_3 = new JLabel("Description & special details");
-		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
-		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_3.gridx = 4;
-		gbc_lblNewLabel_3.gridy = 1;
-		panel.add(lblNewLabel_3, gbc_lblNewLabel_3);
+		descriptionLabel = new JLabel("Description & special details");
+		GridBagConstraints gbc_descriptionLabel = new GridBagConstraints();
+		gbc_descriptionLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_descriptionLabel.gridx = 4;
+		gbc_descriptionLabel.gridy = 1;
+		panel.add(descriptionLabel, gbc_descriptionLabel);
 
-		lblNewLabel_4 = new JLabel("Duration");
-		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
-		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_4.gridx = 5;
-		gbc_lblNewLabel_4.gridy = 1;
-		panel.add(lblNewLabel_4, gbc_lblNewLabel_4);
+		durationLabel = new JLabel("Duration");
+		GridBagConstraints gbc_durationLabel = new GridBagConstraints();
+		gbc_durationLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_durationLabel.gridx = 5;
+		gbc_durationLabel.gridy = 1;
+		panel.add(durationLabel, gbc_durationLabel);
 
 		label = new JLabel("");
 		GridBagConstraints gbc_label = new GridBagConstraints();
@@ -284,6 +173,13 @@ public class PrescriptionUI {
 		for (String pharmaName : pharmaList) {
 			pharmaceuticalCombo.addItem(pharmaName);
 		}
+		pharmaceuticalCombo.addItemListener(new ItemListener() {
+
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				pharmaceuticalComboSelected(e);
+			}
+		});
 		panel.add(pharmaceuticalCombo, gbc_pharmaceuticalCombo);
 
 		recDailyDoseText = new JTextField();
@@ -305,6 +201,13 @@ public class PrescriptionUI {
 		gbc_preDailyDose.insets = new Insets(0, 0, 5, 5);
 		gbc_preDailyDose.gridx = 3;
 		gbc_preDailyDose.gridy = 3;
+		preDailyDose.addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				checkDailyDose();
+			}
+		});
 		panel.add(preDailyDose, gbc_preDailyDose);
 
 		scrollPane = new JScrollPane();
@@ -346,6 +249,13 @@ public class PrescriptionUI {
 		gbc_addButton.insets = new Insets(0, 0, 5, 0);
 		gbc_addButton.gridx = 7;
 		gbc_addButton.gridy = 3;
+		addButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				addItem();
+			}
+		});
 		panel.add(addButton, gbc_addButton);
 
 		exceedDailyDose = new JCheckBox("OK to exceed Daily Dose");
@@ -353,6 +263,13 @@ public class PrescriptionUI {
 		gbc_exceedDailyDose.insets = new Insets(0, 0, 5, 5);
 		gbc_exceedDailyDose.gridx = 3;
 		gbc_exceedDailyDose.gridy = 4;
+		exceedDailyDose.addItemListener(new ItemListener() {
+
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				canExceedDailyDose(e);
+			}
+		});
 		panel.add(exceedDailyDose, gbc_exceedDailyDose);
 
 		removeButton = new JButton("Remove");
@@ -363,6 +280,13 @@ public class PrescriptionUI {
 		gbc_removeButton.insets = new Insets(0, 0, 5, 0);
 		gbc_removeButton.gridx = 7;
 		gbc_removeButton.gridy = 4;
+		removeButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				removeItem();
+			}
+		});
 		panel.add(removeButton, gbc_removeButton);
 
 		scrollPane_1 = new JScrollPane();
@@ -382,7 +306,15 @@ public class PrescriptionUI {
 
 		prescriptionTable.setPreferredScrollableViewportSize(new Dimension(450, 1000));
 		prescriptionTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		prescriptionTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				setRemoveButton();
+			}
+		});
+		prescriptionTable.setModel(new PrescriptionTableModel(new ArrayList<PrescriptionItem>()));
+		resizeColumnWidth(prescriptionTable);
 		panel.add(scrollPane_1, gbc_scrollPane_1);
 		scrollPane_1.setMinimumSize(scrollPane_1.getPreferredSize());
 		scrollPane_1.setViewportView(prescriptionTable);
@@ -394,14 +326,21 @@ public class PrescriptionUI {
 		gbc_clearButton.insets = new Insets(0, 0, 5, 0);
 		gbc_clearButton.gridx = 7;
 		gbc_clearButton.gridy = 5;
+		clearButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clearPrescription();
+			}
+		});
 		panel.add(clearButton, gbc_clearButton);
 
-		lblNewLabel_5 = new JLabel("Total Number of Prescription Items");
-		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
-		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_5.gridx = 1;
-		gbc_lblNewLabel_5.gridy = 8;
-		panel.add(lblNewLabel_5, gbc_lblNewLabel_5);
+		numberOfPrescriptionsLabel = new JLabel("Total Number of Prescription Items");
+		GridBagConstraints gbc_numberOfPrescriptionsLabel = new GridBagConstraints();
+		gbc_numberOfPrescriptionsLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_numberOfPrescriptionsLabel.gridx = 1;
+		gbc_numberOfPrescriptionsLabel.gridy = 8;
+		panel.add(numberOfPrescriptionsLabel, gbc_numberOfPrescriptionsLabel);
 
 		numberPrescriptions = new JTextField();
 		numberPrescriptions.setText("0");
@@ -414,13 +353,13 @@ public class PrescriptionUI {
 		panel.add(numberPrescriptions, gbc_numberPrescriptions);
 		numberPrescriptions.setColumns(10);
 
-		lblNewLabel_6 = new JLabel("Total Number of Containers");
-		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
-		gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_6.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_6.gridx = 5;
-		gbc_lblNewLabel_6.gridy = 8;
-		panel.add(lblNewLabel_6, gbc_lblNewLabel_6);
+		numberOfContainersLabel = new JLabel("Total Number of Containers");
+		GridBagConstraints gbc_numberOfContainersLabel = new GridBagConstraints();
+		gbc_numberOfContainersLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_numberOfContainersLabel.anchor = GridBagConstraints.EAST;
+		gbc_numberOfContainersLabel.gridx = 5;
+		gbc_numberOfContainersLabel.gridy = 8;
+		panel.add(numberOfContainersLabel, gbc_numberOfContainersLabel);
 
 		numberContainers = new JTextField();
 		numberContainers.setText("0");
@@ -440,6 +379,13 @@ public class PrescriptionUI {
 		gbc_exitButton.gridx = 7;
 		gbc_exitButton.gridy = 8;
 		panel.add(exitButton, gbc_exitButton);
+		exitButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 
 		textArea = new JTextArea(5, 20);
 		textArea.setWrapStyleWord(true);
@@ -451,10 +397,49 @@ public class PrescriptionUI {
 
 		popupMenu = new JPopupMenu();
 		editComment = new JMenuItem("Edit Comment");
+		editComment.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				editComment();
+			}
+		});
 		decrementDosage = new JMenuItem("Decrement Dosage");
+		decrementDosage.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				decrementDosage();
+			}
+		});
 
 		popupMenu.add(editComment);
 		popupMenu.add(decrementDosage);
+		popupMenu.addPopupMenuListener(new PopupMenuListener() {
+
+			@Override
+			public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
+				SwingUtilities.invokeLater(new Runnable() {
+
+					@Override
+					public void run() {
+						highlightSelectedRow();
+					}
+				});
+			}
+
+			@Override
+			public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void popupMenuCanceled(PopupMenuEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 		prescriptionTable.setComponentPopupMenu(popupMenu);
 
 		JPanel panel_1 = new JPanel();
@@ -491,7 +476,7 @@ public class PrescriptionUI {
 		if (e.getStateChange() == ItemEvent.SELECTED) {
 			addButton.setEnabled(true);
 		} else {
-			if (Integer.parseInt(preDailyDose.getValue().toString()) > Integer.parseInt(recDailyDoseText.getText())) {
+			if ((Integer) preDailyDose.getValue() > Integer.parseInt(recDailyDoseText.getText())) {
 				if (!exceedDailyDose.isSelected()) {
 					addButton.setEnabled(false);
 				}
