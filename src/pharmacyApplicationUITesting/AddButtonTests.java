@@ -45,11 +45,9 @@ public class AddButtonTests {
 
 		expect(mockDependencyDAL.getPharmaName()).andReturn(Arrays.asList("Medicine1", "Medicine2", "Medicine3"));
 
-		mockDependencyDAL.setCurrentPharmaName(anyObject());
-		expectLastCall().anyTimes();
 
-		expect(mockDependencyDAL.getPharmaInfo())
-				.andReturn(Arrays.asList(new Medicine(1, 5, "Bottle", "Comment", 0, 0))).anyTimes();
+		expect(mockDependencyDAL.getPharmaInfo(anyObject()))
+				.andReturn(new Medicine(1, 5, "Bottle", "Comment", 0, 0)).anyTimes();
 
 		replay(mockDependencyDAL);
 
@@ -81,7 +79,7 @@ public class AddButtonTests {
 		screen.mouseMove(100, 100);
 		Pattern pattern = new Pattern("imgs/add-button-active.png").similar(1f);
 		screen.click(pattern);
-		pattern = new Pattern("imgs/table-one-item.png").similar(1f);
+		pattern = new Pattern("imgs/table-one-item.png");
 		assertTrue(screen.exists(pattern) != null);
 	}
 
@@ -105,7 +103,7 @@ public class AddButtonTests {
 		Pattern pattern = new Pattern("imgs/combo-box-three-items.png").similar(1f);
 		screen.click(pattern);
 		screen.click("imgs/add-button-active.png");
-		pattern = new Pattern("imgs/table-two-items.png").similar(1f);
+		pattern = new Pattern("imgs/table-two-items.png");
 		assertTrue(screen.exists(pattern) != null);
 	}
 
@@ -137,7 +135,7 @@ public class AddButtonTests {
 		screen.type("My Comment");
 
 		screen.click("imgs/ok-button.png");
-		pattern = new Pattern("imgs/table-one-item-edited-comment.png").similar(1f);
+		pattern = new Pattern("imgs/table-one-item-edited-comment.png");
 		assertTrue(screen.exists(pattern) != null);
 
 	}

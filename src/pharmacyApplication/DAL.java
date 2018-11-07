@@ -12,7 +12,6 @@ import java.util.List;
  */
 public class DAL implements InterfaceDAL {
 	private Connection connect = null;
-	private String currentPharmaName = null;
 
 	/**
 	 * Default constructor for the class.
@@ -35,15 +34,6 @@ public class DAL implements InterfaceDAL {
 			e.printStackTrace();
 		}
 		connect = DriverManager.getConnection(connectionURL, username, password);
-	}
-
-	/**
-	 * @param currentPharmaName The currently selected pharmaceutical name on the
-	 *                          UI.
-	 */
-	@Override
-	public void setCurrentPharmaName(String currentPharmaName) {
-		this.currentPharmaName = currentPharmaName;
 	}
 
 	/**
@@ -71,7 +61,7 @@ public class DAL implements InterfaceDAL {
 	 * @return (List<Medicine>) List of medicines in the database.
 	 */
 	@Override
-	public List<Medicine> getPharmaInfo() {
+	public Medicine getPharmaInfo(String currentPharmaName) {
 		if (isStringOkay(currentPharmaName)) {
 			Statement statement;
 			ResultSet pharmaInfo = null;
@@ -81,7 +71,6 @@ public class DAL implements InterfaceDAL {
 						.executeQuery("select * from pharmaceuticals, specialrequirements where PharmaceuticalName='"
 								+ currentPharmaName
 								+ "' and pharmaceuticals.SpecialRequirementID=specialrequirements.SpecialRequirementID");
-				List<Medicine> medicineList = new ArrayList<>();
 				while (pharmaInfo.next()) {
 					int size = pharmaInfo.getInt("ContainerSize");
 					int recDailyDose = pharmaInfo.getInt("RecommendedDailyDose");
@@ -89,11 +78,9 @@ public class DAL implements InterfaceDAL {
 					String description = pharmaInfo.getString("Description");
 					int availableOverTheCounter = pharmaInfo.getInt("AvailableOverTheCounter");
 					int storeInFridge = pharmaInfo.getInt("StoreInFridge");
-					Medicine medicine = new Medicine(size, recDailyDose, containerType, description,
+					return new Medicine(size, recDailyDose, containerType, description,
 							availableOverTheCounter, storeInFridge);
-					medicineList.add(medicine);
 				}
-				return medicineList;
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

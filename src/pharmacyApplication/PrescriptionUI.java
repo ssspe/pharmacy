@@ -395,7 +395,6 @@ public class PrescriptionUI {
 		pnl.add(new JLabel("Please edit the comment:"), BorderLayout.NORTH);
 		pnl.add(textArea, BorderLayout.CENTER);
 
-		popupMenu = new JPopupMenu();
 		editComment = new JMenuItem("Edit Comment");
 		editComment.addActionListener(new ActionListener() {
 
@@ -413,6 +412,7 @@ public class PrescriptionUI {
 			}
 		});
 
+		popupMenu = new JPopupMenu();
 		popupMenu.add(editComment);
 		popupMenu.add(decrementDosage);
 		popupMenu.addPopupMenuListener(new PopupMenuListener() {
@@ -445,16 +445,13 @@ public class PrescriptionUI {
 		JPanel panel_1 = new JPanel();
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
-
-		dal.setCurrentPharmaName(pharmaList.get(0));
-		updateValues();
+		updateValues(pharmaList.get(0));
 	}
 
 	private void pharmaceuticalComboSelected(ItemEvent e) {
 		if (e.getStateChange() == ItemEvent.SELECTED) {
 			String pharmaName = pharmaceuticalCombo.getSelectedItem().toString();
-			dal.setCurrentPharmaName(pharmaName);
-			updateValues();
+			updateValues(pharmaName);
 		}
 	}
 
@@ -489,8 +486,7 @@ public class PrescriptionUI {
 		if (addComment.isSelected()) {
 			comment = JOptionPane.showInputDialog("Write a Comment");
 			if (comment != null) {
-				comment = formatComment(comment);
-				descriptionComment += "; " + comment;
+				descriptionComment += "; " + formatComment(comment);
 			} else {
 				return;
 			}
@@ -537,8 +533,8 @@ public class PrescriptionUI {
 		PrescriptionTableModel model = (PrescriptionTableModel) prescriptionTable.getModel();
 		int row = prescriptionTable.getSelectedRow();
 		textArea.setText(prescriptionTable.getModel().getValueAt(row, 5).toString());
-		int okCxl = JOptionPane.showConfirmDialog(null, pnl, "Enter Data", JOptionPane.OK_CANCEL_OPTION);
-		if (okCxl == JOptionPane.OK_OPTION) {
+		int selectedOption = JOptionPane.showConfirmDialog(null, pnl, "Enter Data", JOptionPane.OK_CANCEL_OPTION);
+		if (selectedOption == JOptionPane.OK_OPTION) {
 			String comment = formatComment(textArea.getText());
 			model.setCommentAt(comment, row);
 		}
@@ -564,42 +560,56 @@ public class PrescriptionUI {
 		decrementDosage.setEnabled((Integer) prescriptionTable.getValueAt(row, 2) != 1);
 	}
 
-	private void updateValues() {
-		List<Medicine> listOfMedicines = dal.getPharmaInfo();
-		for (Medicine medicine : listOfMedicines) {
-			containerSize = medicine.getSize();
-			maxValue = medicine.getRecDailyDose();
-			String containerType = medicine.getContainerType();
-			String finalText = medicine.getDescription();
-			int availableOverTheCounter = medicine.getAvailableOverTheCounter();
-			int storeInFridge = medicine.getStoreInFridge();
-			if (availableOverTheCounter == 1) {
-				finalText += "; Available over the counter and maybe cheaper";
-				this.availableOverTheCounter = true;
-			} else {
-				this.availableOverTheCounter = false;
-			}
-
-			finalText += storeInFridge == 1 ? "; MUST BE STORED IN FRIDGE" : "";
-			finalText += "; Comes in a " + (containerType == "Box" ? ("box of " + containerSize + " tablets")
-					: (containerSize + "ml " + containerType));
-
-			recDailyDoseText.setText(String.valueOf(maxValue));
-			description.setText(finalText);
+	/**
+	 * Updates the UI values with the selected pharmaceuticals values from the
+	 * database.
+	 */
+	private void updateValues(String pharmaName) {
+		Medicine medicine = dal.getPharmaInfo(pharmaName);
+		containerSize = medicine.getSize();
+		maxValue = medicine.getRecDailyDose();
+		String containerType = medicine.getContainerType();
+		String finalText = medicine.getDescription();
+		int availableOverTheCounter = medicine.getAvailableOverTheCounter();
+		int storeInFridge = medicine.getStoreInFridge();
+		if (availableOverTheCounter == 1) {
+			finalText += "; Available over the counter and maybe cheaper";
+			this.availableOverTheCounter = true;
+		} else {
+			this.availableOverTheCounter = false;
 		}
+
+		// If stored in a fridge update the final text
+		finalText += storeInFridge == 1 ? "; MUST BE STORED IN FRIDGE" : "";
+
+		// Change the text based on teh container type
+		finalText += "; Comes in a " + (containerType == "Box" ? ("box of " + containerSize + " tablets")
+				: (containerSize + "ml " + containerType));
+
+		recDailyDoseText.setText(String.valueOf(maxValue));
+		description.setText(finalText);
+		
+		// Reset the models of the spinners so they can't go below 0.
 		preDailyDose.setModel(new SpinnerNumberModel(1, 1, maxValue * 2, 1));
 		duration.setModel(new SpinnerNumberModel(1, 1, null, 1));
 	}
 
+	/**
+	 * Resizes the columns of a table based on the content or header, which ever is
+	 * bigger.
+	 * 
+	 * @param table The table to resize.
+	 */
 	private void resizeColumnWidth(JTable table) {
 		final TableColumnModel columnModel = table.getColumnModel();
-		int[] widths = new int[6];
+		int[] widths = new int[table.getColumnCount()];
 		for (int column = 0; column < table.getColumnCount(); column++) {
-			int width = 50; // Minimum width
+			int width = 50; // Minimum width of column
 			for (int row = 0; row < table.getRowCount(); row++) {
 				TableCellRenderer renderer = table.getCellRenderer(row, column);
 				Component comp = table.prepareRenderer(renderer, row, column);
 
+				// Choosing the width of the row or min width
 				width = Math.max(comp.getPreferredSize().width + 1, width);
 			}
 			TableColumn tableColumn = columnModel.getColumn(column);
@@ -610,27 +620,46 @@ public class PrescriptionUI {
 			Object headerValue = tableColumn.getHeaderValue();
 			Component headerComp = headerRenderer.getTableCellRendererComponent(table, headerValue, false, false, 0,
 					column);
+			// Choosing the width of the column or the last set width
 			width = Math.max(width, headerComp.getPreferredSize().width) + 10;
 			columnModel.getColumn(column).setPreferredWidth(width);
-			widths[column] = width;
+			widths[column] = width; // Holding array of all width lengths
 		}
 		if (IntStream.of(widths).sum() < scrollPane_1.getWidth()) {
+			// If the length of all columns does not fill the scroll pane then extend the
+			// last column to fit the scroll pane.
 			int sum = IntStream.of(Arrays.copyOfRange(widths, 0, 5)).sum();
 			columnModel.getColumn(5).setPreferredWidth(scrollPane_1.getWidth() - sum);
 		}
 	}
 
+	/**
+	 * Updates the prescription counter text. Also checks whether the clear button
+	 * should be enabled.
+	 * 
+	 * @param prescriptionCounter prescription counter text.
+	 */
 	private void updatePrescriptionCounter(int prescriptionCounter) {
 		numberPrescriptions.setText(String.valueOf(prescriptionCounter));
 		clearButton.setEnabled(prescription.getNumberOfPharmaceuticals() != 0);
 	}
 
+	/**
+	 * @param numberOfContainers Update the number of containers text.
+	 */
 	private void updateNumberContainers(int numberOfContainers) {
 		numberContainers.setText(String.valueOf(numberOfContainers));
 	}
 
+	/**
+	 * Checks that a comment ends in a colon, and adds one if it does not. Also adds
+	 * a line break.
+	 * 
+	 * @param comment The comment to format.
+	 * @return (String) Formatted comment
+	 */
 	private String formatComment(String comment) {
-		String regex = "(.*)(;$)";
+		String regex = "(.*)(;$)"; // Regex that checks if the end of a line ends in ';'
 		Pattern r = Pattern.compile(regex);
 		Matcher m = r.matcher(comment);
 		if (!m.find()) {

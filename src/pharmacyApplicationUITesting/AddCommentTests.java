@@ -1,5 +1,6 @@
 package pharmacyApplicationUITesting;
 
+import static org.easymock.EasyMock.anyObject;
 import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
@@ -41,10 +42,7 @@ public class AddCommentTests {
 		
 		expect(mockDependency.getPharmaName()).andReturn(Arrays.asList("Medicine1"));
 		
-		mockDependency.setCurrentPharmaName("Medicine1");
-		expectLastCall();
-		
-		expect(mockDependency.getPharmaInfo()).andReturn(Arrays.asList(new Medicine(1, 5, "Bottle", "Comment", 0, 0)));
+		expect(mockDependency.getPharmaInfo(anyObject())).andReturn(new Medicine(1, 5, "Bottle", "Comment", 0, 0));
 		replay(mockDependency);
 		
 		mockDependencyPre = createMock(InterfacePrescription.class);

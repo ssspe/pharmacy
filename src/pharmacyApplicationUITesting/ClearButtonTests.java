@@ -40,11 +40,8 @@ public class ClearButtonTests {
 
 		expect(mockDependencyDAL.getPharmaName()).andReturn(Arrays.asList("Medicine1", "Medicine2", "Medicine3"));
 
-		mockDependencyDAL.setCurrentPharmaName(anyObject());
-		expectLastCall().anyTimes();
-
-		expect(mockDependencyDAL.getPharmaInfo())
-				.andReturn(Arrays.asList(new Medicine(1, 5, "Bottle", "Comment", 0, 0))).anyTimes();
+		expect(mockDependencyDAL.getPharmaInfo(anyObject()))
+				.andReturn(new Medicine(1, 5, "Bottle", "Comment", 0, 0)).anyTimes();
 
 		replay(mockDependencyDAL);
 
@@ -107,19 +104,18 @@ public class ClearButtonTests {
 		screen.mouseMove(100, 100);
 		screen.click("imgs/add-button-active.png");
 
-		pattern = new Pattern("imgs/table-one-item.png").similar(1f);
+		pattern = new Pattern("imgs/table-one-item.png");
 		assertTrue(screen.exists(pattern) != null);
 
-		pattern = new Pattern("imgs/clear-button-active.png").similar(1f);
+		pattern = new Pattern("imgs/clear-button-active.png");
 		screen.click(pattern);
 
-		pattern = new Pattern("imgs/table-zero-items.png").similar(0.99f);
-
+		pattern = new Pattern("imgs/table-zero-items.png");
 		assertTrue(screen.exists(pattern) != null);
 	}
 
 	@Test
-	public void Remove_Button_Removes_All_Rows() throws FindFailed, InterruptedException {
+	public void Clear_Button_Removes_All_Rows() throws FindFailed, InterruptedException {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
@@ -135,22 +131,23 @@ public class ClearButtonTests {
 						new PrescriptionItem("Medicine2", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
 
 		replay(mockDependencyPre);
-
+		
+		screen.mouseMove(100, 100);
 		screen.click("imgs/add-button-active.png");
 		screen.click("imgs/combo-box.png");
 
-		Pattern pattern = new Pattern("imgs/combo-box-three-items.png").similar(1f);
+		Pattern pattern = new Pattern("imgs/combo-box-three-items.png");
 		screen.click(pattern);
 
 		screen.click("imgs/add-button-active.png");
 
-		pattern = new Pattern("imgs/table-two-items.png").similar(1f);
+		pattern = new Pattern("imgs/table-two-items.png");
 		assertTrue(screen.exists(pattern) != null);
 
-		pattern = new Pattern("imgs/clear-button-active.png").similar(1f);
+		pattern = new Pattern("imgs/clear-button-active.png");
 		screen.click(pattern);
 
-		pattern = new Pattern("imgs/table-zero-items.png").similar(0.99f);
+		pattern = new Pattern("imgs/table-zero-items.png");
 		assertTrue(screen.exists(pattern) != null);
 	}
 }

@@ -1,5 +1,6 @@
 package pharmacyApplicationUITesting;
 
+import static org.easymock.EasyMock.anyObject;
 import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
@@ -26,32 +27,29 @@ import static pharmacyApplicationUITesting.HelperFunctions.*;
 public class DurationTests {
 	private Screen screen;
 	private InterfaceDAL mockDependency;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		mockDependency = createMock(InterfaceDAL.class);
 		FactoryDAL.setInstance(mockDependency);
 		mockDependency.connect("", "", "");
 		expectLastCall();
-		
+
 		expect(mockDependency.getPharmaName()).andReturn(Arrays.asList("Medicine1"));
-		
-		mockDependency.setCurrentPharmaName("Medicine1");
-		expectLastCall();
-		
-		expect(mockDependency.getPharmaInfo()).andReturn(Arrays.asList(new Medicine(0, 5, "Bottle", "Comment", 0, 0)));
+
+		expect(mockDependency.getPharmaInfo(anyObject())).andReturn(new Medicine(0, 5, "Bottle", "Comment", 0, 0));
 		replay(mockDependency);
 		setUpUI();
 		screen = new Screen();
 		assertTrue(screen.exists("imgs/duration-default.png") != null);
 	}
-	
+
 	@After
 	public void tearDown() {
 		verify(mockDependency);
 		closeUI();
 	}
-	
+
 	@Test
 	public void Duration_Cant_Go_Below_Zero() throws FindFailed {
 		screen.mouseMove(100, 100);
@@ -60,20 +58,20 @@ public class DurationTests {
 		Pattern pattern = new Pattern("imgs/duration-zero.png").similar(1f);
 		assertFalse(screen.exists(pattern) != null);
 	}
-	
+
 	@Test
 	public void Duration_Increments_By_One() throws FindFailed {
 		List<Match> arrow_list = sortList(screen.findAll("imgs/up-arrow.png"));
-		for(int x = 0; x < 3; x++) {
+		for (int x = 0; x < 3; x++) {
 			screen.click(arrow_list.get(1));
 		}
 		assertTrue(screen.exists("imgs/duration-four.png") != null);
-		
+
 		arrow_list = sortList(screen.findAll("imgs/down-arrow.png"));
-		for(int x = 0; x < 3; x++) {
+		for (int x = 0; x < 3; x++) {
 			screen.click(arrow_list.get(1));
 		}
-		
+
 		assertTrue(screen.exists("imgs/duration-default.png") != null);
 	}
 

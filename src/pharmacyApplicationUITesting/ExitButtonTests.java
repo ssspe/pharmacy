@@ -39,11 +39,8 @@ public class ExitButtonTests {
 
 		expect(mockDependencyDAL.getPharmaName()).andReturn(Arrays.asList("Medicine1", "Medicine2", "Medicine3"));
 
-		mockDependencyDAL.setCurrentPharmaName(anyObject());
-		expectLastCall().anyTimes();
-
-		expect(mockDependencyDAL.getPharmaInfo())
-				.andReturn(Arrays.asList(new Medicine(1, 5, "Bottle", "Comment", 0, 0))).anyTimes();
+		expect(mockDependencyDAL.getPharmaInfo(anyObject())).andReturn(new Medicine(1, 5, "Bottle", "Comment", 0, 0))
+				.anyTimes();
 
 		replay(mockDependencyDAL);
 

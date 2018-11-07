@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface InterfaceDAL {
 	List getPharmaName() throws SQLException;
-	List getPharmaInfo();
+	Medicine getPharmaInfo(String currentPharmaName);
 	void connect(String connectionURL, String username, String password) throws SQLException;
-	void setCurrentPharmaName(String currentPharmaName);
 }

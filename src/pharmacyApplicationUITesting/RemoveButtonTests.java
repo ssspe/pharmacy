@@ -40,11 +40,8 @@ public class RemoveButtonTests {
 
 		expect(mockDependencyDAL.getPharmaName()).andReturn(Arrays.asList("Medicine1", "Medicine2", "Medicine3"));
 
-		mockDependencyDAL.setCurrentPharmaName(anyObject());
-		expectLastCall().anyTimes();
-
-		expect(mockDependencyDAL.getPharmaInfo())
-				.andReturn(Arrays.asList(new Medicine(1, 5, "Bottle", "Comment", 0, 0))).anyTimes();
+		expect(mockDependencyDAL.getPharmaInfo(anyObject())).andReturn(new Medicine(1, 5, "Bottle", "Comment", 0, 0))
+				.anyTimes();
 
 		replay(mockDependencyDAL);
 
@@ -85,7 +82,7 @@ public class RemoveButtonTests {
 
 		screen.click("imgs/add-button-active.png");
 
-		pattern = new Pattern("imgs/table-one-item.png").similar(1f);
+		pattern = new Pattern("imgs/table-one-item.png");
 		screen.click(pattern.targetOffset(0, -30));
 
 		pattern = new Pattern("imgs/remove-button-active.png").similar(1f);
@@ -110,11 +107,12 @@ public class RemoveButtonTests {
 
 		screen.click("imgs/add-button-active.png");
 
-		pattern = new Pattern("imgs/table-one-item.png").similar(1f);
+		pattern = new Pattern("imgs/table-one-item.png");
 		screen.click(pattern.targetOffset(0, -30));
 
-		pattern = new Pattern("imgs/remove-button-active.png").similar(1f);
+		pattern = new Pattern("imgs/remove-button-active.png");
 		screen.click(pattern);
+		
 		pattern = new Pattern("imgs/table-zero-items.png").similar(0.99f);
 		assertTrue(screen.exists(pattern) != null);
 	}
@@ -147,13 +145,13 @@ public class RemoveButtonTests {
 
 		screen.click("imgs/add-button-active.png");
 
-		pattern = new Pattern("imgs/table-two-items.png").similar(1f);
+		pattern = new Pattern("imgs/table-two-items.png");
 		screen.click(pattern.targetOffset(0, -30));
 
-		pattern = new Pattern("imgs/remove-button-active.png").similar(1f);
+		pattern = new Pattern("imgs/remove-button-active.png");
 		screen.click(pattern);
-		pattern = new Pattern("imgs/table-one-item-medicine-two.png").similar(1f);
-
+		
+		pattern = new Pattern("imgs/table-one-item-medicine-two.png");
 		assertTrue(screen.exists(pattern) != null);
 	}
 

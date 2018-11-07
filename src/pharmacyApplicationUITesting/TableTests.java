@@ -1,5 +1,6 @@
 package pharmacyApplicationUITesting;
 
+import static org.easymock.EasyMock.anyObject;
 import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
@@ -39,10 +40,7 @@ public class TableTests {
 		
 		expect(mockDependency.getPharmaName()).andReturn(Arrays.asList("Medicine1"));
 		
-		mockDependency.setCurrentPharmaName("Medicine1");
-		expectLastCall();
-		
-		expect(mockDependency.getPharmaInfo()).andReturn(Arrays.asList(new Medicine(1, 5, "Bottle", "Comment", 0, 0)));
+		expect(mockDependency.getPharmaInfo(anyObject())).andReturn(new Medicine(1, 5, "Bottle", "Comment", 0, 0));
 		replay(mockDependency);
 		
 		mockDependencyPre = createMock(InterfacePrescription.class);
@@ -73,7 +71,7 @@ public class TableTests {
 		
 		screen.click("imgs/add-button-active.png");
 		
-		Pattern pattern = new Pattern("imgs/table-one-item.png").similar(1f);
+		Pattern pattern = new Pattern("imgs/table-one-item.png");
 		screen.rightClick(pattern.targetOffset(0, -30));
 		
 		screen.mouseMove(100, 100);
@@ -93,11 +91,11 @@ public class TableTests {
 		
 		screen.click("imgs/add-button-active.png");
 		
-		Pattern pattern = new Pattern("imgs/table-one-item.png").similar(1f);
+		Pattern pattern = new Pattern("imgs/table-one-item.png");
 		screen.rightClick(pattern.targetOffset(0, -30));
 		
 		screen.mouseMove(100, 100);
-		pattern = new Pattern("imgs/context-menu.png").similar(0.9f);
+		pattern = new Pattern("imgs/context-menu.png");
 		screen.click(pattern.targetOffset(0, -10));
 		
 		pattern = new Pattern("imgs/comment-context-box.png").similar(0.99f);
