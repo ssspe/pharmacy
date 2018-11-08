@@ -73,7 +73,6 @@ public class DurationTests {
 		for (int x = 0; x < 3; x++) {
 			screen.click(arrow_list.get(1));
 		}
-
 		assertTrue(screen.exists("imgs/duration-default.png") != null);
 	}
 
