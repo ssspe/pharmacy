@@ -1,15 +1,25 @@
 package pharmacyApplication;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+/**
+ * Class to define a custom Table Model to allow the prescription table to link
+ * to the prescription data source. Extends the AbstractTableModel class.
+ * 
+ * @author spencer.robertson
+ */
 public class PrescriptionTableModel extends AbstractTableModel {
-	private List<PrescriptionItem> prescriptionItems = new ArrayList<PrescriptionItem>();
+	private List<PrescriptionItem> prescriptionItems;
 	String[] columnNames = { "Product Name", "Duration", "Prescribed Daily Dose", "Number of Containers", "OTC",
 			"Comments" };
 
+	/**
+	 * Constructor for the class that assigns the data source.
+	 * 
+	 * @param prescriptionItems List of prescription items.
+	 */
 	public PrescriptionTableModel(List<PrescriptionItem> prescriptionItems) {
 		this.prescriptionItems = prescriptionItems;
 	}
@@ -29,6 +39,12 @@ public class PrescriptionTableModel extends AbstractTableModel {
 		return columnNames.length;
 	}
 
+	/**
+	 * Updates the daily dose for the specified row.
+	 * 
+	 * @param value The new value.
+	 * @param row   The selected row.
+	 */
 	public void setDailyDoseAt(int value, int row) {
 		PrescriptionItem temp = prescriptionItems.get(row);
 		temp.setPrescribedDailyDose(value);
@@ -37,6 +53,12 @@ public class PrescriptionTableModel extends AbstractTableModel {
 		fireTableRowsUpdated(row, row);
 	}
 
+	/**
+	 * Updates the comment for the specified row.
+	 * 
+	 * @param value The new value.
+	 * @param row   The selected row.
+	 */
 	public void setCommentAt(String value, int row) {
 		PrescriptionItem temp = prescriptionItems.get(row);
 		temp.setComment(value);
