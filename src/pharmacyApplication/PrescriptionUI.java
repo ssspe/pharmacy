@@ -57,7 +57,6 @@ public class PrescriptionUI {
 	private JTextField numberPrescriptions;
 	private JTextField numberContainers;
 	private JCheckBox exceedDailyDose;
-	private JLabel label;
 	private JLabel pharmaNameLabel;
 	private JLabel recDailyDoseLabel;
 	private JLabel preDailyDoseLabel;
@@ -91,7 +90,7 @@ public class PrescriptionUI {
 	private JPanel pnl;
 
 	/**
-	 * Create the application.
+	 * Connects to the DAL and retrieves the list of medicine names.
 	 * 
 	 * @throws SQLException
 	 */
@@ -101,6 +100,7 @@ public class PrescriptionUI {
 		pharmaList = dal.getPharmaName();
 		prescription = FactoryPrescription.create();
 		initializeUIElements();
+		resizeColumnWidth(prescriptionTable);
 	}
 
 	/**
@@ -155,13 +155,6 @@ public class PrescriptionUI {
 		gbc_durationLabel.gridx = 5;
 		gbc_durationLabel.gridy = 1;
 		panel.add(durationLabel, gbc_durationLabel);
-
-		label = new JLabel("");
-		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.insets = new Insets(0, 0, 5, 5);
-		gbc_label.gridx = 3;
-		gbc_label.gridy = 2;
-		panel.add(label, gbc_label);
 
 		pharmaceuticalCombo = new JComboBox<String>();
 		GridBagConstraints gbc_pharmaceuticalCombo = new GridBagConstraints();
@@ -299,12 +292,10 @@ public class PrescriptionUI {
 		gbc_scrollPane_1.gridy = 5;
 
 		prescriptionTable = new JTable();
-		prescriptionTable.setPreferredScrollableViewportSize(new Dimension(scrollPane_1.WIDTH, scrollPane_1.HEIGHT));
 		prescriptionTable.setShowVerticalLines(false);
 		prescriptionTable.setShowHorizontalLines(false);
 		prescriptionTable.setFillsViewportHeight(true);
 
-		prescriptionTable.setPreferredScrollableViewportSize(new Dimension(450, 1000));
 		prescriptionTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		prescriptionTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
@@ -313,10 +304,8 @@ public class PrescriptionUI {
 				setRemoveButton();
 			}
 		});
-		prescriptionTable.setModel(new PrescriptionTableModel(new ArrayList<PrescriptionItem>()));
-		resizeColumnWidth(prescriptionTable);
+		
 		panel.add(scrollPane_1, gbc_scrollPane_1);
-		scrollPane_1.setMinimumSize(scrollPane_1.getPreferredSize());
 		scrollPane_1.setViewportView(prescriptionTable);
 
 		clearButton = new JButton("Clear");
@@ -448,6 +437,12 @@ public class PrescriptionUI {
 		updateValues(pharmaList.get(0));
 	}
 
+	/**
+	 * Will update the UI elements when a new medicine is selected from the drop
+	 * down box.
+	 * 
+	 * @param e Item event checking if the comboBox has been selected.
+	 */
 	private void pharmaceuticalComboSelected(ItemEvent e) {
 		if (e.getStateChange() == ItemEvent.SELECTED) {
 			String pharmaName = pharmaceuticalCombo.getSelectedItem().toString();
@@ -455,6 +450,10 @@ public class PrescriptionUI {
 		}
 	}
 
+	/**
+	 * Checks if the prescribed daily does is more than recommended. If so it
+	 * toggles the add button and forces the add comment checkbox.
+	 */
 	private void checkDailyDose() {
 		if ((Integer) preDailyDose.getValue() > Integer.parseInt(recDailyDoseText.getText())) {
 			if (!exceedDailyDose.isSelected()) {
@@ -469,6 +468,12 @@ public class PrescriptionUI {
 		}
 	}
 
+	/**
+	 * Callback function to check if the user has allowed the prescription item to
+	 * exceed the daily dose and if so will toggle the add button.
+	 * 
+	 * @param e Item event checking if the checkbox is selected.
+	 */
 	private void canExceedDailyDose(ItemEvent e) {
 		if (e.getStateChange() == ItemEvent.SELECTED) {
 			addButton.setEnabled(true);
@@ -481,8 +486,15 @@ public class PrescriptionUI {
 		}
 	}
 
+	/**
+	 * Adds an item to the prescription using the user set items on the UI. Will
+	 * then update the table, the prescription counter and the number of containers
+	 * accordingly.
+	 */
 	private void addItem() {
 		String descriptionComment = description.getText();
+
+		// Checking if the user wants to add a comment.
 		if (addComment.isSelected()) {
 			comment = JOptionPane.showInputDialog("Write a Comment");
 			if (comment != null) {
@@ -502,6 +514,11 @@ public class PrescriptionUI {
 		updateNumberContainers(prescription.getNumberOfContainers());
 	}
 
+	/**
+	 * Removes the current selected prescription item from the prescription and
+	 * updates the table, the prescription counter and the number of containers
+	 * accordingly.
+	 */
 	private void removeItem() {
 		int row = prescriptionTable.getSelectedRow();
 		String pharmaceuticalName = prescriptionTable.getModel().getValueAt(row, 0).toString();
@@ -513,14 +530,18 @@ public class PrescriptionUI {
 		updateNumberContainers(prescription.getNumberOfContainers());
 	}
 
+	/**
+	 * Enables or disables the remove button based on whether or not a row is
+	 * selected.
+	 */
 	private void setRemoveButton() {
-		if (prescriptionTable.getSelectedRow() != -1) {
-			removeButton.setEnabled(true);
-		} else {
-			removeButton.setEnabled(false);
-		}
+		removeButton.setEnabled(prescriptionTable.getSelectedRow() != -1);
 	}
 
+	/**
+	 * Will clear the prescription and remove all rows from the table. Will also
+	 * update the prescription counter and number containers to 0.
+	 */
 	private void clearPrescription() {
 		prescription.clearPrescription();
 		prescriptionTable.setModel(new PrescriptionTableModel(new ArrayList<PrescriptionItem>()));
@@ -529,6 +550,10 @@ public class PrescriptionUI {
 		updateNumberContainers(0);
 	}
 
+	/**
+	 * Allows a user to edit the comment of a specific prescription item in the
+	 * table.
+	 */
 	private void editComment() {
 		PrescriptionTableModel model = (PrescriptionTableModel) prescriptionTable.getModel();
 		int row = prescriptionTable.getSelectedRow();
@@ -540,6 +565,10 @@ public class PrescriptionUI {
 		}
 	}
 
+	/**
+	 * Decrements the dosage of the currently selected row. Even though we disable
+	 * the button if the value is already one, it is worth checking again.
+	 */
 	private void decrementDosage() {
 		PrescriptionTableModel model = (PrescriptionTableModel) prescriptionTable.getModel();
 		int row = prescriptionTable.getSelectedRow();
@@ -549,6 +578,11 @@ public class PrescriptionUI {
 		}
 	}
 
+	/**
+	 * Highlights the row that has just been interacted with. Also enables/disables
+	 * the decrement dosage in the context menu based on whether or not the current
+	 * dosage is more than 1.
+	 */
 	private void highlightSelectedRow() {
 		int rowAtPoint = prescriptionTable
 				.rowAtPoint(SwingUtilities.convertPoint(popupMenu, new Point(0, 0), prescriptionTable));
@@ -588,7 +622,7 @@ public class PrescriptionUI {
 
 		recDailyDoseText.setText(String.valueOf(maxValue));
 		description.setText(finalText);
-		
+
 		// Reset the models of the spinners so they can't go below 0.
 		preDailyDose.setModel(new SpinnerNumberModel(1, 1, maxValue * 2, 1));
 		duration.setModel(new SpinnerNumberModel(1, 1, null, 1));
