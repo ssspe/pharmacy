@@ -7,7 +7,6 @@ import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
 import static org.junit.Assert.*;
-import static pharmacyApplicationUITesting.HelperFunctions.closeUI;
 import static pharmacyApplicationUITesting.HelperFunctions.setUpUI;
 
 import java.util.Arrays;
@@ -20,10 +19,8 @@ import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
 import pharmacyApplication.InterfaceDAL;
-import pharmacyApplication.InterfacePrescription;
 import pharmacyApplication.Medicine;
 import pharmacyApplicationFactories.FactoryDAL;
-import pharmacyApplicationFactories.FactoryPrescription;
 
 public class ExitButtonTests {
 
@@ -46,7 +43,6 @@ public class ExitButtonTests {
 
 		setUpUI();
 		screen = new Screen();
-		assertTrue(screen.exists("imgs/duration-default.png") != null);
 	}
 
 	@After

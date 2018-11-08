@@ -50,7 +50,6 @@ public class RemoveButtonTests {
 
 		setUpUI();
 		screen = new Screen();
-		assertTrue(screen.exists("imgs/duration-default.png") != null);
 	}
 
 	@After

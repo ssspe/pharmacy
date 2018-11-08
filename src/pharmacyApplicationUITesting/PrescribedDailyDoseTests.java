@@ -2,21 +2,12 @@ package pharmacyApplicationUITesting;
 
 import static org.junit.Assert.*;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-
-import javax.imageio.plugins.tiff.ExifGPSTagSet;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.sikuli.script.Env;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
@@ -30,7 +21,6 @@ import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.EasyMock.verify;
 import pharmacyApplication.InterfaceDAL;
 import pharmacyApplication.Medicine;
-import pharmacyApplication.PrescriptionUI;
 import pharmacyApplicationFactories.FactoryDAL;
 import static pharmacyApplicationUITesting.HelperFunctions.*;
 
@@ -102,7 +92,7 @@ public class PrescribedDailyDoseTests {
 			screen.click(arrow_list.get(0));
 		}
 		screen.mouseMove(100, 100);
-		Pattern pattern = new Pattern("imgs/prescribed-daily-dose-ten.png").similar(1f);
+		Pattern pattern = new Pattern("imgs/prescribed-daily-dose-ten.png");
 		assertTrue(screen.exists(pattern) != null);
 	}
 }

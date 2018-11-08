@@ -11,7 +11,6 @@ import static pharmacyApplicationUITesting.HelperFunctions.closeUI;
 import static pharmacyApplicationUITesting.HelperFunctions.setUpUI;
 import static pharmacyApplicationUITesting.HelperFunctions.sortList;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,7 +21,6 @@ import org.sikuli.script.FindFailed;
 import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
-import org.sikuli.script.Region;
 
 import pharmacyApplication.InterfaceDAL;
 import pharmacyApplication.InterfacePrescription;
@@ -40,14 +38,14 @@ public class AddButtonTests {
 	public void setUp() throws Exception {
 		mockDependencyDAL = createMock(InterfaceDAL.class);
 		FactoryDAL.setInstance(mockDependencyDAL);
+
 		mockDependencyDAL.connect("", "", "");
 		expectLastCall();
 
 		expect(mockDependencyDAL.getPharmaName()).andReturn(Arrays.asList("Medicine1", "Medicine2", "Medicine3"));
 
-
-		expect(mockDependencyDAL.getPharmaInfo(anyObject()))
-				.andReturn(new Medicine(1, 5, "Bottle", "Comment", 0, 0)).anyTimes();
+		expect(mockDependencyDAL.getPharmaInfo(anyObject())).andReturn(new Medicine(1, 5, "Bottle", "Comment", 0, 0))
+				.anyTimes();
 
 		replay(mockDependencyDAL);
 

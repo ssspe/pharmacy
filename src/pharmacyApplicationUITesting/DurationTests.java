@@ -41,7 +41,6 @@ public class DurationTests {
 		replay(mockDependency);
 		setUpUI();
 		screen = new Screen();
-		assertTrue(screen.exists("imgs/duration-default.png") != null);
 	}
 
 	@After
