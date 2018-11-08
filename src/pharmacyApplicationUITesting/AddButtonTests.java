@@ -75,9 +75,8 @@ public class AddButtonTests {
 		replay(mockDependencyPre);
 
 		screen.mouseMove(100, 100);
-		Pattern pattern = new Pattern("imgs/add-button-active.png").similar(1f);
-		screen.click(pattern);
-		pattern = new Pattern("imgs/table-one-item.png");
+		screen.click("imgs/add-button-active.png");
+		Pattern pattern = new Pattern("imgs/table-one-item.png");
 		assertTrue(screen.exists(pattern) != null);
 	}
 
@@ -125,10 +124,7 @@ public class AddButtonTests {
 		List<Match> checkbox_list = sortList(screen.findAll("imgs/check-box.png"));
 		screen.click(checkbox_list.get(0));
 
-		pattern = new Pattern("imgs/add-button-active.png").similar(1f);
-		assertTrue(pattern != null);
-
-		screen.click(pattern);
+		screen.click("imgs/add-button-active.png");
 
 		screen.type("My Comment");
 

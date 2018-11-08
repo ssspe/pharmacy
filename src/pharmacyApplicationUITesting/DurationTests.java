@@ -59,12 +59,15 @@ public class DurationTests {
 	}
 
 	@Test
-	public void Duration_Increments_By_One() throws FindFailed {
+	public void Duration_Increments_By_One() throws FindFailed, InterruptedException {
 		List<Match> arrow_list = sortList(screen.findAll("imgs/up-arrow.png"));
 		for (int x = 0; x < 3; x++) {
 			screen.click(arrow_list.get(1));
 		}
-		assertTrue(screen.exists("imgs/duration-four.png") != null);
+		screen.mouseMove(100, 100);
+		Pattern pattern = new Pattern("imgs/duration-four.png");
+		assertTrue(screen.exists(pattern) != null);
+		
 
 		arrow_list = sortList(screen.findAll("imgs/down-arrow.png"));
 		for (int x = 0; x < 3; x++) {

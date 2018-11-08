@@ -112,7 +112,7 @@ public class RemoveButtonTests {
 		pattern = new Pattern("imgs/remove-button-active.png");
 		screen.click(pattern);
 		
-		pattern = new Pattern("imgs/table-zero-items.png").similar(0.99f);
+		pattern = new Pattern("imgs/table-zero-items.png");
 		assertTrue(screen.exists(pattern) != null);
 	}
 

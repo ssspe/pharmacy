@@ -28,7 +28,6 @@ import pharmacyApplication.Medicine;
 import pharmacyApplication.PrescriptionItem;
 import pharmacyApplicationFactories.FactoryDAL;
 import pharmacyApplicationFactories.FactoryPrescription;
-import sun.java2d.ScreenUpdateManager;
 
 public class TableTests {
 	private Screen screen;
@@ -102,7 +101,7 @@ public class TableTests {
 		pattern = new Pattern("imgs/context-menu.png");
 		screen.click(pattern.targetOffset(0, -10));
 		
-		pattern = new Pattern("imgs/comment-context-box.png").similar(0.99f);
+		pattern = new Pattern("imgs/comment-context-box.png");
 		assertTrue(screen.exists(pattern) != null);
 		
 		screen.click("imgs/cancel-button.png");
