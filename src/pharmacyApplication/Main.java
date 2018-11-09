@@ -11,7 +11,7 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PrescriptionUI window = new PrescriptionUI("jdbc:mysql://localhost:3307/doc-u-med", "spencer",
+					PrescriptionUI window = new PrescriptionUI("jdbc:mysql://localhost:3306/doc-u-med", "spencer",
 							"password");
 					window.frame.setVisible(true);
 					window.frame.setResizable(false);

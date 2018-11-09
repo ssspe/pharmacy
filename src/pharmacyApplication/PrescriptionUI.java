@@ -465,6 +465,7 @@ public class PrescriptionUI {
 			addButton.setEnabled(true);
 			addComment.setEnabled(true);
 			addComment.setSelected(false);
+			exceedDailyDose.setSelected(false);
 		}
 	}
 
@@ -617,7 +618,7 @@ public class PrescriptionUI {
 		finalText += storeInFridge == 1 ? "; MUST BE STORED IN FRIDGE" : "";
 
 		// Change the text based on teh container type
-		finalText += "; Comes in a " + (containerType == "Box" ? ("box of " + containerSize + " tablets")
+		finalText += "; Comes in a " + (containerType.equals("Box") ? ("box of " + containerSize + " tablets")
 				: (containerSize + "ml " + containerType));
 
 		recDailyDoseText.setText(String.valueOf(maxValue));
@@ -626,6 +627,9 @@ public class PrescriptionUI {
 		// Reset the models of the spinners so they can't go below 0.
 		preDailyDose.setModel(new SpinnerNumberModel(1, 1, maxValue * 2, 1));
 		duration.setModel(new SpinnerNumberModel(1, 1, null, 1));
+		addComment.setSelected(false);
+		addComment.setEnabled(true);
+		exceedDailyDose.setSelected(false);
 	}
 
 	/**

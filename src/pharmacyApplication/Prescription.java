@@ -60,6 +60,10 @@ public class Prescription implements InterfacePrescription {
 				prescriptionItem.setPrescribedDailyDose(prescriptionItem.getPrescribedDailyDose() > prescribedDailyDose
 						? prescriptionItem.getPrescribedDailyDose()
 						: prescribedDailyDose);
+				
+				// Updating the comments if the user updates the prescription
+				System.out.println(comments);
+				prescriptionItem.setComment(comments);
 				return;
 			}
 		}
