@@ -4,13 +4,13 @@ import pharmacyApplication.DAL;
 import pharmacyApplication.InterfaceDAL;
 
 public class FactoryDAL {
-	private static InterfaceDAL dependency = new DAL();
+	private static DAL dependency = new DAL();
 	
-	public static void setInstance(InterfaceDAL fakeDependency){
+	public static void setInstance(DAL fakeDependency){
 		dependency = fakeDependency;
 	}
 	
-	public static InterfaceDAL create() {
+	public static DAL create() {
 		return dependency;
 	}
 }

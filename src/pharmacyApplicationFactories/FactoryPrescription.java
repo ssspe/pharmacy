@@ -1,16 +1,15 @@
 package pharmacyApplicationFactories;
 
-import pharmacyApplication.InterfacePrescription;
 import pharmacyApplication.Prescription;
 
 public class FactoryPrescription {
-	private static InterfacePrescription dependency = new Prescription();
+	private static Prescription dependency = new Prescription();
 	
-	public static void setInstance(InterfacePrescription fakeDependency){
+	public static void setInstance(Prescription fakeDependency){
 		dependency = fakeDependency;
 	}
 	
-	public static InterfacePrescription create() {
+	public static Prescription create() {
 		return dependency;
 	}
 

@@ -19,18 +19,19 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.EasyMock.verify;
-import pharmacyApplication.InterfaceDAL;
+
+import pharmacyApplication.DAL;
 import pharmacyApplication.Medicine;
 import pharmacyApplicationFactories.FactoryDAL;
 import static pharmacyApplicationUITesting.HelperFunctions.*;
 
 public class PrescribedDailyDoseTests {
 	private Screen screen;
-	private InterfaceDAL mockDependency;
+	private DAL mockDependency;
 
 	@Before
 	public void setUp() throws Exception {
-		mockDependency = createMock(InterfaceDAL.class);
+		mockDependency = createMock(DAL.class);
 		FactoryDAL.setInstance(mockDependency);
 		mockDependency.connect("", "", "");
 		expectLastCall();

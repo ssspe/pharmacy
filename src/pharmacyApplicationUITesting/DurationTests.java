@@ -19,18 +19,18 @@ import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
-import pharmacyApplication.InterfaceDAL;
+import pharmacyApplication.DAL;
 import pharmacyApplication.Medicine;
 import pharmacyApplicationFactories.FactoryDAL;
 import static pharmacyApplicationUITesting.HelperFunctions.*;
 
 public class DurationTests {
 	private Screen screen;
-	private InterfaceDAL mockDependency;
+	private DAL mockDependency;
 
 	@Before
 	public void setUp() throws Exception {
-		mockDependency = createMock(InterfaceDAL.class);
+		mockDependency = createMock(DAL.class);
 		FactoryDAL.setInstance(mockDependency);
 		mockDependency.connect("", "", "");
 		expectLastCall();
@@ -62,7 +62,7 @@ public class DurationTests {
 	public void Duration_Increments_By_One() throws FindFailed, InterruptedException {
 		List<Match> arrow_list = sortList(screen.findAll("imgs/up-arrow.png"));
 		for (int x = 0; x < 3; x++) {
-			screen.click(arrow_list.get(1));
+			screen.click(arrow_list.get(arrow_list.size() - 1));
 		}
 		screen.mouseMove(100, 100);
 		Pattern pattern = new Pattern("imgs/duration-four.png");

@@ -18,18 +18,18 @@ import org.sikuli.script.FindFailed;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
-import pharmacyApplication.InterfaceDAL;
+import pharmacyApplication.DAL;
 import pharmacyApplication.Medicine;
 import pharmacyApplicationFactories.FactoryDAL;
 
 public class ExitButtonTests {
 
 	private Screen screen;
-	private InterfaceDAL mockDependencyDAL;
+	private DAL mockDependencyDAL;
 
 	@Before
 	public void setUp() throws Exception {
-		mockDependencyDAL = createMock(InterfaceDAL.class);
+		mockDependencyDAL = createMock(DAL.class);
 		FactoryDAL.setInstance(mockDependencyDAL);
 		mockDependencyDAL.connect("", "", "");
 		expectLastCall();

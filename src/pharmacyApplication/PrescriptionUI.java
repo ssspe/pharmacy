@@ -86,8 +86,8 @@ public class PrescriptionUI {
 	private JPopupMenu popupMenu;
 	private JMenuItem editComment;
 	private JMenuItem decrementDosage;
-	private JTextArea textArea;
-	private JPanel pnl;
+	private JTextArea editCommentTextArea;
+	private JPanel editCommentPanel;
 
 	/**
 	 * Connects to the DAL and retrieves the list of medicine names.
@@ -376,13 +376,13 @@ public class PrescriptionUI {
 			}
 		});
 
-		textArea = new JTextArea(5, 20);
-		textArea.setWrapStyleWord(true);
-		textArea.setLineWrap(true);
+		editCommentTextArea = new JTextArea(5, 20);
+		editCommentTextArea.setWrapStyleWord(true);
+		editCommentTextArea.setLineWrap(true);
 
-		pnl = new JPanel(new BorderLayout());
-		pnl.add(new JLabel("Please edit the comment:"), BorderLayout.NORTH);
-		pnl.add(textArea, BorderLayout.CENTER);
+		editCommentPanel = new JPanel(new BorderLayout());
+		editCommentPanel.add(new JLabel("Please edit the comment:"), BorderLayout.NORTH);
+		editCommentPanel.add(editCommentTextArea, BorderLayout.CENTER);
 
 		editComment = new JMenuItem("Edit Comment");
 		editComment.addActionListener(new ActionListener() {
@@ -558,10 +558,10 @@ public class PrescriptionUI {
 	private void editComment() {
 		PrescriptionTableModel model = (PrescriptionTableModel) prescriptionTable.getModel();
 		int row = prescriptionTable.getSelectedRow();
-		textArea.setText(prescriptionTable.getModel().getValueAt(row, 5).toString());
-		int selectedOption = JOptionPane.showConfirmDialog(null, pnl, "Enter Data", JOptionPane.OK_CANCEL_OPTION);
+		editCommentTextArea.setText(prescriptionTable.getModel().getValueAt(row, 5).toString());
+		int selectedOption = JOptionPane.showConfirmDialog(null, editCommentPanel, "Enter Data", JOptionPane.OK_CANCEL_OPTION);
 		if (selectedOption == JOptionPane.OK_OPTION) {
-			String comment = formatComment(textArea.getText());
+			String comment = formatComment(editCommentTextArea.getText());
 			model.setCommentAt(comment, row);
 		}
 	}

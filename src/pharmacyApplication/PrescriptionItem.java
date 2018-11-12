@@ -73,6 +73,13 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 			this.prescribedDailyDose = prescribedDailyDose;
 		}	
 	}
+	
+	/**
+	 * @param prescribedDailyDose The prescribed daily dose.
+	 */
+	public void setPrescribedDailyDose( int prescribedDailyDose ) {
+		this.prescribedDailyDose = prescribedDailyDose;
+	}
 
 	/**
 	 * @return (int) The number of days the prescription should be taken for.

@@ -21,21 +21,21 @@ import org.sikuli.script.FindFailed;
 import org.sikuli.script.Match;
 import org.sikuli.script.Screen;
 
-import pharmacyApplication.InterfaceDAL;
-import pharmacyApplication.InterfacePrescription;
+import pharmacyApplication.DAL;
 import pharmacyApplication.Medicine;
+import pharmacyApplication.Prescription;
 import pharmacyApplication.PrescriptionItem;
 import pharmacyApplicationFactories.FactoryDAL;
 import pharmacyApplicationFactories.FactoryPrescription;
 
 public class AddCommentTests {
 	private Screen screen;
-	private InterfaceDAL mockDependency;
-	private InterfacePrescription mockDependencyPre;
+	private DAL mockDependency;
+	private Prescription mockDependencyPre;
 	
 	@Before
 	public void setUp() throws Exception {
-		mockDependency = createMock(InterfaceDAL.class);
+		mockDependency = createMock(DAL.class);
 		FactoryDAL.setInstance(mockDependency);
 		mockDependency.connect("", "", "");
 		expectLastCall();
@@ -45,7 +45,7 @@ public class AddCommentTests {
 		expect(mockDependency.getPharmaInfo(anyObject())).andReturn(new Medicine(1, 5, "Bottle", "Comment", 0, 0));
 		replay(mockDependency);
 		
-		mockDependencyPre = createMock(InterfacePrescription.class);
+		mockDependencyPre = createMock(Prescription.class);
 		FactoryPrescription.setInstance(mockDependencyPre);
 		
 		setUpUI();

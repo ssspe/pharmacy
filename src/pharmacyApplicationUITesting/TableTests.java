@@ -10,7 +10,6 @@ import static org.junit.Assert.*;
 import static pharmacyApplicationUITesting.HelperFunctions.setUpUI;
 import static pharmacyApplicationUITesting.HelperFunctions.closeUI;
 
-import java.awt.font.NumericShaper.Range;
 import java.util.Arrays;
 
 import org.junit.After;
@@ -18,25 +17,24 @@ import org.junit.Before;
 import org.junit.Test;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Key;
-import org.sikuli.script.KeyModifier;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
-import pharmacyApplication.InterfaceDAL;
-import pharmacyApplication.InterfacePrescription;
+import pharmacyApplication.DAL;
 import pharmacyApplication.Medicine;
+import pharmacyApplication.Prescription;
 import pharmacyApplication.PrescriptionItem;
 import pharmacyApplicationFactories.FactoryDAL;
 import pharmacyApplicationFactories.FactoryPrescription;
 
 public class TableTests {
 	private Screen screen;
-	private InterfaceDAL mockDependency;
-	private InterfacePrescription mockDependencyPre;
+	private DAL mockDependency;
+	private Prescription mockDependencyPre;
 	
 	@Before
 	public void setUp() throws Exception {
-		mockDependency = createMock(InterfaceDAL.class);
+		mockDependency = createMock(DAL.class);
 		FactoryDAL.setInstance(mockDependency);
 		mockDependency.connect("", "", "");
 		expectLastCall();
@@ -46,7 +44,7 @@ public class TableTests {
 		expect(mockDependency.getPharmaInfo(anyObject())).andReturn(new Medicine(1, 5, "Bottle", "Comment", 0, 0));
 		replay(mockDependency);
 		
-		mockDependencyPre = createMock(InterfacePrescription.class);
+		mockDependencyPre = createMock(Prescription.class);
 		FactoryPrescription.setInstance(mockDependencyPre);
 		
 		setUpUI();

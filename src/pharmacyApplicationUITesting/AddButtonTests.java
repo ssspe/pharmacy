@@ -22,21 +22,21 @@ import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
-import pharmacyApplication.InterfaceDAL;
-import pharmacyApplication.InterfacePrescription;
+import pharmacyApplication.DAL;
 import pharmacyApplication.Medicine;
+import pharmacyApplication.Prescription;
 import pharmacyApplication.PrescriptionItem;
 import pharmacyApplicationFactories.FactoryDAL;
 import pharmacyApplicationFactories.FactoryPrescription;
 
 public class AddButtonTests {
 	private Screen screen;
-	private InterfaceDAL mockDependencyDAL;
-	private InterfacePrescription mockDependencyPre;
+	private DAL mockDependencyDAL;
+	private Prescription mockDependencyPre;
 
 	@Before
 	public void setUp() throws Exception {
-		mockDependencyDAL = createMock(InterfaceDAL.class);
+		mockDependencyDAL = createMock(DAL.class);
 		FactoryDAL.setInstance(mockDependencyDAL);
 
 		mockDependencyDAL.connect("", "", "");
@@ -49,7 +49,7 @@ public class AddButtonTests {
 
 		replay(mockDependencyDAL);
 
-		mockDependencyPre = createMock(InterfacePrescription.class);
+		mockDependencyPre = createMock(Prescription.class);
 		FactoryPrescription.setInstance(mockDependencyPre);
 
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
