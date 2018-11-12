@@ -47,7 +47,6 @@ public class PrescriptionTableModel extends AbstractTableModel {
 	 */
 	public void setDailyDoseAt(int value, int row) {
 		PrescriptionItem temp = prescriptionItems.get(row);
-		System.out.println(temp.getPrescribedDailyDose());
 		temp.setPrescribedDailyDose(value);
 		
 		prescriptionItems.set(row, temp);
