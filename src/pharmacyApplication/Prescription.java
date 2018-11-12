@@ -50,27 +50,20 @@ public class Prescription implements InterfacePrescription {
 			boolean availableOverTheCounter, String comments) {
 		for (PrescriptionItem prescriptionItem : prescriptionItems) {
 			if (prescriptionItem.getPharmaceuticalName() == pharmaceuticalName) {
-				// Updating the duration by adding to the previous.
-				prescriptionItem.setDuration(prescriptionItem.getDuration() + duration);
+				prescriptionItem.adjustDuration(duration);
+				prescriptionItem.adjustPrescribedDailyDose(prescribedDailyDose);
 
-				/*
-				 * Set the daily dose to either the old daily dose or the new daily dose
-				 * depending on which one is higher
-				 */
-				prescriptionItem.setPrescribedDailyDose(prescriptionItem.getPrescribedDailyDose() > prescribedDailyDose
-						? prescriptionItem.getPrescribedDailyDose()
-						: prescribedDailyDose);
-				
 				// Updating the comments if the user updates the prescription
-				System.out.println(comments);
 				prescriptionItem.setComment(comments);
 				return;
 			}
 		}
 
-		PrescriptionItem prescriptionItem = helper.create(pharmaceuticalName, prescribedDailyDose, duration,
-				containerSize, availableOverTheCounter, comments);
-		prescriptionItems.add(prescriptionItem);
+		if (duration > 0) {
+			PrescriptionItem prescriptionItem = helper.create(pharmaceuticalName, prescribedDailyDose, duration,
+					containerSize, availableOverTheCounter, comments);
+			prescriptionItems.add(prescriptionItem);
+		}
 	}
 
 	/**

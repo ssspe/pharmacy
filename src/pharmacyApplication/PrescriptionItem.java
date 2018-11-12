@@ -68,8 +68,10 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 	/**
 	 * @param prescribedDailyDose The prescribed daily dose.
 	 */
-	public void setPrescribedDailyDose(int prescribedDailyDose) {
-		this.prescribedDailyDose = prescribedDailyDose;
+	public void adjustPrescribedDailyDose(int prescribedDailyDose) {
+		if ( this.prescribedDailyDose < prescribedDailyDose) {
+			this.prescribedDailyDose = prescribedDailyDose;
+		}	
 	}
 
 	/**
@@ -82,11 +84,9 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 	/**
 	 * @param duration The number of days the prescription should be taken for.
 	 */
-	public void setDuration(int duration) {
+	public void adjustDuration(int duration) {
 		if (duration >= 1) {
-			this.duration = duration;
-		} else {
-			this.duration = 1;
+			this.duration += duration;
 		}
 	}
 
