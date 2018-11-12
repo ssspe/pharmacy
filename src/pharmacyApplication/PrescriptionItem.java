@@ -70,7 +70,7 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 	 */
 	public void adjustPrescribedDailyDose(int prescribedDailyDose) {
 		if ( this.prescribedDailyDose < prescribedDailyDose) {
-			this.prescribedDailyDose = prescribedDailyDose;
+			setPrescribedDailyDose(prescribedDailyDose);
 		}	
 	}
 	
