@@ -26,9 +26,10 @@ public class FactoryPrescriptionItem {
 	 *                                counter
 	 * @param comments                Special requirements and user comments.
 	 * @return A new prescription item.
+	 * @throws Exception 
 	 */
 	public PrescriptionItem create(String pharmaceuticalName, int prescribedDailyDose, int duration, int containerSize,
-			boolean availableOverTheCounter, String comments) {
+			boolean availableOverTheCounter, String comments) throws Exception {
 		return new PrescriptionItem(pharmaceuticalName, prescribedDailyDose, duration, containerSize,
 				availableOverTheCounter, comments);
 	}

@@ -26,17 +26,39 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 	 * @param availableOverTheCounter Is the prescription item available over the
 	 *                                counter
 	 * @param comments                Special requirements and user comments.
+	 * @throws Exception 
 	 */
 	public PrescriptionItem(String pharmaceuticalName, int prescribedDailyDose, int duration, int containerSize,
-			boolean availableOverTheCounter, String comments) {
+			boolean availableOverTheCounter, String comments) throws Exception {
+		validateString(pharmaceuticalName);
 		this.pharmaceuticalName = pharmaceuticalName;
+		
+		validateInteger(prescribedDailyDose);
 		this.prescribedDailyDose = prescribedDailyDose;
+		
+		validateInteger(duration);
 		this.duration = duration;
+		
+		validateInteger(containerSize);
 		this.containerSize = containerSize;
 		this.availableOverTheCounter = availableOverTheCounter;
+		
+		validateString(comments);
 		this.comments = comments;
 	}
-
+	
+	private void validateString(String testString) throws Exception {
+		if (testString.isEmpty() || testString == null) {
+			throw new Exception("Something bad happened.");
+		}
+	}
+	
+	private void validateInteger(int testInteger) throws Exception {
+		if (testInteger < 1) {
+			throw new Exception("Something bad happened.");
+		}
+	}
+	
 	/**
 	 * @param comments Special requirements and comments.
 	 */

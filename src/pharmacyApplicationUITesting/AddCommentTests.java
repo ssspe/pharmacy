@@ -73,7 +73,7 @@ public class AddCommentTests {
 	}
 	
 	@Test
-	public void Comment_In_Dialogue_Box_Gets_Written_To_Prescription() throws FindFailed {
+	public void Comment_In_Dialogue_Box_Gets_Written_To_Prescription() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		
@@ -93,7 +93,7 @@ public class AddCommentTests {
 	}
 	
 	@Test
-	public void Comment_In_Dialogue_Box_Adds_Colon_And_New_Line_If_Neither_Exist() throws FindFailed {
+	public void Comment_In_Dialogue_Box_Adds_Colon_And_New_Line_If_Neither_Exist() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		
@@ -113,7 +113,7 @@ public class AddCommentTests {
 	}
 	
 	@Test
-	public void Comment_In_Dialogue_Box_Adds_New_Line_If_Only_Colon_Exists() throws FindFailed {
+	public void Comment_In_Dialogue_Box_Adds_New_Line_If_Only_Colon_Exists() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		
@@ -133,7 +133,7 @@ public class AddCommentTests {
 	}
 	
 	@Test
-	public void Comment_In_Dialogue_Box_Adds_Nothing_If_New_Line_And_Colon_Exist() throws FindFailed {
+	public void Comment_In_Dialogue_Box_Adds_Nothing_If_New_Line_And_Colon_Exist() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		

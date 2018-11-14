@@ -60,7 +60,7 @@ public class TableTests {
 	}
 	
 	@Test
-	public void Right_Clicking_Row_Displays_Context_Menu() throws FindFailed, InterruptedException {
+	public void Right_Clicking_Row_Displays_Context_Menu() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		
@@ -80,7 +80,7 @@ public class TableTests {
 	}
 	
 	@Test
-	public void Edit_Comment_Button_Displays_Dialogue_Of_Existing_Comment() throws FindFailed, InterruptedException {
+	public void Edit_Comment_Button_Displays_Dialogue_Of_Existing_Comment() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		
@@ -106,7 +106,7 @@ public class TableTests {
 	}
 	
 	@Test
-	public void Edit_Comment_Button_Allows_Editing_Of_Existing_Comment() throws FindFailed, InterruptedException {
+	public void Edit_Comment_Button_Allows_Editing_Of_Existing_Comment() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		
@@ -138,7 +138,7 @@ public class TableTests {
 	}
 	
 	@Test
-	public void Decrement_Dosage_Disabled_If_Daily_Dose_Is_One() throws FindFailed, InterruptedException {
+	public void Decrement_Dosage_Disabled_If_Daily_Dose_Is_One() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		
@@ -159,7 +159,7 @@ public class TableTests {
 	}
 	
 	@Test
-	public void Decrement_Dosage_Decrements_By_One() throws FindFailed, InterruptedException {
+	public void Decrement_Dosage_Decrements_By_One() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		
@@ -183,7 +183,7 @@ public class TableTests {
 	}
 	
 	@Test
-	public void Decrement_Dosage_Decrements_By_Multiple() throws FindFailed, InterruptedException {
+	public void Decrement_Dosage_Decrements_By_Multiple() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		

@@ -60,9 +60,14 @@ public class Prescription implements InterfacePrescription {
 		}
 
 		if (duration > 0) {
-			PrescriptionItem prescriptionItem = helper.create(pharmaceuticalName, prescribedDailyDose, duration,
-					containerSize, availableOverTheCounter, comments);
-			prescriptionItems.add(prescriptionItem);
+			PrescriptionItem prescriptionItem;
+			try {
+				prescriptionItem = helper.create(pharmaceuticalName, prescribedDailyDose, duration,
+						containerSize, availableOverTheCounter, comments);
+				prescriptionItems.add(prescriptionItem);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

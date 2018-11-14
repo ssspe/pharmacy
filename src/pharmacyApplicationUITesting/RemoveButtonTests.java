@@ -67,7 +67,7 @@ public class RemoveButtonTests {
 	}
 
 	@Test
-	public void Remove_Button_Disabled_Until_Tabel_Row_Is_Selected() throws FindFailed {
+	public void Remove_Button_Disabled_Until_Tabel_Row_Is_Selected() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
@@ -89,7 +89,7 @@ public class RemoveButtonTests {
 	}
 
 	@Test
-	public void Remove_Button_Removes_Row() throws FindFailed, InterruptedException {
+	public void Remove_Button_Removes_Row() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
@@ -117,7 +117,7 @@ public class RemoveButtonTests {
 	}
 
 	@Test
-	public void Remove_Button_Removes_Selected_Row() throws FindFailed, InterruptedException {
+	public void Remove_Button_Removes_Selected_Row() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
