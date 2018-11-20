@@ -47,6 +47,8 @@ import javax.swing.table.TableColumnModel;
 
 import pharmacyApplicationFactories.FactoryDAL;
 import pharmacyApplicationFactories.FactoryPrescription;
+import pharmacyApplicationUITesting.ClearButtonTests;
+
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 
@@ -304,7 +306,7 @@ public class PrescriptionUI {
 				setRemoveButton();
 			}
 		});
-		
+
 		panel.add(scrollPane_1, gbc_scrollPane_1);
 		scrollPane_1.setViewportView(prescriptionTable);
 
@@ -559,7 +561,8 @@ public class PrescriptionUI {
 		PrescriptionTableModel model = (PrescriptionTableModel) prescriptionTable.getModel();
 		int row = prescriptionTable.getSelectedRow();
 		editCommentTextArea.setText(prescriptionTable.getModel().getValueAt(row, 5).toString());
-		int selectedOption = JOptionPane.showConfirmDialog(null, editCommentPanel, "Enter Data", JOptionPane.OK_CANCEL_OPTION);
+		int selectedOption = JOptionPane.showConfirmDialog(null, editCommentPanel, "Enter Data",
+				JOptionPane.OK_CANCEL_OPTION);
 		if (selectedOption == JOptionPane.OK_OPTION) {
 			String comment = formatComment(editCommentTextArea.getText());
 			model.setCommentAt(comment, row);
@@ -617,7 +620,7 @@ public class PrescriptionUI {
 		// If stored in a fridge update the final text
 		finalText += storeInFridge == 1 ? "; MUST BE STORED IN FRIDGE" : "";
 
-		// Change the text based on teh container type
+		// Change the text based on the container type
 		finalText += "; Comes in a " + (containerType.equals("Box") ? ("box of " + containerSize + " tablets")
 				: (containerSize + "ml " + containerType));
 
@@ -627,6 +630,11 @@ public class PrescriptionUI {
 		// Reset the models of the spinners so they can't go below 0.
 		preDailyDose.setModel(new SpinnerNumberModel(1, 1, maxValue * 2, 1));
 		duration.setModel(new SpinnerNumberModel(1, 1, null, 1));
+
+		/*
+		 * Update values is called after a new value is selected so reset comment and
+		 * daily dose in case they were previously selected.
+		 */
 		addComment.setSelected(false);
 		addComment.setEnabled(true);
 		exceedDailyDose.setSelected(false);
@@ -679,6 +687,7 @@ public class PrescriptionUI {
 	 */
 	private void updatePrescriptionCounter(int prescriptionCounter) {
 		numberPrescriptions.setText(String.valueOf(prescriptionCounter));
+		// Clear button only set active if number of prescriptions is not 0
 		clearButton.setEnabled(prescription.getNumberOfPharmaceuticals() != 0);
 	}
 
