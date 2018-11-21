@@ -5,11 +5,14 @@ import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
 import static org.junit.Assert.*;
+import static pharmacyApplicationUITesting.HelperFunctions.closeUI;
 import static pharmacyApplicationUITesting.HelperFunctions.setUpUI;
 
 import java.util.Arrays;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.sikuli.script.FindFailed;
@@ -50,6 +53,12 @@ public class Requirement_1_3_1 {
 		setUpUI();
 		screen.click("imgs/combo-box");
 		assertTrue(screen.exists("imgs/combo-box-two-items.png") != null);
+	}
+	
+	@After
+	public void tearDown() {
+		verify(mockDependency);
+		closeUI();
 	}
 
 }

@@ -5,11 +5,14 @@ import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
 import static org.junit.Assert.*;
+import static pharmacyApplicationUITesting.HelperFunctions.closeUI;
 import static pharmacyApplicationUITesting.HelperFunctions.setUpUI;
 
 import java.util.Arrays;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.sikuli.script.Pattern;
@@ -48,5 +51,11 @@ public class Requirement_1_3_2 {
 		screen.click(pattern);
 		screen.click(pattern.targetOffset(0, 60));
 		assertTrue(screen.exists(new Pattern("imgs/medicine-three").similar(1f)) != null);
+	}
+	
+	@After
+	public void tearDown() {
+		verify(mockDependency);
+		closeUI();
 	}
 }
