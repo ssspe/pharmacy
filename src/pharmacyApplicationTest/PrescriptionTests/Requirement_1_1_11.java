@@ -21,8 +21,8 @@ public class Requirement_1_1_11 {
 
 	@Test
 	public void AddingTheSamePrescriptionItemDoesntChangeDailyDose() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 1);
 		assertEquals(lPrescriptionItems.get(0).getPrescribedDailyDose(), 1);
@@ -30,8 +30,8 @@ public class Requirement_1_1_11 {
 	
 	@Test
 	public void AddingTheSamePrescriptionItemWithFirstItemDifferentChangesDailyDose() {
-		prescription.addPrescriptionItem("Medicine1", 2, 1, 1, false, "Comment");
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
+		prescription.addPrescriptionItem("Medicine1", 2, 1, 1, false, "Comment", 1);
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 1);
 		assertEquals(lPrescriptionItems.get(0).getPrescribedDailyDose(), 2);
@@ -39,8 +39,8 @@ public class Requirement_1_1_11 {
 	
 	@Test
 	public void AddingTheSamePrescriptionItemWithSecondItemDifferentChangesDailyDose() {
-		prescription.addPrescriptionItem("Medicine1", 2, 1, 1, false, "Comment");
-		prescription.addPrescriptionItem("Medicine1", 3, 1, 1, false, "Comment");
+		prescription.addPrescriptionItem("Medicine1", 2, 1, 1, false, "Comment", 1);
+		prescription.addPrescriptionItem("Medicine1", 3, 1, 1, false, "Comment", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 1);
 		assertEquals(lPrescriptionItems.get(0).getPrescribedDailyDose(), 3);

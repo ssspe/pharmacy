@@ -20,7 +20,7 @@ public class Requirement_1_1_7 {
 
 	@Test
 	public void NumberOfPrescriptionsCorrectForOneItem() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
 		assertEquals(prescription.getNumberOfPharmaceuticals(), 1);
 		prescription.clearPrescription();
 		assertEquals(prescription.getNumberOfPharmaceuticals(), 0);
@@ -28,8 +28,8 @@ public class Requirement_1_1_7 {
 
 	@Test
 	public void NumberOfPrescriptionsCorrectForTwoItems() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
-		prescription.addPrescriptionItem("Medicine2", 2, 2, 2, true, "Comment2");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
+		prescription.addPrescriptionItem("Medicine2", 2, 2, 2, true, "Comment2", 1);
 		assertEquals(prescription.getNumberOfPharmaceuticals(), 2);
 		prescription.clearPrescription();
 		assertEquals(prescription.getNumberOfPharmaceuticals(), 0);

@@ -20,7 +20,7 @@ public class Requirement_1_1_9 {
 
 	@Test
 	public void AddPrescriptionWithZeroDuration() {
-		prescription.addPrescriptionItem("Medicine1", 1, 0, 1, false, "Comment");
+		prescription.addPrescriptionItem("Medicine1", 1, 0, 1, false, "Comment", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 0);
 	}

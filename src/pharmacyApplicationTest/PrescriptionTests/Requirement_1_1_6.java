@@ -21,7 +21,7 @@ public class Requirement_1_1_6 {
 
 	@Test
 	public void ClearOneItemFromThePrescriptionList() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 1);
 		prescription.clearPrescription();
@@ -31,8 +31,8 @@ public class Requirement_1_1_6 {
 
 	@Test
 	public void ClearTwoItemsFromPrescriptionList() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
-		prescription.addPrescriptionItem("Medicine2", 2, 2, 2, true, "Comment2");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
+		prescription.addPrescriptionItem("Medicine2", 2, 2, 2, true, "Comment2", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 2);
 		prescription.clearPrescription();

@@ -44,8 +44,8 @@ public class AddButtonTests {
 
 		expect(mockDependencyDAL.getPharmaName()).andReturn(Arrays.asList("Medicine1", "Medicine2", "Medicine3"));
 
-		expect(mockDependencyDAL.getPharmaInfo(anyObject())).andReturn(new Medicine(1, 5, "Bottle", "Comment", 0, 0))
-				.anyTimes();
+		expect(mockDependencyDAL.getPharmaInfo(anyObject()))
+				.andReturn(new Medicine(1, 5, "Bottle", "T", "Comment", 0, 0)).anyTimes();
 
 		replay(mockDependencyDAL);
 
@@ -68,10 +68,10 @@ public class AddButtonTests {
 
 	@Test
 	public void Add_Button_Adds_One_Medicine_To_Table() throws Exception {
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1);
 		expectLastCall();
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
+				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1)));
 		replay(mockDependencyPre);
 
 		screen.mouseMove(100, 100);
@@ -82,15 +82,15 @@ public class AddButtonTests {
 
 	@Test
 	public void Add_Button_Adds_Multiple_Medicine_To_Table() throws Exception {
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1);
 		expectLastCall();
-		mockDependencyPre.addPrescriptionItem("Medicine2", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
+		mockDependencyPre.addPrescriptionItem("Medicine2", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1);
 		expectLastCall();
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
+				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1)));
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle"),
-						new PrescriptionItem("Medicine2", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
+				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1),
+						new PrescriptionItem("Medicine2", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1)));
 
 		replay(mockDependencyPre);
 
@@ -107,11 +107,11 @@ public class AddButtonTests {
 	@Test
 	public void Add_Button_Can_Add_If_Over_Dosage_Checkbox_Is_Checked() throws Exception {
 		mockDependencyPre.addPrescriptionItem("Medicine1", 6, 1, 1, false,
-				"Comment; Comes in a 1ml Bottle; My Comment;\n");
+				"Comment; Comes in a 1ml Bottle; My Comment;\n", 1);
 		expectLastCall();
 
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(Arrays.asList(
-				new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle; My Comment")));
+				new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle; My Comment", 1)));
 		replay(mockDependencyPre);
 		List<Match> arrow_list = sortList(screen.findAll("imgs/up-arrow.png"));
 		for (int x = 0; x < 5; x++) {
@@ -127,13 +127,12 @@ public class AddButtonTests {
 		screen.click("imgs/add-button-active.png");
 
 		screen.type("My Comment");
-		
+
 		pattern = new Pattern("imgs/ok-button.png");
 		screen.click(pattern);
-		
+
 		pattern = new Pattern("imgs/table-one-item-edited-comment.png");
 		assertTrue(screen.exists(pattern) != null);
-
 	}
 
 }

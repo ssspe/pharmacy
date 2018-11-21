@@ -41,7 +41,7 @@ public class ClearButtonTests {
 		expect(mockDependencyDAL.getPharmaName()).andReturn(Arrays.asList("Medicine1", "Medicine2", "Medicine3"));
 
 		expect(mockDependencyDAL.getPharmaInfo(anyObject()))
-				.andReturn(new Medicine(1, 5, "Bottle", "Comment", 0, 0)).anyTimes();
+				.andReturn(new Medicine(1, 5, "Bottle", "T", "Comment", 0, 0)).anyTimes();
 
 		replay(mockDependencyDAL);
 
@@ -70,10 +70,10 @@ public class ClearButtonTests {
 	public void Clear_Button_Disabled_Until_Tabel_Row_Exists() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1);
 		expectLastCall();
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
+				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1)));
 		replay(mockDependencyPre);
 
 		Pattern pattern = new Pattern("imgs/clear-button-inactive.png").similar(1f);
@@ -89,12 +89,12 @@ public class ClearButtonTests {
 	public void Clear_Button_Removes_Single_Row() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1);
 		expectLastCall();
 		mockDependencyPre.clearPrescription();
 		expectLastCall();
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
+				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1)));
 		replay(mockDependencyPre);
 
 		Pattern pattern = new Pattern("imgs/clear-button-inactive.png").similar(1f);
@@ -117,17 +117,17 @@ public class ClearButtonTests {
 	public void Clear_Button_Removes_All_Rows() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1);
 		expectLastCall();
-		mockDependencyPre.addPrescriptionItem("Medicine2", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
+		mockDependencyPre.addPrescriptionItem("Medicine2", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1);
 		expectLastCall();
 		mockDependencyPre.clearPrescription();
 		expectLastCall();
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
+				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1)));
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle"),
-						new PrescriptionItem("Medicine2", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
+				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1),
+						new PrescriptionItem("Medicine2", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1)));
 
 		replay(mockDependencyPre);
 		

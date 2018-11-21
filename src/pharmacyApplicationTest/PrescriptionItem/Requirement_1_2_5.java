@@ -15,22 +15,22 @@ public class Requirement_1_2_5 {
 
 	@Test
 	public void AddingItemWithValidContainerSizeOf1() throws Exception {
-		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
+		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
 	}
 
 	@Test
 	public void AddingItemWithValidContainerSizeOf10() throws Exception {
-		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 10, false, "Comment");
+		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 10, false, "Comment", 1);
 	}
 
 	@Test(expected = Exception.class)
 	public void AddingItemWithInvalidContainerSizeOf0() throws Exception {
-		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 0, false, "Comment");
+		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 0, false, "Comment", 1);
 	}
 
 	@Test(expected = Exception.class)
 	public void AddingItemWithInvalidContainerSizeOfNegativeNumber() throws Exception {
-		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, -1, false, "Comment");
+		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, -1, false, "Comment", 1);
 	}
 
 }

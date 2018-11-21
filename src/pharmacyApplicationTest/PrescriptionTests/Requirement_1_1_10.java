@@ -21,8 +21,8 @@ public class Requirement_1_1_10 {
 
 	@Test
 	public void AddingTheSamePrescriptionItemIncreasesDuration() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 1);
 		assertEquals(lPrescriptionItems.get(0).getDuration(), 2);
@@ -30,9 +30,9 @@ public class Requirement_1_1_10 {
 	
 	@Test
 	public void AddingTheSamePrescriptionItemWithDifferentDurationIncreasesDuration() {
-		prescription.addPrescriptionItem("Medicine1", 1, 2, 1, false, "Comment");
-		prescription.addPrescriptionItem("Medicine1", 1, 3, 1, false, "Comment");
-		prescription.addPrescriptionItem("Medicine1", 1, 4, 1, false, "Comment");
+		prescription.addPrescriptionItem("Medicine1", 1, 2, 1, false, "Comment", 1);
+		prescription.addPrescriptionItem("Medicine1", 1, 3, 1, false, "Comment", 1);
+		prescription.addPrescriptionItem("Medicine1", 1, 4, 1, false, "Comment", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 1);
 		assertEquals(lPrescriptionItems.get(0).getDuration(), 9);
@@ -40,8 +40,8 @@ public class Requirement_1_1_10 {
 	
 	@Test
 	public void AddingTheSamePrescriptionItemWithZeroDurationKeepsDuration() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
-		prescription.addPrescriptionItem("Medicine1", 1, 0, 1, false, "Comment");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
+		prescription.addPrescriptionItem("Medicine1", 1, 0, 1, false, "Comment", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 1);
 		assertEquals(lPrescriptionItems.get(0).getDuration(), 1);
@@ -49,8 +49,8 @@ public class Requirement_1_1_10 {
 	
 	@Test
 	public void AddingTheSamePrescriptionItemWithNegativeDurationKeepsDuration() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
-		prescription.addPrescriptionItem("Medicine1", 1, -1, 1, false, "Comment");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
+		prescription.addPrescriptionItem("Medicine1", 1, -1, 1, false, "Comment", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 1);
 		assertEquals(lPrescriptionItems.get(0).getDuration(), 1);

@@ -15,19 +15,19 @@ public class Requirement_1_2_7 {
 
 	@Test
 	public void AddingItemWithValidCommentMadeOfChars() throws Exception {
-		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 1, false, "Test Comment");
+		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 1, false, "Test Comment", 1);
 		assertEquals("Test Comment", prescriptionItem.getComments());
 	}
 
 	@Test
 	public void AddingItemWithValidCommentMadeOfIntegers() throws Exception {
-		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 1, false, "123");
+		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 1, false, "123", 1);
 		assertEquals("123", prescriptionItem.getComments());
 	}
 
 	@Test(expected = Exception.class)
 	public void AddingItemWithInvalidCommentMadeOfEmptyString() throws Exception {
-		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 1, false, "");
+		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 1, false, "", 1);
 	}
 
 }

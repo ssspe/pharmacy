@@ -41,7 +41,7 @@ public class TableTests {
 		
 		expect(mockDependency.getPharmaName()).andReturn(Arrays.asList("Medicine1"));
 		
-		expect(mockDependency.getPharmaInfo(anyObject())).andReturn(new Medicine(1, 5, "Bottle", "Comment", 0, 0));
+		expect(mockDependency.getPharmaInfo(anyObject())).andReturn(new Medicine(1, 5, "Bottle", "T", "Comment", 0, 0));
 		replay(mockDependency);
 		
 		mockDependencyPre = createMock(Prescription.class);
@@ -64,10 +64,10 @@ public class TableTests {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1);
 		expectLastCall();
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
+				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1)));
 		replay(mockDependencyPre);
 		
 		screen.click("imgs/add-button-active.png");
@@ -84,10 +84,10 @@ public class TableTests {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1);
 		expectLastCall();
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
+				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1)));
 		replay(mockDependencyPre);
 		
 		screen.click("imgs/add-button-active.png");
@@ -110,10 +110,10 @@ public class TableTests {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1);
 		expectLastCall();
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
+				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1)));
 		replay(mockDependencyPre);
 		
 		screen.click("imgs/add-button-active.png");
@@ -142,10 +142,10 @@ public class TableTests {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1);
 		expectLastCall();
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
+				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1)));
 		replay(mockDependencyPre);
 		
 		screen.click("imgs/add-button-active.png");
@@ -163,10 +163,10 @@ public class TableTests {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1);
 		expectLastCall();
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 2, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
+				Arrays.asList(new PrescriptionItem("Medicine1", 2, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1)));
 		replay(mockDependencyPre);
 		
 		screen.click("imgs/add-button-active.png");
@@ -187,10 +187,10 @@ public class TableTests {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 		
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle");
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1);
 		expectLastCall();
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 5, 1, 1, false, "Comment; Comes in a 1ml Bottle")));
+				Arrays.asList(new PrescriptionItem("Medicine1", 5, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1)));
 		replay(mockDependencyPre);
 		
 		screen.click("imgs/add-button-active.png");

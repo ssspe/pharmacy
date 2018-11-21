@@ -17,7 +17,7 @@ public class Requirement_1_1_8 {
 
 	@Test
 	public void NumberOfContainersCorrectForOneItem() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 10, false, "Comment");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 10, false, "Comment", 1);
 		assertEquals(prescription.getNumberOfContainers(), 1);
 		prescription.clearPrescription();
 		assertEquals(prescription.getNumberOfContainers(), 0);
@@ -25,8 +25,8 @@ public class Requirement_1_1_8 {
 
 	@Test
 	public void NumberOfContainersCorrectForTwoItems() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 10, false, "Comment");
-		prescription.addPrescriptionItem("Medicine2", 2, 2, 10, true, "Comment2");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 10, false, "Comment", 1);
+		prescription.addPrescriptionItem("Medicine2", 2, 2, 10, true, "Comment2", 1);
 		assertEquals(prescription.getNumberOfContainers(), 2);
 		prescription.clearPrescription();
 		assertEquals(prescription.getNumberOfContainers(), 0);

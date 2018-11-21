@@ -32,27 +32,27 @@ public class AddCommentTests {
 	private Screen screen;
 	private DAL mockDependency;
 	private Prescription mockDependencyPre;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		mockDependency = createMock(DAL.class);
 		FactoryDAL.setInstance(mockDependency);
 		mockDependency.connect("", "", "");
 		expectLastCall();
-		
+
 		expect(mockDependency.getPharmaName()).andReturn(Arrays.asList("Medicine1"));
-		
-		expect(mockDependency.getPharmaInfo(anyObject())).andReturn(new Medicine(1, 5, "Bottle", "Comment", 0, 0));
+
+		expect(mockDependency.getPharmaInfo(anyObject())).andReturn(new Medicine(1, 5, "Bottle", "T", "Comment", 0, 0));
 		replay(mockDependency);
-		
+
 		mockDependencyPre = createMock(Prescription.class);
 		FactoryPrescription.setInstance(mockDependencyPre);
-		
+
 		setUpUI();
 		screen = new Screen();
 		assertTrue(screen.exists("imgs/add-comment-default.png") != null);
 	}
-	
+
 	@After
 	public void tearDown() {
 		verify(mockDependency);
@@ -65,88 +65,92 @@ public class AddCommentTests {
 		replay(mockDependencyPre);
 		List<Match> checkbox_list = sortList(screen.findAll("imgs/check-box.png"));
 		screen.click(checkbox_list.get(1));
-		
+
 		screen.click("imgs/add-button-active.png");
-		
+
 		assertTrue(screen.exists("imgs/comment-dialogue-box.png") != null);
 		screen.click("imgs/cancel-button.png");
 	}
-	
+
 	@Test
 	public void Comment_In_Dialogue_Box_Gets_Written_To_Prescription() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
-		
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle; Comment Test;\n");
+
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false,
+				"Comment; Comes in a 1ml Bottle; Comment Test;\n", 1);
 		expectLastCall();
-		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle; Comment Test;\n")));
+		expect(mockDependencyPre.getPrescriptionItems()).andReturn(Arrays.asList(new PrescriptionItem("Medicine1", 1, 1,
+				1, false, "Comment; Comes in a 1ml Bottle; Comment Test;\n", 1)));
 		replay(mockDependencyPre);
-		
+
 		List<Match> checkbox_list = sortList(screen.findAll("imgs/check-box.png"));
 		screen.click(checkbox_list.get(1));
 		screen.click("imgs/add-button-active.png");
-		
+
 		screen.type("Comment Test");
 		assertTrue(screen.exists("imgs/comment-dialogue-box.png") != null);
 		screen.click("imgs/ok-button.png");
 	}
-	
+
 	@Test
 	public void Comment_In_Dialogue_Box_Adds_Colon_And_New_Line_If_Neither_Exist() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
-		
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;\n");
+
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false,
+				"Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;\n", 1);
 		expectLastCall();
-		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;\n")));
+		expect(mockDependencyPre.getPrescriptionItems()).andReturn(Arrays.asList(new PrescriptionItem("Medicine1", 1, 1,
+				1, false, "Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;\n", 1)));
 		replay(mockDependencyPre);
-		
+
 		List<Match> checkbox_list = sortList(screen.findAll("imgs/check-box.png"));
 		screen.click(checkbox_list.get(1));
 		screen.click("imgs/add-button-active.png");
-		
+
 		screen.type("Comment With No Colon Or New Line");
 		assertTrue(screen.exists("imgs/comment-dialogue-box.png") != null);
 		screen.click("imgs/ok-button.png");
 	}
-	
+
 	@Test
 	public void Comment_In_Dialogue_Box_Adds_New_Line_If_Only_Colon_Exists() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
-		
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle; Comment With No New Line;\n");
+
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false,
+				"Comment; Comes in a 1ml Bottle; Comment With No New Line;\n", 1);
 		expectLastCall();
-		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle; Comment With No New Line;\n")));
+		expect(mockDependencyPre.getPrescriptionItems()).andReturn(Arrays.asList(new PrescriptionItem("Medicine1", 1, 1,
+				1, false, "Comment; Comes in a 1ml Bottle; Comment With No New Line;\n", 1)));
 		replay(mockDependencyPre);
-		
+
 		List<Match> checkbox_list = sortList(screen.findAll("imgs/check-box.png"));
 		screen.click(checkbox_list.get(1));
 		screen.click("imgs/add-button-active.png");
-		
+
 		screen.type("Comment With No New Line;");
 		assertTrue(screen.exists("imgs/comment-dialogue-box.png") != null);
 		screen.click("imgs/ok-button.png");
 	}
-	
+
 	@Test
 	public void Comment_In_Dialogue_Box_Adds_Nothing_If_New_Line_And_Colon_Exist() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
-		
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle; Comment;\n");
+
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false,
+				"Comment; Comes in a 1ml Bottle; Comment;\n", 1);
 		expectLastCall();
-		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
-				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle; Comment;\n")));
+		expect(mockDependencyPre.getPrescriptionItems()).andReturn(Arrays.asList(
+				new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle; Comment;\n", 1)));
 		replay(mockDependencyPre);
-		
+
 		List<Match> checkbox_list = sortList(screen.findAll("imgs/check-box.png"));
 		screen.click(checkbox_list.get(1));
 		screen.click("imgs/add-button-active.png");
-		
+
 		screen.type("Comment;");
 		assertTrue(screen.exists("imgs/comment-dialogue-box.png") != null);
 		screen.click("imgs/ok-button.png");

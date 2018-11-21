@@ -38,7 +38,7 @@ public class PrescribedDailyDoseTests {
 
 		expect(mockDependency.getPharmaName()).andReturn(Arrays.asList("Medicine1"));
 
-		expect(mockDependency.getPharmaInfo(anyObject())).andReturn(new Medicine(0, 5, "Bottle", "Comment", 0, 0));
+		expect(mockDependency.getPharmaInfo(anyObject())).andReturn(new Medicine(0, 5, "Bottle", "T", "Comment", 0, 0));
 		replay(mockDependency);
 		setUpUI();
 		screen = new Screen();

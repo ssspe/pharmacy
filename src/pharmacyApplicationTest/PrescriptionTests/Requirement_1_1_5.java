@@ -21,7 +21,7 @@ public class Requirement_1_1_5 {
 
 	@Test
 	public void RemoveOneItemFromThePrescriptionList() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 1);
 		prescription.removePrescriptionItem("Medicine1");
@@ -31,8 +31,8 @@ public class Requirement_1_1_5 {
 
 	@Test
 	public void RemoveOneItemFromListOfTwoItems() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
-		prescription.addPrescriptionItem("Medicine2", 2, 2, 2, true, "Comment2");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
+		prescription.addPrescriptionItem("Medicine2", 2, 2, 2, true, "Comment2", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 2);
 		prescription.removePrescriptionItem("Medicine1");
@@ -43,8 +43,8 @@ public class Requirement_1_1_5 {
 	
 	@Test
 	public void RemoveBothItemsFromListOfTwoItems() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
-		prescription.addPrescriptionItem("Medicine2", 2, 2, 2, true, "Comment2");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
+		prescription.addPrescriptionItem("Medicine2", 2, 2, 2, true, "Comment2", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 2);
 		prescription.removePrescriptionItem("Medicine1");
@@ -58,7 +58,7 @@ public class Requirement_1_1_5 {
 	
 	@Test
 	public void RemoveItemThatDoesntExist() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 1);
 		prescription.removePrescriptionItem("DoesNotExist");

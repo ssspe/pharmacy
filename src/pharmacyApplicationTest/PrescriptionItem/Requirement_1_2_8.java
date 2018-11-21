@@ -14,25 +14,25 @@ public class Requirement_1_2_8 {
 
 	@Test
 	public void AddingItemWithANotFullContainer() throws Exception {
-		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 10, false, "Comment");
+		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 10, false, "Comment", 1);
 		assertEquals(1, prescriptionItem.getNumberOfContainers());
 	}
 
 	@Test
 	public void AddingItemWithAFullContainer() throws Exception {
-		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 10, 10, false, "Comment");
+		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 10, 10, false, "Comment", 1);
 		assertEquals(1, prescriptionItem.getNumberOfContainers());
 	}
 	
 	@Test
 	public void AddingItemWithAnOverFullContainer() throws Exception {
-		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 11, 10, false, "Comment");
+		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 11, 10, false, "Comment", 1);
 		assertEquals(2, prescriptionItem.getNumberOfContainers());
 	}
 	
 	@Test
 	public void AddingItemWithLargeNumberOfContainers() throws Exception {
-		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 12, 5, 5, false, "Comment");
+		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 12, 5, 5, false, "Comment", 1);
 		assertEquals(12, prescriptionItem.getNumberOfContainers());
 	}
 }

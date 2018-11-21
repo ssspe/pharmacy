@@ -21,7 +21,7 @@ public class Requirement_1_1_1 {
 
 	@Test
 	public void AddOneItemAndCheckItIsAddedToList() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 1);
 		checkMedicine(lPrescriptionItems.get(0), "Medicine1", 1, 1, false, "Comment");
@@ -29,8 +29,8 @@ public class Requirement_1_1_1 {
 
 	@Test
 	public void AddTwoItemsAndCheckTheyAreAddedToList() {
-		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
-		prescription.addPrescriptionItem("Medicine2", 2, 2, 2, true, "Comment2");
+		prescription.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
+		prescription.addPrescriptionItem("Medicine2", 2, 2, 2, true, "Comment2", 1);
 		List<PrescriptionItem> lPrescriptionItems = prescription.getPrescriptionItems();
 		assertEquals(lPrescriptionItems.size(), 2);
 		checkMedicine(lPrescriptionItems.get(0), "Medicine1", 1, 1, false, "Comment");

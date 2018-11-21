@@ -15,13 +15,13 @@ public class Requirement_1_2_6 {
 
 	@Test
 	public void AddingItemWithAvailableOverTheCounterSetToTrue() throws Exception {
-		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 1, true, "Comment");
+		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 1, true, "Comment", 1);
 		assertEquals(true, prescriptionItem.isAvailableOverTheCounter());
 	}
 
 	@Test
 	public void AddingItemWithAvailableOverTheCounterSetToFalse() throws Exception {
-		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment");
+		PrescriptionItem prescriptionItem = new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment", 1);
 		assertEquals(false, prescriptionItem.isAvailableOverTheCounter());
 	}
 
