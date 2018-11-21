@@ -13,7 +13,8 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 	private boolean availableOverTheCounter;
 	private String comments;
 	private int numberOfContainers;
-
+	private int medicationMultiplier;
+	
 	/**
 	 * Constructor for a prescription item object.
 	 * 
@@ -29,7 +30,7 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 	 * @throws Exception 
 	 */
 	public PrescriptionItem(String pharmaceuticalName, int prescribedDailyDose, int duration, int containerSize,
-			boolean availableOverTheCounter, String comments) throws Exception {
+			boolean availableOverTheCounter, String comments, int medicationMultiplier) throws Exception {
 		validateString(pharmaceuticalName);
 		this.pharmaceuticalName = pharmaceuticalName;
 		
@@ -45,6 +46,9 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 		
 		validateString(comments);
 		this.comments = comments;
+		
+		validateInteger(medicationMultiplier);
+		this.medicationMultiplier = medicationMultiplier;
 	}
 	
 	private void validateString(String testString) throws Exception {
@@ -130,7 +134,7 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 	 * @param (int) Number of containers.
 	 */
 	public int getNumberOfContainers() {
-		numberOfContainers = (int) Math.ceil((float) (prescribedDailyDose * duration) / (float) containerSize);
+		numberOfContainers = (int) Math.ceil((float) ((prescribedDailyDose * medicationMultiplier) * duration) / (float) containerSize);
 		return numberOfContainers;
 	}
 }

@@ -78,6 +78,7 @@ public class PrescriptionUI {
 	private InterfaceDAL dal;
 	private int maxValue;
 	private int containerSize;
+	private int medicationMultiplier = 1;
 	private boolean availableOverTheCounter;
 	private JTable prescriptionTable;
 	private JScrollPane scrollPane_1;
@@ -506,10 +507,9 @@ public class PrescriptionUI {
 				return;
 			}
 		}
-
 		prescription.addPrescriptionItem(pharmaceuticalCombo.getSelectedItem().toString(),
 				(Integer) preDailyDose.getValue(), (Integer) duration.getValue(), containerSize,
-				availableOverTheCounter, descriptionComment);
+				availableOverTheCounter, descriptionComment, medicationMultiplier);
 		List<PrescriptionItem> prescriptionItems = prescription.getPrescriptionItems();
 		prescriptionTable.setModel(new PrescriptionTableModel(prescriptionItems));
 		resizeColumnWidth(prescriptionTable);
@@ -607,6 +607,7 @@ public class PrescriptionUI {
 		containerSize = medicine.getSize();
 		maxValue = medicine.getRecDailyDose();
 		String containerType = medicine.getContainerType();
+		String medicationType = medicine.getMedicationType();
 		String finalText = medicine.getDescription();
 		int availableOverTheCounter = medicine.getAvailableOverTheCounter();
 		int storeInFridge = medicine.getStoreInFridge();
@@ -623,7 +624,13 @@ public class PrescriptionUI {
 		// Change the text based on the container type
 		finalText += "; Comes in a " + (containerType.equals("Box") ? ("box of " + containerSize + " tablets")
 				: (containerSize + "ml " + containerType));
-
+		
+		if (medicationType.equals("O")) { 
+			this.medicationMultiplier = 5;
+		}
+		else {
+			this.medicationMultiplier = 1;
+		}
 		recDailyDoseText.setText(String.valueOf(maxValue));
 		description.setText(finalText);
 

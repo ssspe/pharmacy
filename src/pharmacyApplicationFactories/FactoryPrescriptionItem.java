@@ -29,8 +29,8 @@ public class FactoryPrescriptionItem {
 	 * @throws Exception 
 	 */
 	public PrescriptionItem create(String pharmaceuticalName, int prescribedDailyDose, int duration, int containerSize,
-			boolean availableOverTheCounter, String comments) throws Exception {
+			boolean availableOverTheCounter, String comments, int medicationMultiplier) throws Exception {
 		return new PrescriptionItem(pharmaceuticalName, prescribedDailyDose, duration, containerSize,
-				availableOverTheCounter, comments);
+				availableOverTheCounter, comments, medicationMultiplier);
 	}
 }

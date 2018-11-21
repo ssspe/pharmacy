@@ -90,10 +90,11 @@ public class DAL implements InterfaceDAL {
 		int size = pharmaInfo.getInt("ContainerSize");
 		int recDailyDose = pharmaInfo.getInt("RecommendedDailyDose");
 		String containerType = pharmaInfo.getString("ContainerType");
+		String medicationType = pharmaInfo.getString("MedicationType");
 		String description = pharmaInfo.getString("Description");
 		int availableOverTheCounter = pharmaInfo.getInt("AvailableOverTheCounter");
 		int storeInFridge = pharmaInfo.getInt("StoreInFridge");
-		return new Medicine(size, recDailyDose, containerType, description, availableOverTheCounter,
+		return new Medicine(size, recDailyDose, containerType, medicationType, description, availableOverTheCounter,
 				storeInFridge);
 	}
 	/**

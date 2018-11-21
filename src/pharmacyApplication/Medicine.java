@@ -9,6 +9,7 @@ public class Medicine {
 	private int size;
 	private int recDailyDose;
 	private String containerType;
+	private String medicationType;
 	private String description;
 	private int availableOverTheCounter;
 	private int storeInFridge;
@@ -25,11 +26,12 @@ public class Medicine {
 	 * @param storeInFridge           Whether or not it needs to be stored in a
 	 *                                fridge
 	 */
-	public Medicine(int size, int recDailyDose, String containerType, String description, int availableOverTheCounter,
+	public Medicine(int size, int recDailyDose, String containerType, String medicationType, String description, int availableOverTheCounter,
 			int storeInFridge) {
 		this.size = size;
 		this.recDailyDose = recDailyDose;
 		this.containerType = containerType;
+		this.medicationType = medicationType;
 		this.description = description;
 		this.availableOverTheCounter = availableOverTheCounter;
 		this.storeInFridge = storeInFridge;
@@ -54,6 +56,13 @@ public class Medicine {
 	 */
 	public String getContainerType() {
 		return containerType;
+	}
+	
+	/**
+	 * @return The type of medication.
+	 */
+	public String getMedicationType() {
+		return medicationType;
 	}
 	
 	/**

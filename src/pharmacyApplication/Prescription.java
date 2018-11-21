@@ -47,7 +47,7 @@ public class Prescription implements InterfacePrescription {
 	 * @param comments                Special requirements and user comments.
 	 */
 	public void addPrescriptionItem(String pharmaceuticalName, int prescribedDailyDose, int duration, int containerSize,
-			boolean availableOverTheCounter, String comments) {
+			boolean availableOverTheCounter, String comments, int medicationMultiplier) {
 		for (PrescriptionItem prescriptionItem : prescriptionItems) {
 			if (prescriptionItem.getPharmaceuticalName() == pharmaceuticalName) {
 				prescriptionItem.adjustDuration(duration);
@@ -63,7 +63,7 @@ public class Prescription implements InterfacePrescription {
 			PrescriptionItem prescriptionItem;
 			try {
 				prescriptionItem = helper.create(pharmaceuticalName, prescribedDailyDose, duration,
-						containerSize, availableOverTheCounter, comments);
+						containerSize, availableOverTheCounter, comments, medicationMultiplier);
 				prescriptionItems.add(prescriptionItem);
 			} catch (Exception e) {
 				e.printStackTrace();
