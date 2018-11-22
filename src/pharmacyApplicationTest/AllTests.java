@@ -28,7 +28,7 @@ import pharmacyApplicationUITesting.AddCommentTests;
 import pharmacyApplicationUITesting.AllUITests;
 import pharmacyApplicationUITesting.ClearButtonTests;
 import pharmacyApplicationUITesting.DurationTests;
-import pharmacyApplicationUITesting.ExitButtonTests;
+import pharmacyApplicationUITesting.Requirement_1_3_12;
 import pharmacyApplicationUITesting.PrescribedDailyDoseTests;
 import pharmacyApplicationUITesting.RemoveButtonTests;
 import pharmacyApplicationUITesting.TableTests;

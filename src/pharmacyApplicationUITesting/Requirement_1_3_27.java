@@ -7,6 +7,9 @@ import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
 import static org.junit.Assert.*;
+import static pharmacyApplicationUITesting.HelperFunctions.closeUI;
+import static pharmacyApplicationUITesting.HelperFunctions.setUpUI;
+import static pharmacyApplicationUITesting.HelperFunctions.sortList;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,9 +25,8 @@ import org.sikuli.script.Screen;
 import pharmacyApplication.DAL;
 import pharmacyApplication.Medicine;
 import pharmacyApplicationFactories.FactoryDAL;
-import static pharmacyApplicationUITesting.HelperFunctions.*;
 
-public class DurationTests {
+public class Requirement_1_3_27 {
 	private Screen screen;
 	private DAL mockDependency;
 
@@ -37,43 +39,30 @@ public class DurationTests {
 
 		expect(mockDependency.getPharmaName()).andReturn(Arrays.asList("Medicine1"));
 
-		expect(mockDependency.getPharmaInfo(anyObject())).andReturn(new Medicine(0, 5, "Bottle", "T", "Comment", 0, 0));
+		expect(mockDependency.getPharmaInfo(anyObject())).andReturn(new Medicine(0, 1, "Bottle", "T", "Comment", 0, 0));
 		replay(mockDependency);
 		setUpUI();
 		screen = new Screen();
+		assertTrue(screen.exists("imgs/prescribed-daily-dose-default.png") != null);
 	}
+	
+	@Test
+	public void Should_DisableAddButton_When_PrescribedDailyDoseIsOverRecommendedDailyDose() throws FindFailed {
+		List<Match> arrow_list = sortList(screen.findAll("imgs/up-arrow.png"));
+		for (int x = 0; x < 1; x++) {
+			screen.click(arrow_list.get(0));
+		}
+
+		assertTrue(screen.exists("imgs/add-button-inactive.png") != null);
+		Pattern pattern = new Pattern("imgs/add-button-active.png").similar(1f);
+		assertFalse(screen.exists(pattern) != null);
+	}
+	
 
 	@After
 	public void tearDown() {
 		verify(mockDependency);
 		closeUI();
-	}
-
-	@Test
-	public void Duration_Cant_Go_Below_Zero() throws FindFailed {
-		screen.mouseMove(100, 100);
-		List<Match> arrow_list = sortList(screen.findAll("imgs/down-arrow.png"));
-		screen.click(arrow_list.get(1));
-		Pattern pattern = new Pattern("imgs/duration-zero.png").similar(1f);
-		assertFalse(screen.exists(pattern) != null);
-	}
-
-	@Test
-	public void Duration_Increments_By_One() throws FindFailed, InterruptedException {
-		List<Match> arrow_list = sortList(screen.findAll("imgs/up-arrow.png"));
-		for (int x = 0; x < 3; x++) {
-			screen.click(arrow_list.get(arrow_list.size() - 1));
-		}
-		screen.mouseMove(100, 100);
-		Pattern pattern = new Pattern("imgs/duration-four.png");
-		assertTrue(screen.exists(pattern) != null);
-		
-
-		arrow_list = sortList(screen.findAll("imgs/down-arrow.png"));
-		for (int x = 0; x < 3; x++) {
-			screen.click(arrow_list.get(1));
-		}
-		assertTrue(screen.exists("imgs/duration-default.png") != null);
 	}
 
 }

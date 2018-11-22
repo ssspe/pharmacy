@@ -22,7 +22,7 @@ import pharmacyApplication.DAL;
 import pharmacyApplication.Medicine;
 import pharmacyApplicationFactories.FactoryDAL;
 
-public class ExitButtonTests {
+public class Requirement_1_3_12 {
 
 	private Screen screen;
 	private DAL mockDependencyDAL;
@@ -36,8 +36,8 @@ public class ExitButtonTests {
 
 		expect(mockDependencyDAL.getPharmaName()).andReturn(Arrays.asList("Medicine1", "Medicine2", "Medicine3"));
 
-		expect(mockDependencyDAL.getPharmaInfo(anyObject())).andReturn(new Medicine(1, 5, "Bottle", "T", "Comment", 0, 0))
-				.anyTimes();
+		expect(mockDependencyDAL.getPharmaInfo(anyObject()))
+				.andReturn(new Medicine(1, 5, "Bottle", "T", "Comment", 0, 0)).anyTimes();
 
 		replay(mockDependencyDAL);
 
@@ -45,17 +45,17 @@ public class ExitButtonTests {
 		screen = new Screen();
 	}
 
-	@After
-	public void tearDown() {
-		verify(mockDependencyDAL);
-	}
-
 	@Test
-	public void Exit_Button_Closes_Window() throws FindFailed {
+	public void Should_ExitApplication_When_ExitButtonClicked() throws FindFailed {
 		Pattern pattern = new Pattern("imgs/exit-button.png").similar(1f);
 		screen.click(pattern);
 
 		assertFalse(screen.exists(pattern) != null);
+	}
+
+	@After
+	public void tearDown() {
+		verify(mockDependencyDAL);
 	}
 
 }
