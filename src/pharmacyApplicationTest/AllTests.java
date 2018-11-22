@@ -5,33 +5,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 import pharmacyApplicationTest.PrescriptionItem.AllPrescriptionItemTests;
-import pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_2;
-import pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_3;
-import pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_4;
-import pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_5;
-import pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_6;
-import pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_7;
-import pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_8;
-import pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_9;
 import pharmacyApplicationTest.PrescriptionTests.AllPrescriptionTests;
-import pharmacyApplicationTest.PrescriptionTests.Requirement_1_1_1;
-import pharmacyApplicationTest.PrescriptionTests.Requirement_1_1_10;
-import pharmacyApplicationTest.PrescriptionTests.Requirement_1_1_11;
-import pharmacyApplicationTest.PrescriptionTests.Requirement_1_1_2;
-import pharmacyApplicationTest.PrescriptionTests.Requirement_1_1_5;
-import pharmacyApplicationTest.PrescriptionTests.Requirement_1_1_6;
-import pharmacyApplicationTest.PrescriptionTests.Requirement_1_1_7;
-import pharmacyApplicationTest.PrescriptionTests.Requirement_1_1_8;
-import pharmacyApplicationTest.PrescriptionTests.Requirement_1_1_9;
-import pharmacyApplicationUITesting.AddButtonTests;
-import pharmacyApplicationUITesting.AddCommentTests;
 import pharmacyApplicationUITesting.AllUITests;
-import pharmacyApplicationUITesting.ClearButtonTests;
-import pharmacyApplicationUITesting.DurationTests;
-import pharmacyApplicationUITesting.Requirement_1_3_12;
-import pharmacyApplicationUITesting.PrescribedDailyDoseTests;
-import pharmacyApplicationUITesting.RemoveButtonTests;
-import pharmacyApplicationUITesting.TableTests;
 
 @RunWith(Suite.class)
 @SuiteClasses({ AllPrescriptionItemTests.class, AllPrescriptionTests.class, AllUITests.class })

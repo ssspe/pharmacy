@@ -47,7 +47,6 @@ import javax.swing.table.TableColumnModel;
 
 import pharmacyApplicationFactories.FactoryDAL;
 import pharmacyApplicationFactories.FactoryPrescription;
-import pharmacyApplicationUITesting.ClearButtonTests;
 
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
