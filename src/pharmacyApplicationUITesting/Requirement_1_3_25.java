@@ -9,16 +9,14 @@ import static org.easymock.EasyMock.verify;
 import static org.junit.Assert.*;
 import static pharmacyApplicationUITesting.HelperFunctions.closeUI;
 import static pharmacyApplicationUITesting.HelperFunctions.setUpUI;
-import static pharmacyApplicationUITesting.HelperFunctions.sortList;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.sikuli.script.FindFailed;
-import org.sikuli.script.Match;
+import org.sikuli.script.Key;
+import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
 import pharmacyApplication.DAL;
@@ -55,66 +53,24 @@ public class Requirement_1_3_25 {
 	}
 
 	@Test
-	public void Should_AddColonAndNewLine_When_NeitherExists() throws Exception {
+	public void Should_DisableDecrementDosage_When_DailyDoseIsOne() throws Exception {
 		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
 		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
 
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false,
-				"Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;\n", 1);
+		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1);
 		expectLastCall();
-		expect(mockDependencyPre.getPrescriptionItems()).andReturn(Arrays.asList(new PrescriptionItem("Medicine1", 1, 1,
-				1, false, "Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;\n", 1)));
+		expect(mockDependencyPre.getPrescriptionItems()).andReturn(
+				Arrays.asList(new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle", 1)));
 		replay(mockDependencyPre);
 
-		List<Match> checkbox_list = sortList(screen.findAll("imgs/check-box.png"));
-		screen.click(checkbox_list.get(1));
 		screen.click("imgs/add-button-active.png");
 
-		screen.type("Comment With No Colon Or New Line");
-		assertTrue(screen.exists("imgs/comment-dialogue-box.png") != null);
-		screen.click("imgs/ok-button.png");
-	}
+		Pattern pattern = new Pattern("imgs/table-one-item.png");
+		screen.rightClick(pattern.targetOffset(0, -30));
 
-	@Test
-	public void Should_AddNewLine_When_OnlyColonExists() throws Exception {
-		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
-		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
-
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false,
-				"Comment; Comes in a 1ml Bottle; Comment With No New Line;\n", 1);
-		expectLastCall();
-		expect(mockDependencyPre.getPrescriptionItems()).andReturn(Arrays.asList(new PrescriptionItem("Medicine1", 1, 1,
-				1, false, "Comment; Comes in a 1ml Bottle; Comment With No New Line;\n", 1)));
-		replay(mockDependencyPre);
-
-		List<Match> checkbox_list = sortList(screen.findAll("imgs/check-box.png"));
-		screen.click(checkbox_list.get(1));
-		screen.click("imgs/add-button-active.png");
-
-		screen.type("Comment With No New Line;");
-		assertTrue(screen.exists("imgs/comment-dialogue-box.png") != null);
-		screen.click("imgs/ok-button.png");
-	}
-
-	@Test
-	public void Should_AddNothing_When_ColonAndNewLineExist() throws Exception {
-		expect(mockDependencyPre.getNumberOfPharmaceuticals()).andReturn(1).anyTimes();
-		expect(mockDependencyPre.getNumberOfContainers()).andReturn(1).anyTimes();
-
-		mockDependencyPre.addPrescriptionItem("Medicine1", 1, 1, 1, false,
-				"Comment; Comes in a 1ml Bottle; Comment;\n", 1);
-		expectLastCall();
-		expect(mockDependencyPre.getPrescriptionItems()).andReturn(Arrays.asList(
-				new PrescriptionItem("Medicine1", 1, 1, 1, false, "Comment; Comes in a 1ml Bottle; Comment;\n", 1)));
-		replay(mockDependencyPre);
-
-		List<Match> checkbox_list = sortList(screen.findAll("imgs/check-box.png"));
-		screen.click(checkbox_list.get(1));
-		screen.click("imgs/add-button-active.png");
-
-		screen.type("Comment;");
-		assertTrue(screen.exists("imgs/comment-dialogue-box.png") != null);
-		screen.click("imgs/ok-button.png");
+		screen.mouseMove(100, 100);
+		pattern = new Pattern("imgs/decrement-dosage-disabled.png");
+		assertTrue(screen.exists(pattern) != null);
 	}
 
 	@After
@@ -123,5 +79,4 @@ public class Requirement_1_3_25 {
 		verify(mockDependencyPre);
 		closeUI();
 	}
-
 }

@@ -52,13 +52,6 @@ public class Requirement_1_3_10 {
 		screen = new Screen();
 	}
 
-	@After
-	public void tearDown() {
-		verify(mockDependencyDAL);
-		verify(mockDependencyPre);
-		closeUI();
-	}
-
 	@Test
 	public void Should_DisableRemovButton_When_ByDefault() {
 		replay(mockDependencyPre);
@@ -101,7 +94,7 @@ public class Requirement_1_3_10 {
 		expect(mockDependencyPre.getPrescriptionItems()).andReturn(Arrays.asList());
 		replay(mockDependencyPre);
 
-		Pattern pattern = new Pattern("imgs/remove-button-inactive.png").similar(1f);
+		Pattern pattern = new Pattern("imgs/remove-button-inactive.png");
 		assertTrue(screen.exists(pattern) != null);
 
 		screen.click("imgs/add-button-active.png");
@@ -152,6 +145,14 @@ public class Requirement_1_3_10 {
 		
 		pattern = new Pattern("imgs/table-one-item-medicine-two.png");
 		assertTrue(screen.exists(pattern) != null);
+	}
+	
+
+	@After
+	public void tearDown() {
+		verify(mockDependencyDAL);
+		verify(mockDependencyPre);
+		closeUI();
 	}
 
 }

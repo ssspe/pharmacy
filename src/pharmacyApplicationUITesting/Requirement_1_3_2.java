@@ -41,16 +41,16 @@ public class Requirement_1_3_2 {
 	}
 
 	@Test
-	public void Should_SelectPharmaceutical_When_SelectMedicineFromDropDown() throws Exception {
-		assertTrue(screen.exists(new Pattern("imgs/medicine-one").similar(1f)) != null);
+	public void Should_DisplayPharmaceuticalName_When_SelectMedicineFromDropDown() throws Exception {
+		assertTrue(screen.exists(new Pattern("imgs/medicine-one")) != null);
 		Pattern pattern = new Pattern("imgs/combo-box");
 		screen.click(pattern);
 		screen.click(pattern.targetOffset(0, 40));
-		assertTrue(screen.exists(new Pattern("imgs/medicine-two").similar(1f)) != null);
+		assertTrue(screen.exists(new Pattern("imgs/medicine-two")) != null);
 		pattern = new Pattern("imgs/combo-box");
 		screen.click(pattern);
 		screen.click(pattern.targetOffset(0, 60));
-		assertTrue(screen.exists(new Pattern("imgs/medicine-three").similar(1f)) != null);
+		assertTrue(screen.exists(new Pattern("imgs/medicine-three")) != null);
 	}
 	
 	@After

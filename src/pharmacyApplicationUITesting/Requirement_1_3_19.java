@@ -26,7 +26,7 @@ import pharmacyApplication.DAL;
 import pharmacyApplication.Medicine;
 import pharmacyApplicationFactories.FactoryDAL;
 
-public class Requirement_1_3_27 {
+public class Requirement_1_3_19 {
 	private Screen screen;
 	private DAL mockDependency;
 
