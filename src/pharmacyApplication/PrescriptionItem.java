@@ -14,7 +14,7 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 	private String comments;
 	private int numberOfContainers;
 	private int medicationMultiplier;
-	
+
 	/**
 	 * Constructor for a prescription item object.
 	 * 
@@ -27,42 +27,45 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 	 * @param availableOverTheCounter Is the prescription item available over the
 	 *                                counter
 	 * @param comments                Special requirements and user comments.
-	 * @throws Exception 
+	 * @param medicationMultiplier    Some medicines specify there container size
+	 *                                differently so a medication multiplier is
+	 *                                required
+	 * @throws Exception
 	 */
 	public PrescriptionItem(String pharmaceuticalName, int prescribedDailyDose, int duration, int containerSize,
 			boolean availableOverTheCounter, String comments, int medicationMultiplier) throws Exception {
 		validateString(pharmaceuticalName);
 		this.pharmaceuticalName = pharmaceuticalName;
-		
+
 		validateInteger(prescribedDailyDose);
 		this.prescribedDailyDose = prescribedDailyDose;
-		
+
 		validateInteger(duration);
 		this.duration = duration;
-		
+
 		validateInteger(containerSize);
 		this.containerSize = containerSize;
 		this.availableOverTheCounter = availableOverTheCounter;
-		
+
 		validateString(comments);
 		this.comments = comments;
-		
+
 		validateInteger(medicationMultiplier);
 		this.medicationMultiplier = medicationMultiplier;
 	}
-	
+
 	private void validateString(String testString) throws Exception {
 		if (testString.isEmpty() || testString == null) {
 			throw new Exception("Something bad happened.");
 		}
 	}
-	
+
 	private void validateInteger(int testInteger) throws Exception {
 		if (testInteger < 1) {
 			throw new Exception("Something bad happened.");
 		}
 	}
-	
+
 	/**
 	 * @param comments Special requirements and comments.
 	 */
@@ -95,15 +98,15 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 	 * @param prescribedDailyDose The prescribed daily dose.
 	 */
 	public void adjustPrescribedDailyDose(int prescribedDailyDose) {
-		if ( this.prescribedDailyDose < prescribedDailyDose) {
+		if (this.prescribedDailyDose < prescribedDailyDose) {
 			setPrescribedDailyDose(prescribedDailyDose);
-		}	
+		}
 	}
-	
+
 	/**
 	 * @param prescribedDailyDose The prescribed daily dose.
 	 */
-	public void setPrescribedDailyDose( int prescribedDailyDose ) {
+	public void setPrescribedDailyDose(int prescribedDailyDose) {
 		this.prescribedDailyDose = prescribedDailyDose;
 	}
 
@@ -134,7 +137,12 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 	 * @param (int) Number of containers.
 	 */
 	public int getNumberOfContainers() {
-		numberOfContainers = (int) Math.ceil((float) ((prescribedDailyDose * medicationMultiplier) * duration) / (float) containerSize);
+		/*
+		 * The days taken multiplied by number per day (times the multiplier if daily
+		 * dose is not 1 unit) divided by container size
+		 */
+		numberOfContainers = (int) Math
+				.ceil((float) ((prescribedDailyDose * medicationMultiplier) * duration) / (float) containerSize);
 		return numberOfContainers;
 	}
 }

@@ -59,11 +59,15 @@ public class Prescription implements InterfacePrescription {
 			}
 		}
 
+		/*
+		 * Should be picked up by the prescription item class but double downing here.
+		 * If duration is not more than 0 don't add the item.
+		 */
 		if (duration > 0) {
 			PrescriptionItem prescriptionItem;
 			try {
-				prescriptionItem = helper.create(pharmaceuticalName, prescribedDailyDose, duration,
-						containerSize, availableOverTheCounter, comments, medicationMultiplier);
+				prescriptionItem = helper.create(pharmaceuticalName, prescribedDailyDose, duration, containerSize,
+						availableOverTheCounter, comments, medicationMultiplier);
 				prescriptionItems.add(prescriptionItem);
 			} catch (Exception e) {
 				e.printStackTrace();
