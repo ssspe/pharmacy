@@ -1,0 +1,1590 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="11" failures="41" hostname="ZC161" name="com.zircon.pharmacyApplicationTest.AllTests" skipped="0" tests="102" time="219.151" timestamp="2018-12-12T12:03:51">
+  <properties>
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="org.osgi.framework.executionenvironment" value="OSGi/Minimum-1.0,OSGi/Minimum-1.1,OSGi/Minimum-1.2,JavaSE/compact1-1.8,JavaSE/compact2-1.8,JavaSE/compact3-1.8,JRE-1.1,J2SE-1.2,J2SE-1.3,J2SE-1.4,J2SE-1.5,JavaSE-1.6,JavaSE-1.7,JavaSE-1.8" />
+    <property name="osgi.framework" value="file:/C:/Users/spencer.robertson/.p2/pool/plugins/org.eclipse.osgi_3.13.100.v20180827-1536.jar" />
+    <property name="java.home" value="C:\Program Files\Java\jre1.8.0_181" />
+    <property name="eclipse.application" value="org.eclipse.ui.ide.workbench" />
+    <property name="org.eclipse.debug.ui.breakpoints.toggleFactoriesUsed" value="false" />
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jre1.8.0_181\lib\endorsed" />
+    <property name="env.USERNAME" value="spencer.robertson" />
+    <property name="debuglevel" value="source,lines,vars" />
+    <property name="ECLIPSE_HOME" value="../../../eclipse/java-2018-09/eclipse/" />
+    <property name="sun.os.patch.level" value="" />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="env.COMPUTERNAME" value="ZC161" />
+    <property name="env.ProgramFiles(x86)" value="C:\Program Files (x86)" />
+    <property name="java.version" value="1.8.0_181" />
+    <property name="eclipse.pdebuild.home" value="C:\Users\spencer.robertson\eclipse\java-2018-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.pde.build_3.10.100.v20180828-1915\." />
+    <property name="osgi.requiredJavaVersion" value="1.8" />
+    <property name="osgi.compatibility.bootdelegation.default" value="true" />
+    <property name="ant.file.pharmacyApplication" value="C:\Users\spencer.robertson\Documents\Projects\pharmacy\build.xml" />
+    <property name="env.ATLAS_HOME" value="C:\Applications\Atlassian\atlassian-plugin-sdk-6.3.12" />
+    <property name="osgi.os" value="win32" />
+    <property name="osgi.compatibility.bootdelegation" value="true" />
+    <property name="org.eclipse.equinox.simpleconfigurator.configUrl" value="file:org.eclipse.equinox.simpleconfigurator/bundles.info" />
+    <property name="org.osgi.framework.uuid" value="dc0d8b51-bbb4-44e6-b794-237db02a43b3" />
+    <property name="env.FPS_BROWSER_APP_PROFILE_STRING" value="Internet Explorer" />
+    <property name="osgi.splashPath" value="file:/C:/Users/spencer.robertson/.p2/pool/plugins/org.eclipse.platform_4.9.0.v20180906-0745" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="env.USERPROFILE" value="C:\Users\spencer.robertson" />
+    <property name="ant.project.invoked-targets" value="build,AllTests (1),junitreport" />
+    <property name="env.SystemRoot" value="C:\windows" />
+    <property name="user.name" value="spencer.robertson" />
+    <property name="org.osgi.framework.version" value="1.9.0" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="org.osgi.framework.system.packages" value="java.applet,java.awt,java.awt.color,java.awt.datatransfer,java.awt.dnd,java.awt.event,java.awt.font,java.awt.geom,java.awt.im,java.awt.im.spi,java.awt.image,java.awt.image.renderable,java.awt.print,java.beans,java.beans.beancontext,java.io,java.lang,java.lang.annotation,java.lang.instrument,java.lang.invoke,java.lang.management,java.lang.ref,java.lang.reflect,java.math,java.net,java.nio,java.nio.channels,java.nio.channels.spi,java.nio.charset,java.nio.charset.spi,java.nio.file,java.nio.file.attribute,java.nio.file.spi,java.rmi,java.rmi.activation,java.rmi.dgc,java.rmi.registry,java.rmi.server,java.security,java.security.acl,java.security.cert,java.security.interfaces,java.security.spec,java.sql,java.text,java.text.spi,java.time,java.time.chrono,java.time.format,java.time.temporal,java.time.zone,java.util,java.util.concurrent,java.util.concurrent.atomic,java.util.concurrent.locks,java.util.function,java.util.jar,java.util.logging,java.util.prefs,java.util.regex,java.util.spi,java.util.stream,java.util.zip,javax.accessibility,javax.activation,javax.activity,javax.annotation,javax.annotation.processing,javax.crypto,javax.crypto.interfaces,javax.crypto.spec,javax.imageio,javax.imageio.event,javax.imageio.metadata,javax.imageio.plugins.bmp,javax.imageio.plugins.jpeg,javax.imageio.spi,javax.imageio.stream,javax.jws,javax.jws.soap,javax.lang.model,javax.lang.model.element,javax.lang.model.type,javax.lang.model.util,javax.management,javax.management.loading,javax.management.modelmbean,javax.management.monitor,javax.management.openmbean,javax.management.relation,javax.management.remote,javax.management.remote.rmi,javax.management.timer,javax.naming,javax.naming.directory,javax.naming.event,javax.naming.ldap,javax.naming.spi,javax.net,javax.net.ssl,javax.print,javax.print.attribute,javax.print.attribute.standard,javax.print.event,javax.rmi,javax.rmi.CORBA,javax.rmi.ssl,javax.script,javax.security.auth,javax.security.auth.callback,javax.security.auth.kerberos,javax.security.auth.login,javax.security.auth.spi,javax.security.auth.x500,javax.security.cert,javax.security.sasl,javax.sound.midi,javax.sound.midi.spi,javax.sound.sampled,javax.sound.sampled.spi,javax.sql,javax.sql.rowset,javax.sql.rowset.serial,javax.sql.rowset.spi,javax.swing,javax.swing.border,javax.swing.colorchooser,javax.swing.event,javax.swing.filechooser,javax.swing.plaf,javax.swing.plaf.basic,javax.swing.plaf.metal,javax.swing.plaf.multi,javax.swing.plaf.nimbus,javax.swing.plaf.synth,javax.swing.table,javax.swing.text,javax.swing.text.html,javax.swing.text.html.parser,javax.swing.text.rtf,javax.swing.tree,javax.swing.undo,javax.tools,javax.transaction,javax.transaction.xa,javax.xml,javax.xml.bind,javax.xml.bind.annotation,javax.xml.bind.annotation.adapters,javax.xml.bind.attachment,javax.xml.bind.helpers,javax.xml.bind.util,javax.xml.crypto,javax.xml.crypto.dom,javax.xml.crypto.dsig,javax.xml.crypto.dsig.dom,javax.xml.crypto.dsig.keyinfo,javax.xml.crypto.dsig.spec,javax.xml.datatype,javax.xml.namespace,javax.xml.parsers,javax.xml.soap,javax.xml.stream,javax.xml.stream.events,javax.xml.stream.util,javax.xml.transform,javax.xml.transform.dom,javax.xml.transform.sax,javax.xml.transform.stax,javax.xml.transform.stream,javax.xml.validation,javax.xml.ws,javax.xml.ws.handler,javax.xml.ws.handler.soap,javax.xml.ws.http,javax.xml.ws.soap,javax.xml.ws.spi,javax.xml.ws.spi.http,javax.xml.ws.wsaddressing,javax.xml.xpath,org.ietf.jgss,org.omg.CORBA,org.omg.CORBA_2_3,org.omg.CORBA_2_3.portable,org.omg.CORBA.DynAnyPackage,org.omg.CORBA.ORBPackage,org.omg.CORBA.portable,org.omg.CORBA.TypeCodePackage,org.omg.CosNaming,org.omg.CosNaming.NamingContextExtPackage,org.omg.CosNaming.NamingContextPackage,org.omg.Dynamic,org.omg.DynamicAny,org.omg.DynamicAny.DynAnyFactoryPackage,org.omg.DynamicAny.DynAnyPackage,org.omg.IOP,org.omg.IOP.CodecFactoryPackage,org.omg.IOP.CodecPackage,org.omg.Messaging,org.omg.PortableInterceptor,org.omg.PortableInterceptor.ORBInitInfoPackage,org.omg.PortableServer,org.omg.PortableServer.CurrentPackage,org.omg.PortableServer.POAManagerPackage,org.omg.PortableServer.POAPackage,org.omg.PortableServer.portable,org.omg.PortableServer.ServantLocatorPackage,org.omg.SendingContext,org.omg.stub.java.rmi,org.w3c.dom,org.w3c.dom.bootstrap,org.w3c.dom.css,org.w3c.dom.events,org.w3c.dom.html,org.w3c.dom.ls,org.w3c.dom.ranges,org.w3c.dom.stylesheets,org.w3c.dom.traversal,org.w3c.dom.views,org.w3c.dom.xpath,org.xml.sax,org.xml.sax.ext,org.xml.sax.helpers" />
+    <property name="sun.jnu.encoding" value="Cp1252" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="env.LOCALAPPDATA" value="C:\Users\spencer.robertson\AppData\Local" />
+    <property name="applicationXMI" value="org.eclipse.ui.workbench/LegacyIDE.e4xmi" />
+    <property name="env.VS140COMNTOOLS" value="C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\" />
+    <property name="osgi.instance.area.default" value="file:/C:/Users/spencer.robertson/eclipse-workspace/" />
+    <property name="eclipse.launcher.name" value="Eclipse" />
+    <property name="eclipse.product" value="org.eclipse.epp.package.java.product" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="org.osgi.supports.framework.fragment" value="true" />
+    <property name="osgi.framework.useSystemProperties" value="true" />
+    <property name="user.timezone" value="" />
+    <property name="org.osgi.framework.system.capabilities" value="osgi.ee; osgi.ee=&quot;OSGi/Minimum&quot;; version:List&lt;Version&gt;=&quot;1.0, 1.1, 1.2&quot;,osgi.ee; osgi.ee=&quot;JRE&quot;; version:List&lt;Version&gt;=&quot;1.0, 1.1&quot;,osgi.ee; osgi.ee=&quot;JavaSE&quot;; version:List&lt;Version&gt;=&quot;1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8&quot;,osgi.ee; osgi.ee=&quot;JavaSE/compact1&quot;; version:List&lt;Version&gt;=&quot;1.8&quot;,osgi.ee; osgi.ee=&quot;JavaSE/compact2&quot;; version:List&lt;Version&gt;=&quot;1.8&quot;,osgi.ee; osgi.ee=&quot;JavaSE/compact3&quot;; version:List&lt;Version&gt;=&quot;1.8&quot;" />
+    <property name="osgi.nl" value="en_GB" />
+    <property name="user.script" value="" />
+    <property name="path.separator" value=";" />
+    <property name="env.PROCESSOR_IDENTIFIER" value="Intel64 Family 6 Model 158 Stepping 10, GenuineIntel" />
+    <property name="ds.delayed.keepInstances" value="true" />
+    <property name="file.encoding" value="Cp1252" />
+    <property name="osgi.arch" value="x86_64" />
+    <property name="ant.project.default-target" value="build" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner com.zircon.pharmacyApplicationTest.AllTests skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\spencer.robertson\Documents\Projects\pharmacy\junit\TEST-com.zircon.pharmacyApplicationTest.AllTests.xml crashfile=C:\Users\spencer.robertson\Documents\Projects\pharmacy\junitvmwatcher4510572371103777467.properties propsfile=C:\Users\spencer.robertson\Documents\Projects\pharmacy\junit4752537594442875853.properties" />
+    <property name="env.NUMBER_OF_PROCESSORS" value="12" />
+    <property name="env.APPDATA" value="C:\Users\spencer.robertson\AppData\Roaming" />
+    <property name="ant.file" value="C:\Users\spencer.robertson\Documents\Projects\pharmacy\build.xml" />
+    <property name="org.osgi.supports.framework.requirebundle" value="true" />
+    <property name="env.LIBTHAI_DICTDIR" value="C:\Program Files\GIMP 2\share\libthai" />
+    <property name="osgi.bundles.defaultStartLevel" value="4" />
+    <property name="osgi.bundles" value="reference:file:org.eclipse.osgi.compatibility.state_1.1.200.v20180827-1536.jar,reference:file:org.eclipse.equinox.simpleconfigurator_1.3.100.v20180827-1122.jar@1:start" />
+    <property name="java.io.tmpdir" value="C:\Users\SPENCE~1.ROB\AppData\Local\Temp\" />
+    <property name="org.osgi.framework.os.name" value="Windows10" />
+    <property name="equinox.use.ds" value="true" />
+    <property name="user.language" value="en" />
+    <property name="env.SystemDrive" value="C:" />
+    <property name="line.separator" value="&#xd;&#xa;" />
+    <property name="target" value="1.8" />
+    <property name="org.eclipse.swt.internal.deviceZoom" value="100" />
+    <property name="env.ExtraPuTTY_BOXSIZE" value="AUTO" />
+    <property name="org.osgi.framework.processor" value="x86-64" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="source" value="1.8" />
+    <property name="osgi.splashLocation" value="C:\Users\spencer.robertson\.p2\pool\plugins\org.eclipse.platform_4.9.0.v20180906-0745\splash.bmp" />
+    <property name="sun.desktop" value="windows" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="env.PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC" />
+    <property name="env.USERDOMAIN_ROAMINGPROFILE" value="ZIRCONHQ" />
+    <property name="eclipse.vm" value="C:\Program Files\Java\jre1.8.0_181\bin\server\jvm.dll" />
+    <property name="ant.file.type.pharmacyApplication" value="file" />
+    <property name="env.LOGONSERVER" value="\\SERVER" />
+    <property name="eclipse.pdebuild.templates" value="C:\Users\spencer.robertson\eclipse\java-2018-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.pde.build_3.10.100.v20180828-1915\templates" />
+    <property name="osgi.configuration.area" value="file:/C:/Users/spencer.robertson/eclipse/java-2018-09/eclipse/configuration/" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="env.PUBLIC" value="C:\Users\Public" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.10.5 compiled on July 10 2018" />
+    <property name="env.USERDOMAIN" value="ZIRCONHQ" />
+    <property name="org.osgi.framework.storage" value="C:\Users\spencer.robertson\eclipse\java-2018-09\eclipse\configuration" />
+    <property name="osgi.ws" value="win32" />
+    <property name="env.VBOX_MSI_INSTALL_PATH" value="C:\Program Files\Oracle\VirtualBox\" />
+    <property name="env.PROCESSOR_LEVEL" value="6" />
+    <property name="equinox.init.uuid" value="true" />
+    <property name="org.osgi.supports.framework.extension" value="true" />
+    <property name="eclipse.p2.data.area" value="file:/C:/Users/spencer.robertson/.p2/" />
+    <property name="osgi.framework.extensions" value="reference:file:org.eclipse.osgi.compatibility.state_1.1.200.v20180827-1536.jar" />
+    <property name="env.windir" value="C:\windows" />
+    <property name="gosh.args" value="--nointeractive" />
+    <property name="env.CommonProgramFiles(x86)" value="C:\Program Files (x86)\Common Files" />
+    <property name="org.osgi.framework.language" value="en" />
+    <property name="os.name" value="Windows 10" />
+    <property name="eclipse.home.location" value="file:/C:/Users/spencer.robertson/eclipse/java-2018-09/eclipse/" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="eclipse.vmargs" value="-Dosgi.requiredJavaVersion=1.8&#xa;-Dosgi.instance.area.default=@user.home/eclipse-workspace&#xa;-XX:+UseG1GC&#xa;-XX:+UseStringDeduplication&#xa;-Dosgi.requiredJavaVersion=1.8&#xa;-Dosgi.dataAreaRequiresExplicitInit=true&#xa;-Xms256m&#xa;-Xmx1024m&#xa;-Declipse.p2.max.threads=10&#xa;-Doomph.update.url=http://download.eclipse.org/oomph/updates/milestone/latest&#xa;-Doomph.redirection.index.redirection=index:/-&gt;http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/&#xa;-Djava.class.path=C:\Users\spencer.robertson\eclipse\java-2018-09\eclipse\\plugins/org.eclipse.equinox.launcher_1.5.100.v20180827-1352.jar&#xa;" />
+    <property name="env.TMP" value="C:\Users\SPENCE~1.ROB\AppData\Local\Temp" />
+    <property name="env.ExtraPuTTY" value="C:\Program Files\ExtraPuTTY\Bin" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="env.ProgramData" value="C:\ProgramData" />
+    <property name="env.OS" value="Windows_NT" />
+    <property name="eclipse.buildId" value="4.9.0.I20180906-0745" />
+    <property name="java.library.path" value="C:\Program Files\Java\jre1.8.0_181\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files/Java/jre1.8.0_181/bin/server;C:/Program Files/Java/jre1.8.0_181/bin;C:/Program Files/Java/jre1.8.0_181/lib/amd64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\nodejs\;C:\Users\spencer.robertson\AppData\Local\Microsoft\WindowsApps;C:\Users\spencer.robertson\AppData\Local\Programs\Python\Python36;C:\Users\spencer.robertson\AppData\Local\Programs\Python\Python36\Scripts;C:\Users\spencer.robertson\Documents\Projects\p4_testing;C:\Applications\Atlassian\atlassian-plugin-sdk-6.3.12\bin;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Users\spencer.robertson\AppData\Roaming\npm;C:\Users\spencer.robertson\AppData\Local\atom\bin;C:\Users\spencer.robertson\Desktop\;;C:\Users\spencer.robertson\eclipse\java-2018-09\eclipse;;." />
+    <property name="eclipse.pdebuild.scripts" value="C:\Users\spencer.robertson\eclipse\java-2018-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.pde.build_3.10.100.v20180828-1915\scripts" />
+    <property name="ant.java.version" value="1.8" />
+    <property name="eclipse.commands" value="-os&#xa;win32&#xa;-ws&#xa;win32&#xa;-arch&#xa;x86_64&#xa;-showsplash&#xa;-launcher&#xa;C:\Users\spencer.robertson\eclipse\java-2018-09\eclipse\eclipse.exe&#xa;-name&#xa;Eclipse&#xa;--launcher.library&#xa;C:\Users\spencer.robertson\.p2\pool\plugins\org.eclipse.equinox.launcher.win32.win32.x86_64_1.1.800.v20180827-1352\eclipse_1705.dll&#xa;-startup&#xa;C:\Users\spencer.robertson\eclipse\java-2018-09\eclipse\\plugins/org.eclipse.equinox.launcher_1.5.100.v20180827-1352.jar&#xa;--launcher.appendVmargs&#xa;-product&#xa;org.eclipse.epp.package.java.product&#xa;-vm&#xa;C:\Program Files\Java\jre1.8.0_181\bin\server\jvm.dll&#xa;" />
+    <property name="basedir" value="C:\Users\spencer.robertson\Documents\Projects\pharmacy" />
+    <property name="java.class.version" value="52.0" />
+    <property name="osgi.syspath" value="c:\Users\spencer.robertson\.p2\pool\plugins" />
+    <property name="ant.home" value="C:\Users\spencer.robertson\.p2\pool\plugins\org.apache.ant_1.10.5.v20180808-0324" />
+    <property name="env.Path" value="C:/Program Files/Java/jre1.8.0_181/bin/server;C:/Program Files/Java/jre1.8.0_181/bin;C:/Program Files/Java/jre1.8.0_181/lib/amd64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\nodejs\;C:\Users\spencer.robertson\AppData\Local\Microsoft\WindowsApps;C:\Users\spencer.robertson\AppData\Local\Programs\Python\Python36;C:\Users\spencer.robertson\AppData\Local\Programs\Python\Python36\Scripts;C:\Users\spencer.robertson\Documents\Projects\p4_testing;C:\Applications\Atlassian\atlassian-plugin-sdk-6.3.12\bin;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Users\spencer.robertson\AppData\Roaming\npm;C:\Users\spencer.robertson\AppData\Local\atom\bin;C:\Users\spencer.robertson\Desktop\;;C:\Users\spencer.robertson\eclipse\java-2018-09\eclipse;" />
+    <property name="org.eclipse.equinox.launcher.splash.location" value="C:\Users\spencer.robertson\.p2\pool\plugins\org.eclipse.platform_4.9.0.v20180906-0745\splash.bmp" />
+    <property name="env.HOMEDRIVE" value="C:" />
+    <property name="osgi.instance.area" value="file:/C:/Users/spencer.robertson/eclipse-workspace/" />
+    <property name="osgi.install.area" value="file:/C:/Users/spencer.robertson/eclipse/java-2018-09/eclipse/" />
+    <property name="env.MYSQLCONNECTOR_ASSEMBLIESPATH" value="C:\Program Files (x86)\MySQL\Connector NET 8.0\Assemblies\v4.5.2" />
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jre1.8.0_181\bin" />
+    <property name="env.PROCESSOR_REVISION" value="9e0a" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+    <property name="user.variant" value="" />
+    <property name="eclipse.stateSaveDelayInterval" value="30000" />
+    <property name="ant.project.name" value="pharmacyApplication" />
+    <property name="java.vm.specification.version" value="1.8" />
+    <property name="eclipse.running" value="true" />
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+    <property name="sun.cpu.isalist" value="amd64" />
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jre1.8.0_181\lib\ext;C:\windows\Sun\Java\lib\ext" />
+    <property name="os.version" value="10.0" />
+    <property name="eclipse.launcher" value="C:\Users\spencer.robertson\eclipse\java-2018-09\eclipse\eclipse.exe" />
+    <property name="user.home" value="C:\Users\spencer.robertson" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="env.DriverData" value="C:\Windows\System32\Drivers\DriverData" />
+    <property name="env.CommonProgramW6432" value="C:\Program Files\Common Files" />
+    <property name="org.apache.commons.logging.Log" value="org.apache.commons.logging.impl.NoOpLog" />
+    <property name="env.ProgramW6432" value="C:\Program Files" />
+    <property name="env.JAVA_HOME" value="C:\Program Files\Java\jdk1.8.0_181" />
+    <property name="env.USERDNSDOMAIN" value="ZIRCONHQ.LOCAL" />
+    <property name="junit.output.dir" value="junit" />
+    <property name="user.dir" value="C:\Users\spencer.robertson\Documents\Projects\pharmacy" />
+    <property name="oomph.redirection.index.redirection" value="index:/-&gt;http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/" />
+    <property name="osgi.framework.shape" value="jar" />
+    <property name="org.osgi.framework.os.version" value="10.0.0" />
+    <property name="eclipse.home" value="C:\Users\spencer.robertson\eclipse\java-2018-09\eclipse" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="env.ALLUSERSPROFILE" value="C:\ProgramData" />
+    <property name="osgi.dataAreaRequiresExplicitInit" value="true" />
+    <property name="eclipse.startTime" value="1544614272763" />
+    <property name="env.PROCESSOR_ARCHITECTURE" value="AMD64" />
+    <property name="java.vm.version" value="25.181-b13" />
+    <property name="env.HOMEPATH" value="\Users\spencer.robertson" />
+    <property name="env.=::" value="::\" />
+    <property name="java.class.path" value="C:\Users\spencer.robertson\Documents\Projects\pharmacy\bin;C:\Users\spencer.robertson\Documents\Projects\pharmacy\lib\mysql-connector-java-8.0.13.jar;C:\Users\spencer.robertson\Documents\Projects\pharmacy\lib\easymock-4.0.1.jar;C:\Users\spencer.robertson\Documents\Projects\pharmacy\lib\sikulixsetup-1.1.3.jar;C:\Users\spencer.robertson\Documents\Projects\pharmacy\lib\sikulixapi.jar;C:\Users\spencer.robertson\Documents\Projects\pharmacy\lib\objenesis-2.0.jar;C:\Users\spencer.robertson\.p2\pool\plugins\org.junit_4.12.0.v201504281640\junit.jar;C:\Users\spencer.robertson\.p2\pool\plugins\org.hamcrest.core_1.3.0.v20180420-1519.jar;C:\Users\spencer.robertson\.p2\pool\plugins\org.apache.ant_1.10.5.v20180808-0324\lib\ant-launcher.jar;C:\Users\spencer.robertson\.p2\pool\plugins\org.apache.ant_1.10.5.v20180808-0324\lib\ant.jar;C:\Users\spencer.robertson\.p2\pool\plugins\org.apache.ant_1.10.5.v20180808-0324\lib\ant-junit.jar;C:\Users\spencer.robertson\.p2\pool\plugins\org.apache.ant_1.10.5.v20180808-0324\lib\ant-junit4.jar" />
+    <property name="ant.library.dir" value="C:\Users\spencer.robertson\.p2\pool\plugins\org.apache.ant_1.10.5.v20180808-0324\lib" />
+    <property name="os.arch" value="amd64" />
+    <property name="eclipse.p2.profile" value="C__Users_spencer.robertson_eclipse_java-2018-09_eclipse" />
+    <property name="env.OneDrive" value="C:\Users\spencer.robertson\OneDrive" />
+    <property name="env.SESSIONNAME" value="Console" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="org.eclipse.m2e.log.dir" value="C:\Users\spencer.robertson\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.logback.configuration" />
+    <property name="org.osgi.framework.vendor" value="Eclipse" />
+    <property name="env.CommonProgramFiles" value="C:\Program Files\Common Files" />
+    <property name="osgi.tracefile" value="C:\Users\spencer.robertson\eclipse-workspace\.metadata\trace.log" />
+    <property name="env.ProgramFiles" value="C:\Program Files" />
+    <property name="ant.core.lib" value="C:\Users\spencer.robertson\.p2\pool\plugins\org.apache.ant_1.10.5.v20180808-0324\lib\ant.jar" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="oomph.update.url" value="http://download.eclipse.org/oomph/updates/milestone/latest" />
+    <property name="file.separator" value="\" />
+    <property name="java.runtime.version" value="1.8.0_181-b13" />
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jre1.8.0_181\lib\resources.jar;C:\Program Files\Java\jre1.8.0_181\lib\rt.jar;C:\Program Files\Java\jre1.8.0_181\lib\sunrsasign.jar;C:\Program Files\Java\jre1.8.0_181\lib\jsse.jar;C:\Program Files\Java\jre1.8.0_181\lib\jce.jar;C:\Program Files\Java\jre1.8.0_181\lib\charsets.jar;C:\Program Files\Java\jre1.8.0_181\lib\jfr.jar;C:\Program Files\Java\jre1.8.0_181\classes" />
+    <property name="env.ComSpec" value="C:\windows\system32\cmd.exe" />
+    <property name="env.TEMP" value="C:\Users\SPENCE~1.ROB\AppData\Local\Temp" />
+    <property name="osgi.frameworkClassPath" value="., file:C:/Users/spencer.robertson/.p2/pool/plugins/org.eclipse.osgi.compatibility.state_1.1.200.v20180827-1536.jar" />
+    <property name="user.country" value="GB" />
+    <property name="env.FPS_BROWSER_USER_PROFILE_STRING" value="Default" />
+    <property name="osgi.logfile" value="C:\Users\spencer.robertson\eclipse-workspace\.metadata\.log" />
+    <property name="eclipse.p2.max.threads" value="10" />
+    <property name="env.ExtraPuTTY_MODE" value="DIR_MODE" />
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="env.PSModulePath" value="C:\Program Files\WindowsPowerShell\Modules;C:\windows\system32\WindowsPowerShell\v1.0\Modules" />
+    <property name="java.specification.version" value="1.8" />
+    <property name="sun.arch.data.model" value="64" />
+  </properties>
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_2" name="Should_AddItem_When_PharmNameIsValidChar" time="0.001" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_2" name="Should_AddItem_When_PharmNameIsValidIntegers" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_2" name="Should_ThrowError_When_PharmaNameIsEmptyString" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_3" name="Should_AddItem_When_ValidDailyDoseOf10" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_3" name="Should_AddItem_When_ValidDailyDoseOf1" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_3" name="Should_ThrowError_When_InvalidDailyDoseOf0" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_3" name="Should_ThrowError_When_InvalidDailyDoseOfNegativeNumber" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_4" name="Should_ThrowError_When_InvalidDurationOf0" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_4" name="Should_AddItem_When_ValidDurationOf1" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_4" name="Should_AddItem_When_ValidDurationOf10" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_4" name="Should_ThrowError_When_InvalidDurationOfNegativeNumber" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_5" name="Should_AddItem_When_ValidContainerSizeOf10" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_5" name="Should_AddItem_When_ValidContainerSizeOf1" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_5" name="Should_ThrowError_When_InvalidContainerSizeOfNegativeNumber" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_5" name="Should_ThrowError_When_InvalidContainerSizeOf0" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_6" name="Should_AddItem_With_ValidAvailableOverTheCounterSetToTrue" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_6" name="Should_AddItem_With_ValidAvailableOverTheCounterSetToFalse" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_7" name="Should_AddItem_With_ValidCommentMadeOfIntegers" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_7" name="Should_ThrowError_With_InvalidCommentMadeOfEmptyString" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_7" name="Should_AddItem_With_ValidCommentMadeOfChars" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_8" name="Should_HaveOneContainer_When_AddingItemWithSmallContainer" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_8" name="Should_HaveManyContainer_When_AddingItemWithWellOverFullContainer" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_8" name="Should_HaveTwoContainer_When_AddingItemWithOverFullContainer" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_8" name="Should_HaveOneContainer_When_AddingItemWithFullContainer" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_9" name="Should_DurationNotUpdate_WhenAdjustDurationByNegativeNumber" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_9" name="Should_DurationNotUpdate_WhenAdjustDurationByZero" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_9" name="Should_DurationUpdateByOne_WhenAdjustDuration" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_1" name="Should_AddOneItem_When_AddButtonIsPressed" time="0.001" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_1" name="Should_AddTwoItems_When_AddButtonIsPressed" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_2" name="Should_OnlyHaveOneItem_When_AddingTheSameItem" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_2" name="Should_OnlyHaveOneItem_When_AddingTheSameItemMultipleTimes" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_5" name="Should_NotRemoveItem_When_RemovingItemThatDoesNotExist" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_5" name="Should_RemoveOneItemFromListOfTwo_When_RemovingItem" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_5" name="Should_RemoveBothItemsFromListOfTwo_When_RemovingItem" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_5" name="SHould_RemoveOneItem_When_RemovingItem" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_6" name="Should_ClearTwoItems_When_ClearingItem" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_6" name="Should_ClearItem_When_ClearingItem" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_7" name="Should_ReturnNumberOfPrescriptionItemsOne_When_OneItem" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_7" name="Should_ReturnNumberOfPrescriptionItemsZero_When_ByDefault" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_7" name="Should_ReturnNumberOfPrescriptionItemsTwo_When_TwoItems" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_8" name="Should_ReturnNumberOfContainersItemsZero_When_ByDefault" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_8" name="Should_ReturnNumberOfContainersItemsTwo_When_TwoItems" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_8" name="Should_ReturnNumberOfContainersItemsOne_When_OneItem" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_9" name="Should_NotAddItem_With_NegativeDuration" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_9" name="Should_NotAddItem_With_ZeroDuration" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_10" name="Should_IncreaseDuration_When_AddingTheSamePrescriptionItem" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_10" name="Should_IncreaseDuration_When_AddingTheSamePrescriptionItemWithDifferentDuration" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_10" name="Should_KeepSameDuration_When_AddingTheSamePrescriptionItemWithNegativeDuration" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_10" name="Should_KeepSameDuration_When_AddingTheSamePrescriptionItemWithNoDuration" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_11" name="Should_ChangeDailyDose_When_AddingTheSamePrescriptionItemWithFirstItemDifferentDailyDose" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_11" name="Should_ChangeDailyDose_When_AddingTheSamePrescriptionItemWithSecondItemDifferentDailyDose" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_11" name="Should_NotChangeDailyDose_When_AddingTheSamePrescriptionItem" time="0.0" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_1" name="Should_DisplayTwoPharmaceuticalNames_When_ClickDropDown" time="2.917" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_1" name="Should_DisplayOnePharmaceuticalName_When_ClickDropDown" time="1.335" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_2" name="Should_DisplayPharmaceuticalName_When_SelectMedicineFromDropDown" time="4.383" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_3" name="Should_DisplayRecommendedDailyDose_When_ByDefault" time="3.187">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_3.Should_DisplayRecommendedDailyDose_When_ByDefault(Requirement_1_3_3.java:44)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_3" name="Should_DisplayRecommendedDailyDoseForEachMedicine_When_MedicineIsChanged" time="5.162">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_3.Should_DisplayRecommendedDailyDoseForEachMedicine_When_MedicineIsChanged(Requirement_1_3_3.java:58)
+</failure>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    DAL.getPharmaInfo(&lt;any&gt;): expected: 3, actual: 2" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    DAL.getPharmaInfo(&lt;any&gt;): expected: 3, actual: 2
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_3.tearDown(Requirement_1_3_3.java:67)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" name="Should_DisplayPhialWithOneMl_When_SizeIsOneAndContainerTypeIsPhial" time="1.098" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" name="Should_DisplayBoxWithTenTablets_When_SizeIsTenAndContainerTypeIsBox" time="1.197" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" name="Should_DisplayPhialWithTenTablets_When_SizeIsTenAndContainerTypeIsPhial" time="1.107" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" name="Should_DisplayBottleWithTenMl_When_SizeIsTenAndContainerTypeIsBottle" time="0.581" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" name="Should_DisplayBoxWithOneTablet_When_SizeIsOneAndContainerTypeIsBox" time="3.129">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4.Should_DisplayBoxWithOneTablet_When_SizeIsOneAndContainerTypeIsBox(Requirement_1_3_4.java:80)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" name="Should_DisplayTubeWithTenTablets_When_SizeIsTenAndContainerTypeIsTube" time="1.117" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" name="Should_DisplayBottleWithOneMl_When_SizeIsOneAndContainerTypeIsBottle" time="0.592" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" name="Should_DisplayDescription_When_ByDefault" time="3.155">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4.Should_DisplayDescription_When_ByDefault(Requirement_1_3_4.java:44)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" name="Should_UpdateDescription_When_NewMedicineIsSelected" time="5.141">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4.Should_UpdateDescription_When_NewMedicineIsSelected(Requirement_1_3_4.java:57)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" name="Should_DisplayTubeWithOneMl_When_SizeIsOneAndContainerTypeIsTube" time="1.075" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" name="Should_DisplayAvailableOverTheConter_When_AvailableOverTheCounterIsTrue" time="3.183">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4.Should_DisplayAvailableOverTheConter_When_AvailableOverTheCounterIsTrue(Requirement_1_3_4.java:67)
+</failure>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    DAL.getPharmaInfo(&lt;any&gt;): expected: 2, actual: 1" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    DAL.getPharmaInfo(&lt;any&gt;): expected: 2, actual: 1
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4.tearDown(Requirement_1_3_4.java:148)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_6" name="Should_PrescribedDailyDoseIncrementByOne_When_IncreasingValue" time="5.438">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_6.Should_PrescribedDailyDoseIncrementByOne_When_IncreasingValue(Requirement_1_3_6.java:65)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_6" name="Should_DisplayPrescribedDailyDose_When_ByDefault" time="3.141">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_6.Should_DisplayPrescribedDailyDose_When_ByDefault(Requirement_1_3_6.java:49)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_6" name="Should_PrescribedDailyDoseStayAtOne_When_DecrementedBelowOne" time="4.75" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_7" name="Should_PrescribedDailyDoseStopAtRecommendedDailyDose_When_DailyDoseIsFive" time="11.477">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_7.Should_PrescribedDailyDoseStopAtRecommendedDailyDose_When_DailyDoseIsFive(Requirement_1_3_7.java:66)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_7" name="Should_PrescribedDailyDoseStopAtRecommendedDailyDose_When_DailyDoseIsOne" time="4.376" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_8" name="Should_DisplayDuration_When_ByDefault" time="0.527" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_8" name="Should_DurationStayAtOne_When_DecrementedBelowOne" time="4.471" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_8" name="Should_DurationIncrementByOne_When_IncreasingValue" time="5.639" />
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_9" name="Should_AddOneItemWithOneDuration_When_AddButtonPressed" time="5.088">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_9.Should_AddOneItemWithOneDuration_When_AddButtonPressed(Requirement_1_3_9.java:69)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_9" name="Should_AddOneItemWithTenDuration_When_AddButtonPressed" time="5.022">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_9.Should_AddOneItemWithTenDuration_When_AddButtonPressed(Requirement_1_3_9.java:83)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_9" name="Should_AddTwoItems_When_AddingDifferentMedicines" time="7.627">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_9.Should_AddTwoItems_When_AddingDifferentMedicines(Requirement_1_3_9.java:107)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10" name="Should_RemoveRow_When_RemoveButtonIsPressed" time="5.02">
+    <error message="imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0" type="org.sikuli.script.FindFailed">FindFailed: imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0
+  Line 2761, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2761)
+	at org.sikuli.script.Region.find(Region.java:2326)
+	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)
+	at org.sikuli.script.Region.click(Region.java:3718)
+	at org.sikuli.script.Region.click(Region.java:3703)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10.Should_RemoveRow_When_RemoveButtonIsPressed(Requirement_1_3_10.java:103)
+</error>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0&#xa;    Prescription.removePrescriptionItem(&quot;Medicine1&quot;): expected: 1, actual: 0&#xa;    Prescription.getPrescriptionItems(): expected: 2, actual: 0" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0
+    Prescription.removePrescriptionItem(&quot;Medicine1&quot;): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 2, actual: 0
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10.tearDown(Requirement_1_3_10.java:154)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10" name="Should_RemoveCorrectRow_When_RemoveButtonIsPressedOnSpecificRow" time="5.329">
+    <error message="imgs/combo-box-three-items.png: (202x55) in S(0)[0,0 1920x1080] E:Y, T:3.0" type="org.sikuli.script.FindFailed">FindFailed: imgs/combo-box-three-items.png: (202x55) in S(0)[0,0 1920x1080] E:Y, T:3.0
+  Line 2761, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2761)
+	at org.sikuli.script.Region.find(Region.java:2326)
+	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)
+	at org.sikuli.script.Region.click(Region.java:3718)
+	at org.sikuli.script.Region.click(Region.java:3703)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10.Should_RemoveCorrectRow_When_RemoveButtonIsPressedOnSpecificRow(Requirement_1_3_10.java:136)
+</error>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine2&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0&#xa;    Prescription.removePrescriptionItem(&quot;Medicine1&quot;): expected: 1, actual: 0&#xa;    Prescription.getPrescriptionItems(): expected: 3, actual: 1" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem(&quot;Medicine2&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0
+    Prescription.removePrescriptionItem(&quot;Medicine1&quot;): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 3, actual: 1
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10.tearDown(Requirement_1_3_10.java:154)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10" name="Should_DisableRemovButton_When_ByDefault" time="3.588">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10.Should_DisableRemovButton_When_ByDefault(Requirement_1_3_10.java:59)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10" name="Should_EnableRemoveButton_When_RowIsSelected" time="3.61">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10.Should_EnableRemoveButton_When_RowIsSelected(Requirement_1_3_10.java:73)
+</failure>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0&#xa;    Prescription.getPrescriptionItems(): expected: 1, actual: 0" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10.tearDown(Requirement_1_3_10.java:154)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_11" name="Should_EnableClearButton_When_RowIsSelected" time="3.373">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_11.Should_EnableClearButton_When_RowIsSelected(Requirement_1_3_11.java:73)
+</failure>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0&#xa;    Prescription.getPrescriptionItems(): expected: 1, actual: 0" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_11.tearDown(Requirement_1_3_11.java:149)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_11" name="Should_DisableClearButton_When_ByDefault" time="3.379">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_11.Should_DisableClearButton_When_ByDefault(Requirement_1_3_11.java:59)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_11" name="Should_RemoveMultipleRows_When_ClearButtonIsPressed" time="7.535">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_11.Should_RemoveMultipleRows_When_ClearButtonIsPressed(Requirement_1_3_11.java:137)
+</failure>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    Prescription.clearPrescription(): expected: 1, actual: 0" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    Prescription.clearPrescription(): expected: 1, actual: 0
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_11.tearDown(Requirement_1_3_11.java:149)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_11" name="Should_RemoveRow_When_ClearButtonIsPressed" time="3.424">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_11.Should_RemoveRow_When_ClearButtonIsPressed(Requirement_1_3_11.java:94)
+</failure>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0&#xa;    Prescription.clearPrescription(): expected: 1, actual: 0&#xa;    Prescription.getPrescriptionItems(): expected: 1, actual: 0" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0
+    Prescription.clearPrescription(): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_11.tearDown(Requirement_1_3_11.java:149)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_12" name="Should_ExitApplication_When_ExitButtonClicked" time="3.135">
+    <error message="imgs/exit-button.png: (85x28) in S(0)[0,0 1920x1080] E:Y, T:3.0" type="org.sikuli.script.FindFailed">FindFailed: imgs/exit-button.png: (85x28) in S(0)[0,0 1920x1080] E:Y, T:3.0
+  Line 2761, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2761)
+	at org.sikuli.script.Region.find(Region.java:2326)
+	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)
+	at org.sikuli.script.Region.click(Region.java:3718)
+	at org.sikuli.script.Region.click(Region.java:3703)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_12.Should_ExitApplication_When_ExitButtonClicked(Requirement_1_3_12.java:51)
+</error>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_16" name="Should_PromptUserToAddCommentInDialogueBox_When_AddButtonIsPressedWhilstAddCommentIsChecked" time="5.747">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_16.Should_PromptUserToAddCommentInDialogueBox_When_AddButtonIsPressedWhilstAddCommentIsChecked(Requirement_1_3_16.java:66)
+</failure>
+    <failure message="&#xa;  Unexpected method calls:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Unexpected method calls:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_16.tearDown(Requirement_1_3_16.java:94)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_16" name="Should_AddCommentToPrescription_When_CommentIsTyped" time="6.224">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_16.Should_AddCommentToPrescription_When_CommentIsTyped(Requirement_1_3_16.java:87)
+</failure>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle; Comment Test;&#xa;&quot;, 1 (int)): expected: 1, actual: 0&#xa;    Prescription.getPrescriptionItems(): expected: 1, actual: 0&#xa;  Unexpected method calls:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle; Comment Test;
+&quot;, 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+  Unexpected method calls:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_16.tearDown(Requirement_1_3_16.java:94)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_17" name="Should_AddNothing_When_ColonAndNewLineExist" time="6.064">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_17.Should_AddNothing_When_ColonAndNewLineExist(Requirement_1_3_17.java:116)
+</failure>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle; Comment;&#xa;&quot;, 1 (int)): expected: 1, actual: 0&#xa;    Prescription.getPrescriptionItems(): expected: 1, actual: 0&#xa;  Unexpected method calls:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle; Comment;
+&quot;, 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+  Unexpected method calls:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_17.tearDown(Requirement_1_3_17.java:123)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_17" name="Should_AddNewLine_When_OnlyColonExists" time="6.9">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_17.Should_AddNewLine_When_OnlyColonExists(Requirement_1_3_17.java:95)
+</failure>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle; Comment With No New Line;&#xa;&quot;, 1 (int)): expected: 1, actual: 0&#xa;    Prescription.getPrescriptionItems(): expected: 1, actual: 0&#xa;  Unexpected method calls:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle; Comment With No New Line;
+&quot;, 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+  Unexpected method calls:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_17.tearDown(Requirement_1_3_17.java:123)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_17" name="Should_AddColonAndNewLine_When_NeitherExists" time="7.222">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_17.Should_AddColonAndNewLine_When_NeitherExists(Requirement_1_3_17.java:74)
+</failure>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;&#xa;&quot;, 1 (int)): expected: 1, actual: 0&#xa;    Prescription.getPrescriptionItems(): expected: 1, actual: 0&#xa;  Unexpected method calls:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;
+&quot;, 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+  Unexpected method calls:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int))
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_17.tearDown(Requirement_1_3_17.java:123)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_19" name="Should_DisableAddButton_When_PrescribedDailyDoseIsOverRecommendedDailyDose" time="3.137">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_19.setUp(Requirement_1_3_19.java:46)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_20" name="Should_EnableAddButtonIfExceedDailyDoseIsChecked_When_PrescribedDailyDoseIsOverRecommendedDailyDose" time="7.22">
+    <error message="imgs/ok-button.png: (68x30) in S(0)[0,0 1920x1080] E:Y, T:3.0" type="org.sikuli.script.FindFailed">FindFailed: imgs/ok-button.png: (68x30) in S(0)[0,0 1920x1080] E:Y, T:3.0
+  Line 2761, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2761)
+	at org.sikuli.script.Region.find(Region.java:2326)
+	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)
+	at org.sikuli.script.Region.click(Region.java:3718)
+	at org.sikuli.script.Region.click(Region.java:3703)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_20.Should_EnableAddButtonIfExceedDailyDoseIsChecked_When_PrescribedDailyDoseIsOverRecommendedDailyDose(Requirement_1_3_20.java:88)
+</error>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 2 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle; My Comment;&#xa;&quot;, 1 (int)): expected: 1, actual: 0&#xa;    Prescription.getPrescriptionItems(): expected: 1, actual: 0" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 2 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle; My Comment;
+&quot;, 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_20.tearDown(Requirement_1_3_20.java:97)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_22" name="Should_DisplayContextMenu_When_RightClickingRow" time="5.422">
+    <error message="imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0" type="org.sikuli.script.FindFailed">FindFailed: imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0
+  Line 2761, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2761)
+	at org.sikuli.script.Region.find(Region.java:2326)
+	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)
+	at org.sikuli.script.Region.rightClick(Region.java:3815)
+	at org.sikuli.script.Region.rightClick(Region.java:3800)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_22.Should_DisplayContextMenu_When_RightClickingRow(Requirement_1_3_22.java:76)
+</error>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0&#xa;    Prescription.getPrescriptionItems(): expected: 1, actual: 0" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_22.tearDown(Requirement_1_3_22.java:58)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_22" name="Should_DisplayContextMenuOnSelectedRow_When_RightClickingRow" time="8.042">
+    <error message="imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0" type="org.sikuli.script.FindFailed">FindFailed: imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0
+  Line 2761, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2761)
+	at org.sikuli.script.Region.find(Region.java:2326)
+	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)
+	at org.sikuli.script.Region.rightClick(Region.java:3815)
+	at org.sikuli.script.Region.rightClick(Region.java:3800)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_22.Should_DisplayContextMenuOnSelectedRow_When_RightClickingRow(Requirement_1_3_22.java:107)
+</error>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_23" name="Should_UpdateCurrentComment_When_ClickingEditCommentAndTypingNewComment" time="5.207">
+    <error message="imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0" type="org.sikuli.script.FindFailed">FindFailed: imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0
+  Line 2761, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2761)
+	at org.sikuli.script.Region.find(Region.java:2326)
+	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)
+	at org.sikuli.script.Region.rightClick(Region.java:3815)
+	at org.sikuli.script.Region.rightClick(Region.java:3800)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_23.Should_UpdateCurrentComment_When_ClickingEditCommentAndTypingNewComment(Requirement_1_3_23.java:95)
+</error>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0&#xa;    Prescription.getPrescriptionItems(): expected: 1, actual: 0" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_23.tearDown(Requirement_1_3_23.java:115)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_23" name="Should_DisplayCurrentCommentInDialogueBox_When_ClickingEditComment" time="5.811">
+    <error message="imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0" type="org.sikuli.script.FindFailed">FindFailed: imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0
+  Line 2761, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2761)
+	at org.sikuli.script.Region.find(Region.java:2326)
+	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)
+	at org.sikuli.script.Region.rightClick(Region.java:3815)
+	at org.sikuli.script.Region.rightClick(Region.java:3800)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_23.Should_DisplayCurrentCommentInDialogueBox_When_ClickingEditComment(Requirement_1_3_23.java:69)
+</error>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_24" name="Should_DecrementDosageByOne_WhenDecrementDosgaeIsClicked" time="4.75">
+    <error message="imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0" type="org.sikuli.script.FindFailed">FindFailed: imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0
+  Line 2761, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2761)
+	at org.sikuli.script.Region.find(Region.java:2326)
+	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)
+	at org.sikuli.script.Region.rightClick(Region.java:3815)
+	at org.sikuli.script.Region.rightClick(Region.java:3800)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_24.Should_DecrementDosageByOne_WhenDecrementDosgaeIsClicked(Requirement_1_3_24.java:69)
+</error>
+    <failure message="&#xa;  Expectation failure on verify:&#xa;    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0&#xa;    Prescription.getPrescriptionItems(): expected: 1, actual: 0" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: 
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem(&quot;Medicine1&quot;, 1 (int), 1 (int), 1 (int), false, &quot;Comment; Comes in a 1ml Bottle&quot;, 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)
+	at org.easymock.EasyMock.verify(EasyMock.java:2089)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_24.tearDown(Requirement_1_3_24.java:109)
+</failure>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_24" name="Should_DecrementDosageByFour_WhenDecrementDosgaeIsClickedFourTimes" time="8.106">
+    <error message="imgs/table-one-item.png: (915x121) seen at (120, 225) with 0.56 in S(0)[0,0 1920x1080] E:Y, T:3.0" type="org.sikuli.script.FindFailed">FindFailed: imgs/table-one-item.png: (915x121) seen at (120, 225) with 0.56 in S(0)[0,0 1920x1080] E:Y, T:3.0
+  Line 2761, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2761)
+	at org.sikuli.script.Region.find(Region.java:2326)
+	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)
+	at org.sikuli.script.Region.rightClick(Region.java:3815)
+	at org.sikuli.script.Region.rightClick(Region.java:3800)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_24.Should_DecrementDosageByFour_WhenDecrementDosgaeIsClickedFourTimes(Requirement_1_3_24.java:94)
+</error>
+  </testcase>
+  <testcase classname="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_25" name="Should_DisableDecrementDosage_When_DailyDoseIsOne" time="4.802">
+    <error message="imgs/table-one-item.png: (915x121) seen at (120, 225) with 0.56 in S(0)[0,0 1920x1080] E:Y, T:3.0" type="org.sikuli.script.FindFailed">FindFailed: imgs/table-one-item.png: (915x121) seen at (120, 225) with 0.56 in S(0)[0,0 1920x1080] E:Y, T:3.0
+  Line 2761, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2761)
+	at org.sikuli.script.Region.find(Region.java:2326)
+	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)
+	at org.sikuli.script.Region.rightClick(Region.java:3815)
+	at org.sikuli.script.Region.rightClick(Region.java:3800)
+	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_25.Should_DisableDecrementDosage_When_DailyDoseIsOne(Requirement_1_3_25.java:69)
+</error>
+  </testcase>
+  <system-out><![CDATA[Working Directory = C:\Users\spencer.robertson\Documents\Projects\pharmacy
+[error] RobotDesktop: checkMousePosition: should be L(3768,432)@S(1)[3000,0 1536x864]
+but after move is L(3614,346)@S(1)[3000,0 1536x864]
+Possible cause in case you did not touch the mouse while script was running:
+ Mouse actions are blocked generally or by the frontmost application.
+You might try to run the SikuliX stuff as admin.
+[error] RobotDesktop: checkMousePosition: should be L(-960,540)@S(2)[-1920,0 1920x1080]
+but after move is L(-1920,735)@S(2)[-1920,0 1920x1080]
+Possible cause in case you did not touch the mouse while script was running:
+ Mouse actions are blocked generally or by the frontmost application.
+You might try to run the SikuliX stuff as admin.
+[log] CLICK on L(311,160)@S(0)[0,0 1920x1080] (537 msec)
+Working Directory = C:\Users\spencer.robertson\Documents\Projects\pharmacy
+[log] CLICK on L(311,160)@S(0)[0,0 1920x1080] (530 msec)
+[log] CLICK on L(311,160)@S(0)[0,0 1920x1080] (527 msec)
+[log] CLICK on L(311,200)@S(0)[0,0 1920x1080] (533 msec)
+[log] CLICK on L(311,160)@S(0)[0,0 1920x1080] (522 msec)
+[log] CLICK on L(311,220)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(317,161)@S(0)[0,0 1920x1080] (527 msec)
+[log] CLICK on L(311,200)@S(0)[0,0 1920x1080] (523 msec)
+[log] CLICK on L(311,160)@S(0)[0,0 1920x1080] (534 msec)
+[log] CLICK on L(311,200)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (522 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (533 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(900,162)@S(0)[0,0 1920x1080] (545 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (541 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (520 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (522 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (520 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (520 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (520 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (520 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (522 msec)
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(900,151)@S(0)[0,0 1920x1080] (531 msec)
+[log] CLICK on L(900,151)@S(0)[0,0 1920x1080] (520 msec)
+[log] CLICK on L(900,151)@S(0)[0,0 1920x1080] (520 msec)
+[log] CLICK on L(900,151)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(900,151)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(573,162)@S(0)[0,0 1920x1080] (531 msec)
+[log] CLICK on L(900,151)@S(0)[0,0 1920x1080] (543 msec)
+[log] CLICK on L(900,151)@S(0)[0,0 1920x1080] (520 msec)
+[log] CLICK on L(900,151)@S(0)[0,0 1920x1080] (524 msec)
+[log] CLICK on L(573,162)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(573,162)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(573,162)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (549 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (523 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (536 msec)
+[log] CLICK on L(311,160)@S(0)[0,0 1920x1080] (522 msec)
+[log] CLICK on L(311,200)@S(0)[0,0 1920x1080] (520 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(1062,374)@S(0)[0,0 1920x1080] (533 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (535 msec)
+[log] CLICK on L(311,160)@S(0)[0,0 1920x1080] (522 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (526 msec)
+[log] CLICK on L(311,160)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(223,200)@S(0)[0,0 1920x1080] (522 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (520 msec)
+[log] CLICK on L(428,204)@S(0)[0,0 1920x1080] (533 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(428,204)@S(0)[0,0 1920x1080] (530 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (521 msec)
+[log]  TYPE "Comment Test"
+[log] CLICK on L(428,204)@S(0)[0,0 1920x1080] (534 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (521 msec)
+[log]  TYPE "Comment;"
+[log] CLICK on L(428,204)@S(0)[0,0 1920x1080] (536 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (520 msec)
+[log]  TYPE "Comment With No New Line;"
+[log] CLICK on L(428,204)@S(0)[0,0 1920x1080] (523 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (526 msec)
+[log]  TYPE "Comment With No Colon Or New Line"
+[log] CLICK on L(573,151)@S(0)[0,0 1920x1080] (542 msec)
+[log] CLICK on L(382,685)@S(0)[0,0 1920x1080] (534 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (529 msec)
+[log]  TYPE "My Comment"
+[log] CLICK on L(1062,374)@S(0)[0,0 1920x1080] (523 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (522 msec)
+[log] CLICK on L(311,160)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(311,200)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (522 msec)
+[log] CLICK on L(1062,374)@S(0)[0,0 1920x1080] (537 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (530 msec)
+[log] CLICK on L(1062,374)@S(0)[0,0 1920x1080] (527 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (536 msec)
+[log] RIGHT CLICK on L(577,255)@S(0)[0,0 1920x1080] (528 msec)
+[log] CLICK on L(641,279)@S(0)[0,0 1920x1080] (521 msec)
+[log] CLICK on L(1062,165)@S(0)[0,0 1920x1080] (534 msec)
+]]></system-out>
+  <system-err><![CDATA[Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment Test;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment Test;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener$Actions.actionPerformed(Unknown Source)
+	at javax.swing.SwingUtilities.notifyAction(Unknown Source)
+	at javax.swing.JComponent.processKeyBinding(Unknown Source)
+	at javax.swing.JComponent.processKeyBindings(Unknown Source)
+	at javax.swing.JComponent.processKeyEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.KeyboardFocusManager.redispatchEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment With No New Line;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment With No New Line;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener$Actions.actionPerformed(Unknown Source)
+	at javax.swing.SwingUtilities.notifyAction(Unknown Source)
+	at javax.swing.JComponent.processKeyBinding(Unknown Source)
+	at javax.swing.JComponent.processKeyBindings(Unknown Source)
+	at javax.swing.JComponent.processKeyEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.KeyboardFocusManager.redispatchEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment With No New Line;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener$Actions.actionPerformed(Unknown Source)
+	at javax.swing.SwingUtilities.notifyAction(Unknown Source)
+	at javax.swing.JComponent.processKeyBinding(Unknown Source)
+	at javax.swing.JComponent.processKeyBindings(Unknown Source)
+	at javax.swing.JComponent.processKeyEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.KeyboardFocusManager.redispatchEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment With No New Line;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener$Actions.actionPerformed(Unknown Source)
+	at javax.swing.SwingUtilities.notifyAction(Unknown Source)
+	at javax.swing.JComponent.processKeyBinding(Unknown Source)
+	at javax.swing.JComponent.processKeyBindings(Unknown Source)
+	at javax.swing.JComponent.processKeyEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.KeyboardFocusManager.redispatchEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment With No New Line;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener$Actions.actionPerformed(Unknown Source)
+	at javax.swing.SwingUtilities.notifyAction(Unknown Source)
+	at javax.swing.JComponent.processKeyBinding(Unknown Source)
+	at javax.swing.JComponent.processKeyBindings(Unknown Source)
+	at javax.swing.JComponent.processKeyEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.KeyboardFocusManager.redispatchEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener$Actions.actionPerformed(Unknown Source)
+	at javax.swing.SwingUtilities.notifyAction(Unknown Source)
+	at javax.swing.JComponent.processKeyBinding(Unknown Source)
+	at javax.swing.JComponent.processKeyBindings(Unknown Source)
+	at javax.swing.JComponent.processKeyEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.KeyboardFocusManager.redispatchEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener$Actions.actionPerformed(Unknown Source)
+	at javax.swing.SwingUtilities.notifyAction(Unknown Source)
+	at javax.swing.JComponent.processKeyBinding(Unknown Source)
+	at javax.swing.JComponent.processKeyBindings(Unknown Source)
+	at javax.swing.JComponent.processKeyEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.KeyboardFocusManager.redispatchEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener$Actions.actionPerformed(Unknown Source)
+	at javax.swing.SwingUtilities.notifyAction(Unknown Source)
+	at javax.swing.JComponent.processKeyBinding(Unknown Source)
+	at javax.swing.JComponent.processKeyBindings(Unknown Source)
+	at javax.swing.JComponent.processKeyEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.KeyboardFocusManager.redispatchEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener$Actions.actionPerformed(Unknown Source)
+	at javax.swing.SwingUtilities.notifyAction(Unknown Source)
+	at javax.swing.JComponent.processKeyBinding(Unknown Source)
+	at javax.swing.JComponent.processKeyBindings(Unknown Source)
+	at javax.swing.JComponent.processKeyEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.KeyboardFocusManager.redispatchEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener$Actions.actionPerformed(Unknown Source)
+	at javax.swing.SwingUtilities.notifyAction(Unknown Source)
+	at javax.swing.JComponent.processKeyBinding(Unknown Source)
+	at javax.swing.JComponent.processKeyBindings(Unknown Source)
+	at javax.swing.JComponent.processKeyEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.KeyboardFocusManager.redispatchEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Exception in thread "AWT-EventQueue-0" java.lang.AssertionError: 
+  Unexpected method call Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)):
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; Comment With No Colon Or New Line;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:44)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:101)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.zircon.pharmacyApplication.Prescription$$EnhancerByCGLIB$$47242ebf.addPrescriptionItem(<generated>)
+	at com.zircon.pharmacyApplication.PrescriptionUI.addItem(PrescriptionUI.java:511)
+	at com.zircon.pharmacyApplication.PrescriptionUI.access$2(PrescriptionUI.java:499)
+	at com.zircon.pharmacyApplication.PrescriptionUI$3.actionPerformed(PrescriptionUI.java:253)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener$Actions.actionPerformed(Unknown Source)
+	at javax.swing.SwingUtilities.notifyAction(Unknown Source)
+	at javax.swing.JComponent.processKeyBinding(Unknown Source)
+	at javax.swing.JComponent.processKeyBindings(Unknown Source)
+	at javax.swing.JComponent.processKeyEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.KeyboardFocusManager.redispatchEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(Unknown Source)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+]]></system-err>
+</testsuite>

@@ -3,19 +3,739 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="pharmacyApplication">
+              as the first entry and export the buildfile again. --><project basedir="../../../Documents/Projects/pharmacy/" default="build" name="pharmacyApplication">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../../../../eclipse/"/>
+    <property name="ECLIPSE_HOME" value="../../../eclipse/java-2018-09/eclipse/"/>
     <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
     <path id="JUnit 4.libraryclasspath">
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+        <pathelement location="../../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
     </path>
     <path id="pharmacyApplication.classpath">
         <pathelement location="bin"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.AddButtonTests.Add_Button_Adds_Multiple_Medicine_To_Table.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.AddButtonTests.Add_Button_Adds_One_Medicine_To_Table.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.AddButtonTests.Add_Button_Can_Add_If_Over_Dosage_Checkbox_Is_Checked.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.AddButtonTests.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.AddCommentTests.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.AllPrescriptionItemTests (1).classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.AllPrescriptionTests.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.AllTests (1).classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.AllTests.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.AllUITests (2).classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.ClearButtonTests.Clear_Button_Removes_Single_Row.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.ClearButtonTests.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.DurationTests.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Main (2).classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.PrescribedDailyDoseTests.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.PrescribedDailyDoseTests.setUp.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.PrescriptionUI (1).classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.PrescriptionUITest.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.RemoveButtonTests.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.RemoveButtonTests.Remove_Button_Removes_Row.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.RemoveButtonTests.Remove_Button_Removes_Selected_Row.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_1_1.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_1_1.test.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_1_10.AddingTheSamePrescriptionItemIncreasesDuration.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_1_10.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_1_11.AddingTheSamePrescriptionItemDoesntChangeDailyDose.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_1_11.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_1_2.AddTheSameItemMultipleTimesAndCheckItIsOnlyAddedOnce.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_1_2.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_1_5.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_1_6.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_1_7.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_1_8.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_1_9.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_2_2.AddingItemWithValidPharmaNameMadeOfChars.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_2_2.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_2_3.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_2_4.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_2_5.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_2_6.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_2_7.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_2_8.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_2_9.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_1.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_1.Should_DisplayOnePharmaceuticalName_When_ClickDropDown.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_1.Should_DisplayTwoPharmaceuticalNames_When_ClickDropDown.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_10.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_10.Should_RemoveRow_When_RemoveButtonIsPressed.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_12.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_16.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_16.Should_DisplayNumberOfPrescriptionsAsZero_When_ByDefault.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_17.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_17.Should_AddColonAndNewLine_When_NeitherExists.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_19.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_2.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_2.Should_SelectPharmaceutical_When_SelectMedicineFromDropDown.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_20.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_20.Should_EnableAddButtonIfExceedDailyDoseIsChecked_When_PrescribedDailyDoseIsOverRecommendedDailyDose.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_22.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_23.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_24.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_25.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_3.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_4.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_4.Should_DisplayAvailableOverTheConter_When_AvailableOverTheCounterIsTrue.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_4.Should_DisplayBottleWithOneMl_When_SizeIsOneAndContainerTypeIsBottle.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_4.Should_DisplayBoxWithOneTablet_When_SizeIsOneAndContainerTypeIsBox.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_4.Should_DisplayBoxWithTenTablets_When_SizeIsTenAndContainerTypeIsBox.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_4.Should_DisplayRecommendedDailyDoseForEachMedicine_When_MedicineIsChanged.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_4.Should_DisplayTubeWithTenTablets_When_SizeIsTenAndContainerTypeIsTube.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.Requirement_1_3_9.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.TableTests.Decrement_Dosage_Decrements_By_Multiple.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.TableTests.Decrement_Dosage_Decrements_By_One.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.TableTests.Decrement_Dosage_Disabled_If_Daily_Dose_Is_One.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.TableTests.Edit_Comment_Button_Allows_Editing_Of_Existing_Comment.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.TableTests.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.TimezoneDump.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.UITests (1).classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.UITests.classpath">
+        <path refid="pharmacyApplication.classpath"/>
+        <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
+        <pathelement location="lib/easymock-4.0.1.jar"/>
+        <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
+        <pathelement location="lib/sikulixapi.jar"/>
+        <pathelement location="lib/objenesis-2.0.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="run.UITests.test.classpath">
+        <path refid="pharmacyApplication.classpath"/>
         <pathelement location="lib/mysql-connector-java-8.0.13.jar"/>
         <pathelement location="lib/easymock-4.0.1.jar"/>
         <pathelement location="lib/sikulixsetup-1.1.3.jar"/>
@@ -28,7 +748,6 @@
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
                 <exclude name="**/*.launch"/>
-                <exclude name="**/*.xtend"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -60,52 +779,708 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="AllTests">
+    <target name="AddButtonTests.Add_Button_Adds_Multiple_Medicine_To_Table">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="pharmacyApplicationTest.AllTests" todir="${junit.output.dir}"/>
-            <classpath refid="pharmacyApplication.classpath"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.AddButtonTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.AddButtonTests.Add_Button_Adds_Multiple_Medicine_To_Table.classpath"/>
         </junit>
     </target>
-    <target name="AllUITests">
+    <target name="AddButtonTests.Add_Button_Adds_One_Medicine_To_Table">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="pharmacyApplicationUITesting.AllUITests" todir="${junit.output.dir}"/>
-            <classpath refid="pharmacyApplication.classpath"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.AddButtonTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.AddButtonTests.Add_Button_Adds_One_Medicine_To_Table.classpath"/>
         </junit>
     </target>
-    <target name="Requirement_1_3_24">
+    <target name="AddButtonTests.Add_Button_Can_Add_If_Over_Dosage_Checkbox_Is_Checked">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="pharmacyApplicationUITesting.Requirement_1_3_24" todir="${junit.output.dir}"/>
-            <classpath refid="pharmacyApplication.classpath"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.AddButtonTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.AddButtonTests.Add_Button_Can_Add_If_Over_Dosage_Checkbox_Is_Checked.classpath"/>
         </junit>
     </target>
-    <target name="Requirement_1_3_24.Should_DecrementDosageByFour_WhenDecrementDosgaeIsClickedFourTimes">
+    <target name="AddButtonTests">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="pharmacyApplicationUITesting.Requirement_1_3_24" todir="${junit.output.dir}"/>
-            <classpath refid="pharmacyApplication.classpath"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.AddButtonTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.AddButtonTests.classpath"/>
         </junit>
     </target>
-    <target name="Requirement_1_3_3.Should_DisplayRecommendedDailyDose_When_ByDefault">
+    <target name="AddCommentTests">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="pharmacyApplicationUITesting.Requirement_1_3_3" todir="${junit.output.dir}"/>
-            <classpath refid="pharmacyApplication.classpath"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.AddCommentTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.AddCommentTests.classpath"/>
+        </junit>
+    </target>
+    <target name="AllPrescriptionItemTests (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.PrescriptionItem.AllPrescriptionItemTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.AllPrescriptionItemTests (1).classpath"/>
         </junit>
     </target>
     <target name="AllPrescriptionTests">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="pharmacyApplicationTest.PrescriptionTests.AllPrescriptionTests" todir="${junit.output.dir}"/>
-            <classpath refid="pharmacyApplication.classpath"/>
+            <test name="com.zircon.pharmacyApplicationTest.Prescription.AllPrescriptionTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.AllPrescriptionTests.classpath"/>
+        </junit>
+    </target>
+    <target name="AllTests (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+        	<jvmarg value="-Duser.dir=C:\Users\spencer.robertson\Documents\Projects\pharmacy"/>
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.AllTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.AllTests (1).classpath"/>
+        </junit>
+    </target>
+    <target name="AllTests">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.AllTests.classpath"/>
+        </junit>
+    </target>
+    <target name="AllUITests (2)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.AllUITests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.AllUITests (2).classpath"/>
+        </junit>
+    </target>
+    <target name="ClearButtonTests.Clear_Button_Removes_Single_Row">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.ClearButtonTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.ClearButtonTests.Clear_Button_Removes_Single_Row.classpath"/>
+        </junit>
+    </target>
+    <target name="ClearButtonTests">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.ClearButtonTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.ClearButtonTests.classpath"/>
+        </junit>
+    </target>
+    <target name="DurationTests">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.DurationTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.DurationTests.classpath"/>
+        </junit>
+    </target>
+    <target name="Main (2)">
+        <java classname="com.zircon.pharmacyApplication.Main" failonerror="true" fork="yes">
+            <classpath refid="run.Main (2).classpath"/>
+        </java>
+    </target>
+    <target name="PrescribedDailyDoseTests">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.PrescribedDailyDoseTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.PrescribedDailyDoseTests.classpath"/>
+        </junit>
+    </target>
+    <target name="PrescribedDailyDoseTests.setUp">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.PrescribedDailyDoseTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.PrescribedDailyDoseTests.setUp.classpath"/>
+        </junit>
+    </target>
+    <target name="PrescriptionUI (1)">
+        <java classname="com.zircon.pharmacyApplication.PrescriptionUI" failonerror="true" fork="yes">
+            <classpath refid="run.PrescriptionUI (1).classpath"/>
+        </java>
+    </target>
+    <target name="PrescriptionUITest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.PrescriptionUITest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.PrescriptionUITest.classpath"/>
+        </junit>
+    </target>
+    <target name="RemoveButtonTests">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.RemoveButtonTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.RemoveButtonTests.classpath"/>
+        </junit>
+    </target>
+    <target name="RemoveButtonTests.Remove_Button_Removes_Row">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.RemoveButtonTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.RemoveButtonTests.Remove_Button_Removes_Row.classpath"/>
+        </junit>
+    </target>
+    <target name="RemoveButtonTests.Remove_Button_Removes_Selected_Row">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.RemoveButtonTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.RemoveButtonTests.Remove_Button_Removes_Selected_Row.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_1_1">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_1" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_1_1.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_1_1.test">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_1" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_1_1.test.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_1_10.AddingTheSamePrescriptionItemIncreasesDuration">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_10" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_1_10.AddingTheSamePrescriptionItemIncreasesDuration.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_1_10">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_10" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_1_10.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_1_11.AddingTheSamePrescriptionItemDoesntChangeDailyDose">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_11" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_1_11.AddingTheSamePrescriptionItemDoesntChangeDailyDose.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_1_11">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_11" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_1_11.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_1_2.AddTheSameItemMultipleTimesAndCheckItIsOnlyAddedOnce">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_2" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_1_2.AddTheSameItemMultipleTimesAndCheckItIsOnlyAddedOnce.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_1_2">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_2" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_1_2.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_1_5">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_5" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_1_5.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_1_6">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_6" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_1_6.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_1_7">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_7" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_1_7.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_1_8">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_8" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_1_8.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_1_9">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.Prescription.Requirement_1_1_9" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_1_9.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_2_2.AddingItemWithValidPharmaNameMadeOfChars">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_2" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_2_2.AddingItemWithValidPharmaNameMadeOfChars.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_2_2">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_2" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_2_2.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_2_3">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_3" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_2_3.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_2_4">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_4" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_2_4.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_2_5">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_5" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_2_5.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_2_6">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_6" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_2_6.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_2_7">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_7" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_2_7.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_2_8">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_8" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_2_8.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_2_9">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.PrescriptionItem.Requirement_1_2_9" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_2_9.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_1">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_1" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_1.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_1.Should_DisplayOnePharmaceuticalName_When_ClickDropDown">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_1" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_1.Should_DisplayOnePharmaceuticalName_When_ClickDropDown.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_1.Should_DisplayTwoPharmaceuticalNames_When_ClickDropDown">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_1" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_1.Should_DisplayTwoPharmaceuticalNames_When_ClickDropDown.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_10">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_10.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_10.Should_RemoveRow_When_RemoveButtonIsPressed">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_10.Should_RemoveRow_When_RemoveButtonIsPressed.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_12">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_12" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_12.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_16">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_16" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_16.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_16.Should_DisplayNumberOfPrescriptionsAsZero_When_ByDefault">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_16" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_16.Should_DisplayNumberOfPrescriptionsAsZero_When_ByDefault.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_17">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_17" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_17.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_17.Should_AddColonAndNewLine_When_NeitherExists">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_17" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_17.Should_AddColonAndNewLine_When_NeitherExists.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_19">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_19" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_19.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_2">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_2" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_2.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_2.Should_SelectPharmaceutical_When_SelectMedicineFromDropDown">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_2" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_2.Should_SelectPharmaceutical_When_SelectMedicineFromDropDown.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_20">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_20" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_20.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_20.Should_EnableAddButtonIfExceedDailyDoseIsChecked_When_PrescribedDailyDoseIsOverRecommendedDailyDose">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_20" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_20.Should_EnableAddButtonIfExceedDailyDoseIsChecked_When_PrescribedDailyDoseIsOverRecommendedDailyDose.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_22">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_22" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_22.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_23">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_23" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_23.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_24">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_24" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_24.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_25">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_25" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_25.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_3">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_3" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_3.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_4">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_4.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_4.Should_DisplayAvailableOverTheConter_When_AvailableOverTheCounterIsTrue">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_4.Should_DisplayAvailableOverTheConter_When_AvailableOverTheCounterIsTrue.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_4.Should_DisplayBottleWithOneMl_When_SizeIsOneAndContainerTypeIsBottle">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_4.Should_DisplayBottleWithOneMl_When_SizeIsOneAndContainerTypeIsBottle.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_4.Should_DisplayBoxWithOneTablet_When_SizeIsOneAndContainerTypeIsBox">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_4.Should_DisplayBoxWithOneTablet_When_SizeIsOneAndContainerTypeIsBox.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_4.Should_DisplayBoxWithTenTablets_When_SizeIsTenAndContainerTypeIsBox">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_4.Should_DisplayBoxWithTenTablets_When_SizeIsTenAndContainerTypeIsBox.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_4.Should_DisplayRecommendedDailyDoseForEachMedicine_When_MedicineIsChanged">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_4.Should_DisplayRecommendedDailyDoseForEachMedicine_When_MedicineIsChanged.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_4.Should_DisplayTubeWithTenTablets_When_SizeIsTenAndContainerTypeIsTube">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_4" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_4.Should_DisplayTubeWithTenTablets_When_SizeIsTenAndContainerTypeIsTube.classpath"/>
+        </junit>
+    </target>
+    <target name="Requirement_1_3_9">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_9" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.Requirement_1_3_9.classpath"/>
+        </junit>
+    </target>
+    <target name="TableTests.Decrement_Dosage_Decrements_By_Multiple">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.TableTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TableTests.Decrement_Dosage_Decrements_By_Multiple.classpath"/>
+        </junit>
+    </target>
+    <target name="TableTests.Decrement_Dosage_Decrements_By_One">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.TableTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TableTests.Decrement_Dosage_Decrements_By_One.classpath"/>
+        </junit>
+    </target>
+    <target name="TableTests.Decrement_Dosage_Disabled_If_Daily_Dose_Is_One">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.TableTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TableTests.Decrement_Dosage_Disabled_If_Daily_Dose_Is_One.classpath"/>
+        </junit>
+    </target>
+    <target name="TableTests.Edit_Comment_Button_Allows_Editing_Of_Existing_Comment">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.TableTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TableTests.Edit_Comment_Button_Allows_Editing_Of_Existing_Comment.classpath"/>
+        </junit>
+    </target>
+    <target name="TableTests">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UI.TableTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TableTests.classpath"/>
+        </junit>
+    </target>
+    <target name="TimezoneDump">
+        <java classname="com.mysql.cj.jdbc.admin.TimezoneDump" failonerror="true" fork="yes">
+            <classpath refid="run.TimezoneDump.classpath"/>
+        </java>
+    </target>
+    <target name="UITests (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UITests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.UITests (1).classpath"/>
+        </junit>
+    </target>
+    <target name="UITests">
+        <java classname="com.zircon.pharmacyApplicationTest.UITests" failonerror="true" fork="yes">
+            <classpath refid="run.UITests.classpath"/>
+        </java>
+    </target>
+    <target name="UITests.test">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.zircon.pharmacyApplicationTest.UITests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.UITests.test.classpath"/>
         </junit>
     </target>
     <target name="junitreport">

@@ -27,6 +27,8 @@ public class Requirement_1_3_1 {
 	
 	@Before
 	public void setUp() throws Exception {
+		System.out.println("Working Directory = " +
+	              System.getProperty("user.dir"));
 		mockDependency = createMock(DAL.class);
 		FactoryDAL.setInstance(mockDependency);
 		mockDependency.connect("", "", "");

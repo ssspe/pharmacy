@@ -1,0 +1,114 @@
+<html xmlns:string="xalan://java.lang.String" xmlns:lxslt="http://xml.apache.org/xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Unit Test Results: All Errors</title>
+<link rel="stylesheet" type="text/css" title="Style" href="stylesheet.css">
+</head>
+<body onload="open('allclasses-frame.html','classListFrame')">
+<h1>Unit Test Results.</h1>
+<table width="100%">
+<tr>
+<td align="left"></td><td align="right">Designed for use with <a href="http://www.junit.org/">JUnit</a> and <a href="http://ant.apache.org/">Ant</a>.</td>
+</tr>
+</table>
+<hr size="1">
+<h2>All Errors</h2>
+<table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+<tr valign="top">
+<th>Class</th><th>Name</th><th>Status</th><th width="80%">Type</th><th nowrap>Time(s)</th>
+</tr>
+<tr valign="top" class="Error">
+<td><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html">AllTests</a></td><td><a name="Should_RemoveRow_When_RemoveButtonIsPressed"></a><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html#Should_RemoveRow_When_RemoveButtonIsPressed">Should_RemoveRow_When_RemoveButtonIsPressed</a></td><td>Failure</td><td>
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)): expected: 1, actual: 0
+    Prescription.removePrescriptionItem("Medicine1"): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 2, actual: 0<br>
+<br>
+<code>junit.framework.AssertionFailedError: <br>  Expectation failure on verify:<br>    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)): expected: 1, actual: 0<br>    Prescription.removePrescriptionItem("Medicine1"): expected: 1, actual: 0<br>    Prescription.getPrescriptionItems(): expected: 2, actual: 0<br>	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)<br>	at org.easymock.EasyMock.verify(EasyMock.java:2089)<br>	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10.tearDown(Requirement_1_3_10.java:154)<br>
+</code></td><td>5.020</td>
+</tr>
+<tr valign="top" class="Error">
+<td><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html">AllTests</a></td><td><a name="Should_RemoveCorrectRow_When_RemoveButtonIsPressedOnSpecificRow"></a><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html#Should_RemoveCorrectRow_When_RemoveButtonIsPressedOnSpecificRow">Should_RemoveCorrectRow_When_RemoveButtonIsPressedOnSpecificRow</a></td><td>Failure</td><td>
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem("Medicine2", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)): expected: 1, actual: 0
+    Prescription.removePrescriptionItem("Medicine1"): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 3, actual: 1<br>
+<br>
+<code>junit.framework.AssertionFailedError: <br>  Expectation failure on verify:<br>    Prescription.addPrescriptionItem("Medicine2", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)): expected: 1, actual: 0<br>    Prescription.removePrescriptionItem("Medicine1"): expected: 1, actual: 0<br>    Prescription.getPrescriptionItems(): expected: 3, actual: 1<br>	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)<br>	at org.easymock.EasyMock.verify(EasyMock.java:2089)<br>	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_10.tearDown(Requirement_1_3_10.java:154)<br>
+</code></td><td>5.329</td>
+</tr>
+<tr valign="top" class="Error">
+<td><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html">AllTests</a></td><td><a name="Should_ExitApplication_When_ExitButtonClicked"></a><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html#Should_ExitApplication_When_ExitButtonClicked">Should_ExitApplication_When_ExitButtonClicked</a></td><td>Error</td><td>imgs/exit-button.png: (85x28) in S(0)[0,0 1920x1080] E:Y, T:3.0<br>
+<br>
+<code>FindFailed: imgs/exit-button.png: (85x28) in S(0)[0,0 1920x1080] E:Y, T:3.0<br>  Line 2761, in file Region.java<br>
+<br>	at org.sikuli.script.Region.wait(Region.java:2761)<br>	at org.sikuli.script.Region.find(Region.java:2326)<br>	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)<br>	at org.sikuli.script.Region.click(Region.java:3718)<br>	at org.sikuli.script.Region.click(Region.java:3703)<br>	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_12.Should_ExitApplication_When_ExitButtonClicked(Requirement_1_3_12.java:51)<br>
+</code></td><td>3.135</td>
+</tr>
+<tr valign="top" class="Error">
+<td><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html">AllTests</a></td><td><a name="Should_EnableAddButtonIfExceedDailyDoseIsChecked_When_PrescribedDailyDoseIsOverRecommendedDailyDose"></a><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html#Should_EnableAddButtonIfExceedDailyDoseIsChecked_When_PrescribedDailyDoseIsOverRecommendedDailyDose">Should_EnableAddButtonIfExceedDailyDoseIsChecked_When_PrescribedDailyDoseIsOverRecommendedDailyDose</a></td><td>Failure</td><td>
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem("Medicine1", 2 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; My Comment;
+", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0<br>
+<br>
+<code>junit.framework.AssertionFailedError: <br>  Expectation failure on verify:<br>    Prescription.addPrescriptionItem("Medicine1", 2 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle; My Comment;<br>", 1 (int)): expected: 1, actual: 0<br>    Prescription.getPrescriptionItems(): expected: 1, actual: 0<br>	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)<br>	at org.easymock.EasyMock.verify(EasyMock.java:2089)<br>	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_20.tearDown(Requirement_1_3_20.java:97)<br>
+</code></td><td>7.220</td>
+</tr>
+<tr valign="top" class="Error">
+<td><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html">AllTests</a></td><td><a name="Should_DisplayContextMenu_When_RightClickingRow"></a><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html#Should_DisplayContextMenu_When_RightClickingRow">Should_DisplayContextMenu_When_RightClickingRow</a></td><td>Failure</td><td>
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0<br>
+<br>
+<code>junit.framework.AssertionFailedError: <br>  Expectation failure on verify:<br>    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)): expected: 1, actual: 0<br>    Prescription.getPrescriptionItems(): expected: 1, actual: 0<br>	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)<br>	at org.easymock.EasyMock.verify(EasyMock.java:2089)<br>	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_22.tearDown(Requirement_1_3_22.java:58)<br>
+</code></td><td>5.422</td>
+</tr>
+<tr valign="top" class="Error">
+<td><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html">AllTests</a></td><td><a name="Should_DisplayContextMenuOnSelectedRow_When_RightClickingRow"></a><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html#Should_DisplayContextMenuOnSelectedRow_When_RightClickingRow">Should_DisplayContextMenuOnSelectedRow_When_RightClickingRow</a></td><td>Error</td><td>imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0<br>
+<br>
+<code>FindFailed: imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0<br>  Line 2761, in file Region.java<br>
+<br>	at org.sikuli.script.Region.wait(Region.java:2761)<br>	at org.sikuli.script.Region.find(Region.java:2326)<br>	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)<br>	at org.sikuli.script.Region.rightClick(Region.java:3815)<br>	at org.sikuli.script.Region.rightClick(Region.java:3800)<br>	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_22.Should_DisplayContextMenuOnSelectedRow_When_RightClickingRow(Requirement_1_3_22.java:107)<br>
+</code></td><td>8.042</td>
+</tr>
+<tr valign="top" class="Error">
+<td><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html">AllTests</a></td><td><a name="Should_UpdateCurrentComment_When_ClickingEditCommentAndTypingNewComment"></a><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html#Should_UpdateCurrentComment_When_ClickingEditCommentAndTypingNewComment">Should_UpdateCurrentComment_When_ClickingEditCommentAndTypingNewComment</a></td><td>Failure</td><td>
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0<br>
+<br>
+<code>junit.framework.AssertionFailedError: <br>  Expectation failure on verify:<br>    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)): expected: 1, actual: 0<br>    Prescription.getPrescriptionItems(): expected: 1, actual: 0<br>	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)<br>	at org.easymock.EasyMock.verify(EasyMock.java:2089)<br>	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_23.tearDown(Requirement_1_3_23.java:115)<br>
+</code></td><td>5.207</td>
+</tr>
+<tr valign="top" class="Error">
+<td><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html">AllTests</a></td><td><a name="Should_DisplayCurrentCommentInDialogueBox_When_ClickingEditComment"></a><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html#Should_DisplayCurrentCommentInDialogueBox_When_ClickingEditComment">Should_DisplayCurrentCommentInDialogueBox_When_ClickingEditComment</a></td><td>Error</td><td>imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0<br>
+<br>
+<code>FindFailed: imgs/table-one-item.png: (915x121) in S(0)[0,0 1920x1080] E:Y, T:3.0<br>  Line 2761, in file Region.java<br>
+<br>	at org.sikuli.script.Region.wait(Region.java:2761)<br>	at org.sikuli.script.Region.find(Region.java:2326)<br>	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)<br>	at org.sikuli.script.Region.rightClick(Region.java:3815)<br>	at org.sikuli.script.Region.rightClick(Region.java:3800)<br>	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_23.Should_DisplayCurrentCommentInDialogueBox_When_ClickingEditComment(Requirement_1_3_23.java:69)<br>
+</code></td><td>5.811</td>
+</tr>
+<tr valign="top" class="Error">
+<td><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html">AllTests</a></td><td><a name="Should_DecrementDosageByOne_WhenDecrementDosgaeIsClicked"></a><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html#Should_DecrementDosageByOne_WhenDecrementDosgaeIsClicked">Should_DecrementDosageByOne_WhenDecrementDosgaeIsClicked</a></td><td>Failure</td><td>
+  Expectation failure on verify:
+    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)): expected: 1, actual: 0
+    Prescription.getPrescriptionItems(): expected: 1, actual: 0<br>
+<br>
+<code>junit.framework.AssertionFailedError: <br>  Expectation failure on verify:<br>    Prescription.addPrescriptionItem("Medicine1", 1 (int), 1 (int), 1 (int), false, "Comment; Comes in a 1ml Bottle", 1 (int)): expected: 1, actual: 0<br>    Prescription.getPrescriptionItems(): expected: 1, actual: 0<br>	at org.easymock.internal.MocksControl.verify(MocksControl.java:242)<br>	at org.easymock.EasyMock.verify(EasyMock.java:2089)<br>	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_24.tearDown(Requirement_1_3_24.java:109)<br>
+</code></td><td>4.750</td>
+</tr>
+<tr valign="top" class="Error">
+<td><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html">AllTests</a></td><td><a name="Should_DecrementDosageByFour_WhenDecrementDosgaeIsClickedFourTimes"></a><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html#Should_DecrementDosageByFour_WhenDecrementDosgaeIsClickedFourTimes">Should_DecrementDosageByFour_WhenDecrementDosgaeIsClickedFourTimes</a></td><td>Error</td><td>imgs/table-one-item.png: (915x121) seen at (120, 225) with 0.56 in S(0)[0,0 1920x1080] E:Y, T:3.0<br>
+<br>
+<code>FindFailed: imgs/table-one-item.png: (915x121) seen at (120, 225) with 0.56 in S(0)[0,0 1920x1080] E:Y, T:3.0<br>  Line 2761, in file Region.java<br>
+<br>	at org.sikuli.script.Region.wait(Region.java:2761)<br>	at org.sikuli.script.Region.find(Region.java:2326)<br>	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)<br>	at org.sikuli.script.Region.rightClick(Region.java:3815)<br>	at org.sikuli.script.Region.rightClick(Region.java:3800)<br>	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_24.Should_DecrementDosageByFour_WhenDecrementDosgaeIsClickedFourTimes(Requirement_1_3_24.java:94)<br>
+</code></td><td>8.106</td>
+</tr>
+<tr valign="top" class="Error">
+<td><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html">AllTests</a></td><td><a name="Should_DisableDecrementDosage_When_DailyDoseIsOne"></a><a href="com/zircon/pharmacyApplicationTest/0_AllTests.html#Should_DisableDecrementDosage_When_DailyDoseIsOne">Should_DisableDecrementDosage_When_DailyDoseIsOne</a></td><td>Error</td><td>imgs/table-one-item.png: (915x121) seen at (120, 225) with 0.56 in S(0)[0,0 1920x1080] E:Y, T:3.0<br>
+<br>
+<code>FindFailed: imgs/table-one-item.png: (915x121) seen at (120, 225) with 0.56 in S(0)[0,0 1920x1080] E:Y, T:3.0<br>  Line 2761, in file Region.java<br>
+<br>	at org.sikuli.script.Region.wait(Region.java:2761)<br>	at org.sikuli.script.Region.find(Region.java:2326)<br>	at org.sikuli.script.Region.getLocationFromTarget(Region.java:3220)<br>	at org.sikuli.script.Region.rightClick(Region.java:3815)<br>	at org.sikuli.script.Region.rightClick(Region.java:3800)<br>	at com.zircon.pharmacyApplicationTest.UI.Requirement_1_3_25.Should_DisableDecrementDosage_When_DailyDoseIsOne(Requirement_1_3_25.java:69)<br>
+</code></td><td>4.802</td>
+</tr>
+</table>
+</body>
+</html>
