@@ -4,7 +4,7 @@ import com.zircon.pharmacyApplicationInterfaces.InterfacePrescriptionItem;
 
 /**
  * Class to define a prescription item.
- * 
+ *
  * @author spencer.robertson
  */
 public class PrescriptionItem implements InterfacePrescriptionItem {
@@ -19,7 +19,7 @@ public class PrescriptionItem implements InterfacePrescriptionItem {
 
 	/**
 	 * Constructor for a prescription item object.
-	 * 
+	 *
 	 * @param pharmaceuticalName      The name of the prescription item.
 	 * @param prescribedDailyDose     How much should be taken per day.
 	 * @param duration                Number of days the prescription should be
